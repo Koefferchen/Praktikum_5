@@ -1,0 +1,50 @@
+REPORT-FILE from 11/05/2025 17:40:06.125 - 17:43:37.937  written 11/05/2025 17:43:48
+REALTIME: 211.833     
+TOTALSUM: 1532388     
+ROISUM: 1532388     
+MAXVAL: 5894        
+LIVETIME: 204.149     
+cmline0=11/05/2025 17:40:06.125 - 17:43:37.937 
+range=8192
+prena=0
+mcsmode=4
+roimin=0
+roimax=8192
+rtpreset=10.000      
+ltpreset=0.000       
+evpreset=0           
+swpreset=1           
+rampmode=0
+rampstart=1024
+rampstep=1
+rampbin=1
+ramplen=1024
+qdacuse=0
+qdac=2048
+dac1use=0
+dac1val=0
+impsel=f
+thrstart=1716
+thr1=1716
+thr2=1716
+thrclk=2482
+diguse=8
+digval=0
+cycles=128
+sequences=1
+mempart=0
+dwelltime=3
+dwellunit=0
+syncout=909
+histlen=0
+autoinc=0 
+;datname=C:\Dokumente und Einstellungen\Praktikum\Desktop\WiSe2526\B202\03_Ba_Spektrum_Kalibration_Links.mcd
+savedata=0
+fmt=txt
+smoothpts=5 
+caluse=0 
+caloff=0.000000
+calfact=1.000000
+calfact2=0
+calfact3=0
+calunit=keV

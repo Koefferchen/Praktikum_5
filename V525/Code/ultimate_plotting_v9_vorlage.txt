@@ -1,0 +1,58 @@
+from ultimate_plotting_v7 import *
+
+data = np.loadtxt("../data/sample_data.txt", skiprows=1)
+sample_x = data[ : , 0 ]
+sample_y = data[ : , 1 ]
+
+def ultimate_plot():
+    
+    sample_format_dict_1 = {
+        "label"      : r"Messwerte 1",          
+        "fmt"        : '-', 
+        "color"      : sns.color_palette("dark")[1],                               
+        "markersize" : 4, 
+        "linewidth"  : 1,
+        "capsize"    : 0,
+        "alpha"      : 1                                   
+    }
+    sample_format_dict_2 = {
+        "label"      : r"Messwerte 2",                       
+        "fmt"        : '-', 
+        "color"      : sns.color_palette("dark")[2],        
+        "markersize" : 4, 
+        "linewidth"  : 1,
+        "capsize"    : 0,
+        "alpha"      : 1
+    }  
+    sample_format_dict_3 = {
+        "label"      : r"Messwerte 3",                       
+        "fmt"        : '-', 
+        "color"      : sns.color_palette("dark")[9],        
+        "markersize" : 4, 
+        "linewidth"  : 1,
+        "capsize"    : 0,
+        "alpha"      : 1
+    }
+    writtings = {
+        "title"       : r"Title",
+        "x_ax_label"  : r"Time $t$ [$s$]",
+        "y_ax_label"  : r"Angle $\theta$ [$rad$]"
+    }
+    
+    general_format_dict = standard_format_dict.copy()
+    zoom_params         = no_zooming.copy()
+    colorbar_params     = no_colorbar.copy()
+    extra_label         = no_extra_label.copy()
+    
+    data_set_1  = sample_x,     sample_x_err,   sample_y,   sample_y_err       
+    data_set_2  = sample_x2,    sample_x2_err,  sample_y2,  sample_y2_err 
+    data_set_3  = sample_x3,    None,           sample_y3,  None   
+    
+    all_data                = [ data_set_1, data_set_2, data_set_3 ]                               
+    all_sample_format_dicts = [ sample_format_dict_1, sample_format_dict_2, sample_format_dict_3 ]
+
+    save_plot = True, "bild.jpg"                                     
+    ultimate_plot_advanced (all_data, writtings, zoom_params, colorbar_params, extra_label, save_plot, all_sample_format_dicts, general_format_dict)
+
+ultimate_plot()
+ultimate_plot()
