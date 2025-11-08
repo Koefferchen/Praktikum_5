@@ -278,11 +278,6 @@ chis_Ba_left        = [chi_Ba_left_31keV, chi_Ba_left_81keV, chi_Ba_left_302keV,
 
 plot_fit_data_Ba( exp_noerr_Ba_left, fit_datas_Ba_left, chis_Ba_left, "Links", "3")
 
-Kalibration_params_left = np.array([ params_Ba_left_31keV, params_Ba_left_81keV, params_Ba_left_302keV, params_Ba_left_356keV, params_Na_left_511 ])
-Kalibration_params_left_err = np.array([ params_err_Ba_left_31keV, params_err_Ba_left_81keV, params_err_Ba_left_302keV, params_err_Ba_left_356keV, params_err_Na_left_511])
-
-array_to_latex( "../Data/Params_Kalibration_Links.txt", Kalibration_params_left.T, Kalibration_params_left_err.T)
-
 
 # -------------------------- Gauss-Fits Ba (Right) --------------------------
 
@@ -337,11 +332,6 @@ fit_datas_Ba_right   = [fit_data_Ba_right_31keV, fit_data_Ba_right_81keV, fit_da
 chis_Ba_right        = [chi_Ba_right_31keV, chi_Ba_right_81keV, chi_Ba_right_302keV, chi_Ba_right_356keV]
 
 plot_fit_data_Ba( exp_noerr_Ba_right, fit_datas_Ba_right, chis_Ba_right, "Rechts", "6")
-
-Kalibration_params_right        = np.array([ params_Ba_right_31keV, params_Ba_right_81keV, params_Ba_right_302keV, params_Ba_right_356keV, params_Na_right_511 ])
-Kalibration_params_right_err    = np.array([ params_err_Ba_right_31keV, params_err_Ba_right_81keV, params_err_Ba_right_302keV, params_err_Ba_right_356keV, params_err_Na_right_511])
-
-array_to_latex( "../Data/Params_Kalibration_Rechts.txt", Kalibration_params_right.T, Kalibration_params_right_err.T)
 
 
 
@@ -400,12 +390,16 @@ def energy_of_channel( channel, channel_err, params_kalib, params_kalib_err ):
 
     # Source: https://www.nndc.bnl.gov/ensnds/133/Cs/ec_decay_10.551_y.pdf:  80.9979 (11),  302.8508 (5), 356.0129 (7)
     # Source: https://www.ezag.com/wp-content/uploads/2023/08/Ba-133.pdf:    30.85
-    # Source: https://www-nds.iaea.org/xgamma_standards/genergies1.htm?utm_source=chatgpt.com: 511
+    # Source: https://physics.nist.gov/cgi-bin/cuu/Value?mec2mev|search_for=electron+mass : 510.99895069(16)
 
 energy_array        = np.array([ 30.85, 80.9979, 302.8508, 356.0129, 511.0 ])
 energy_err_array    = np.array([ 0.0, 0.0011, 0.0005, 0.0007, 0.0])
 
 # -------------------------- Energie Kalibraiton Left --------------------------
+
+Kalibration_params_left = np.array([ params_Ba_left_31keV, params_Ba_left_81keV, params_Ba_left_302keV, params_Ba_left_356keV, params_Na_left_511 ])
+Kalibration_params_left_err = np.array([ params_err_Ba_left_31keV, params_err_Ba_left_81keV, params_err_Ba_left_302keV, params_err_Ba_left_356keV, params_err_Na_left_511])
+
 
 
 channel_array       = Kalibration_params_left[ : , 0 ]
@@ -431,6 +425,11 @@ print("E_err links: ", E_peaks_err_left)
 
 # -------------------------- Energie Kalibraiton Right --------------------------
 
+Kalibration_params_right        = np.array([ params_Ba_right_31keV, params_Ba_right_81keV, params_Ba_right_302keV, params_Ba_right_356keV, params_Na_right_511 ])
+Kalibration_params_right_err    = np.array([ params_err_Ba_right_31keV, params_err_Ba_right_81keV, params_err_Ba_right_302keV, params_err_Ba_right_356keV, params_err_Na_right_511])
+
+
+
 
 channel_array       = Kalibration_params_right[ : , 0 ]
 channel_array_err   = Kalibration_params_right_err[ : , 0]
@@ -452,9 +451,21 @@ E_peaks_right, E_peaks_err_right = energy_of_channel(channel_array, channel_arra
 print("E     rechts: ", E_peaks_right)
 print("E_err rechts: ", E_peaks_err_right)
 
+array_to_latex( "../Data/Params_Kalibration_Links.txt", Kalibration_params_left.T, Kalibration_params_left_err.T)
+array_to_latex( "../Data/Params_Kalibration_Rechts.txt", Kalibration_params_right.T, Kalibration_params_right_err.T)
+array_to_latex("../Data/Results_E.txt", np.array([energy_array, E_peaks_left, E_peaks_right ]), np.array([energy_err_array, E_peaks_err_left, E_peaks_err_right]), ".4f")
+
+
+Full_Kalib_Left      = np.concatenate( (np.array([energy_array, E_peaks_left]), Kalibration_params_left.T) )
+Full_Kalib_Left_err  = np.concatenate( (np.array([energy_err_array, E_peaks_err_left]), Kalibration_params_left_err.T) )
+Full_Kalib_Right     = np.concatenate( (np.array([energy_array, E_peaks_right]), Kalibration_params_right.T) )
+Full_Kalib_Right_err = np.concatenate( (np.array([energy_err_array, E_peaks_err_right]), Kalibration_params_right_err.T) )
+
+array_to_latex( "../Data/Params_Full_Kalibration_Links.txt", Full_Kalib_Left, Full_Kalib_Left_err, ".4f")
+array_to_latex( "../Data/Params_Full_Kalibration_Rechts.txt", Full_Kalib_Right, Full_Kalib_Right_err, ".4f")
+
 
 array_to_latex("../Data/Params_E_kalib.txt", np.array([params_kalib_left, params_kalib_right]).T, np.array([params_err_kalib_left, params_err_kalib_right]).T, ".4f" )
-array_to_latex("../Data/Results_E.txt", np.array([energy_array, E_peaks_left, E_peaks_right ]), np.array([energy_err_array, E_peaks_err_left, E_peaks_err_right]), ".4f")
 
 
 
