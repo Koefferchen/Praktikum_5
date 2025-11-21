@@ -36,6 +36,8 @@ def plot_promptkurven( exp_data, fit_datas=None, chis=None, T_of_C=None, C_of_T=
     zoom_params         = no_zooming.copy()
     colorbar_params     = no_colorbar.copy()
     extra_label         = no_extra_label.copy()
+
+    general_format_dict["custom_x_range"] = [True, 0, 10000]
     
     if ((T_of_C == None) or (C_of_T == None)):
         extra_xaxis = no_extra_xaxis.copy()
@@ -96,7 +98,7 @@ fitbook_2 = {
     "data_set"          : pro_data,
     "region_of_interest": [1800, 2400],
     "fit_function"      : gauss_fit,
-    "params_guess"      : [2100, 200, 40],
+    "params_guess"      : [2100, 200, 60],
     "region_of_fit"     : None,
     "fit_density"       : density
 }
@@ -339,4 +341,27 @@ print(f"t_0   = ({t_0:.2f} +- {t_0_err:.2f})ns")
 print(f"sigma = ({sigma:.2f} +- {sigma_err:.2f})ns")
 print(f"I     = ({I:.2f} +- {I_err:.2f})")
 
+
+# ------------------------ Zeitauflösung bestimmen ------------------------
+
+
+def T_of_C_mit_err(channel, channel_err):
+    T = (channel - b)/a
+    T_err = np.sqrt( (channel_err/a)**2 + (b_err/a)**2 + (T*a_err/a)**2 )
+    return T, T_err
+
+sigmas      = pro_params[ : , 1 ]
+sigmas_err  = pro_params_err[ : , 1 ]
+
+FWHMs       = 2 * sigmas *np.sqrt( 2 * np.log(2))
+FWHMs_err   = 2 * sigmas_err *np.sqrt( 2 * np.log(2))
+
+FWHM_av, FWHM_av_err = stichproben_varianz( FWHMs )
+
+print(FWHMs)
+print(FWHMs_err)
+print(f"Zeitauflösung: FWHM = ({FWHM_av:.2f} +- {FWHM_av_err:.2f}) Kanal")
+
+FWHM_av_T, FWHM_av_T_err = T_of_C_mit_err(FWHM_av, FWHM_av_err)
+print(f"Zeitauflösung: FWHM = ({FWHM_av_T:.2f} +- {FWHM_av_T_err:.2f}) ns")
 

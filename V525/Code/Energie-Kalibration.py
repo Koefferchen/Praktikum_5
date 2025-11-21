@@ -545,9 +545,34 @@ plot_fit_data_Ba( exp_noerr_Ba_right, fit_datas_Ba_right, chis_Ba_right, "Rechts
 
 # -------------------------- Ba mit mit CFD-Schwelle auf 0 --------------------------
 
+
 plot_raw_kalibrated( "09_Ba_Spektrum_CFD_Links", E_L, C_L )
 plot_raw_kalibrated( "10_Ba_Spektrum_CFD_Rechts", E_R, C_R )
 plot_raw_kalibrated( "12_Ba_Links_356_Fenster", E_L, C_L )
 plot_raw_kalibrated( "13_Ba_Rechts_81_Fenster", E_R, C_R )
 
 
+# -------------------------- Fenster-Schwellen Bestimmung --------------------------
+
+
+# links Schwellen: 7021 - 8018
+# rechts Schwellen: 6699 - 7917
+
+Schwellen_K_Links       = np.array([7021, 8018])
+Schwellen_K_Links_err   = np.array([5,5])
+Schwellen_K_Rechts      = np.array([6699, 7917])
+Schwellen_K_Rechts_err  = np.array([5,5])
+
+Schwellen_E_L, Schwellen_E_L_err = energy_of_channel( Schwellen_K_Links, Schwellen_K_Links_err, params_kalib_left, params_err_kalib_left )
+Schwellen_E_R, Schwellen_E_R_err = energy_of_channel( Schwellen_K_Rechts, Schwellen_K_Rechts_err, params_kalib_right, params_err_kalib_right )
+
+Schwellen_L     = np.concatenate( (Schwellen_K_Links, Schwellen_E_L ) )
+Schwellen_L_err = np.concatenate( (Schwellen_K_Links_err, Schwellen_E_L_err ) )
+
+Schwellen_R     = np.concatenate( (Schwellen_K_Rechts, Schwellen_E_R ) )
+Schwellen_R_err = np.concatenate( (Schwellen_K_Rechts_err, Schwellen_E_R_err ) )
+
+print_Schwellen     = np.array([Schwellen_L, Schwellen_R]).T
+print_Schwellen_err = np.array([Schwellen_L_err, Schwellen_R_err]).T
+
+array_to_latex("../Data/Params_SCA_Schwellen_Na.txt",print_Schwellen, print_Schwellen_err , ".4f" )
