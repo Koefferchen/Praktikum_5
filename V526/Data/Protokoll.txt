@@ -1,0 +1,87 @@
+Tag 1:
+
+Wir beobachten zunächst den PMT-Ausgang direkt am Oszi (kein Verstärker, kein Target).
+Wir drehen die Hochspannung (die an der PMT liegt) hoch, bis wir ein Signal sehen.
+Dies geschieht das erste Mal bei V ~ 350 V, das Triggerniveau ist eingestellt, um auch kleine Amplituden aufzunehmen.
+Bild: TEK00000.
+Wir beobachten die erwarteten Verläufe mit schnellem Anstieg und langsamem Abfall.
+Bei niedrigen Spannungen sieht man sehr selten Signale, mit höheren Spannungen sehr oft.
+
+Bei maximaler Spannung (~700(2) V), sehen wir Verläufe von allerlei Amplituden, aber und an solche mit sehr grpßer Amplitude.
+Diese entsprechen vermutlich gerade dem ~660-keV-Photopeak des Cäsiums.
+Diese haben eine Amplitude von ca. 7V. Bild: TEK00001.
+
+Wir bauen nun den Verstärker zwischen PMT und Oszi. Der Verstärker steht auf Minimum (Gain 2.5).
+Bild: TEK00002.
+Wir erkennen den Compton-Untergrund und selten Signale mit einer auf dem Oszi nicht darstellbaren Spannung (Photopeak!).
+Theoretisch sollte diese 7 V * 2.5 = 17.5 V sein.
+
+Veränderung der Pulse Shaping time auf 3µs: TEK00003. Wir verwenden ab jetzt 1µs.
+
+
+
+Messung mit Verstärker und MCA:
+Wir machen eine Testmessung mit dem MCA, um die Verstärkung einzustellen.
+Wir regeln sie so ein (Coarse Gain 20, Fine Gain 5.35, Shaping time 1µs), dass der prominente Photopeak bei knapp Kanal 5000 liegt.
+Damit ist der Messbereich ca. 1100 keV wie gewünscht. Die Verstärkung wird nie verändert.
+
+
+
+Messung des totalen Stoßwirkungsquerschnitts:
+Wir stellen die Messdauer auf 600s (live time, also mit Einbezug der MCA-Totzeit) im Programm MCA3 ein.
+Wir positionieren später die Targets so genau wie möglich senkrecht im Strahlengang, geschätzte Unsicherheiten sind jeweils gegeben.  
+
+Bilder des Versuchsaufbaus (während Messung ohne Target) mit Max's Telefon aufgenommen.
+
+Wir vermessen die Dicken der Aluminium-Targets mit dem gegebenen Messschieber. Wir finden:
+1.00(2) mm
+5.00(2) mm
+10.12(2) mm
+20.16(2) mm
+30.00(2) mm
+
+Aufgenommene Spektren:
+Targetdicke (mm)        Geschätzte Unsicherheit der Target-Ausrichtung (°)      Dateiname
+0                       0                                                       01_Caesium_0mm.txt
+1                       3                                                       02_Caesium_1mm.txt
+5                       3                                                       03_Caesium_5mm.txt
+10                      3 	                                                    04_Caesium_10mm.txt
+20                      5                                                       05_Caesium_20mm.txt
+30                      5 	                                                    06_Caesium_30mm.txt
+
+5mm, 45° verdreht		5														07_Caesium_5mm_verdreht_45.txt
+
+
+
+Tag 2:
+
+Kalibrationsmessung mit Europium:
+Wir stellen den Detektor auf 90(1)° (um Cs-Strahlung zu minimieren) und setzen die Europiumquelle für die Kalibration ein. Der Aufbau mit dem MCA ist unverändert, sogar die Spannungsquelle für die PMT blieb über Nacht an.
+Die Europium-"Münze" wird planparallel zum Detektor eingebaut. Für die Hintergrundmessung wird die Europiumquelle einfach wieder entfernt.
+Messdauer: 5 min.
+
+Kalibrationsspektrum: 08_Europium_Kalibration_90grad.txt
+Hintergrundmessung: 09_Europium_Hintergrund_90grad.txt
+
+
+
+Messung der Streuspektren:
+Wir messen zwischen 35° und 120° in 5°-Schritten (Unsicherheit 1°) jeweils abwechselnd mit und ohne 1mm-Aluminium-Target 5 Minuten lang. Dies gibt uns die nötigen Streuspektren.
+Spektren:
+xx_Caesium_yygrad_Spektrum.txt
+bzw.
+xx_Caesium_yygrad_Hintergrund.txt
+
+mit xx zwischen 10 und 45, arbiträre Zahl zur Sortierung
+mit yy zwischen 35 und 120 dem eingestellten Winkel
+
+
+
+
+
+
+
+
+
+
+
