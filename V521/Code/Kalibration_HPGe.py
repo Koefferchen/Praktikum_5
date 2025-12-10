@@ -111,12 +111,13 @@ data_Co     = [ channel, None, counts_Co_clean, counts_Co_clean_err ]
 data_Cs     = [ channel, None, counts_Cs_clean, counts_Cs_clean_err ]
 data_Eu     = [ channel, None, counts_Eu_clean, counts_Eu_clean_err ]
 
+data_bg_noerr   = [ channel, None, bg, None ]
 data_Co_noerr   = [ channel, None, counts_Co - bg, None ]
 data_Cs_noerr   = [ channel, None, counts_Cs - bg, None ]
 data_Eu_noerr   = [ channel, None, counts_Eu - bg, None ]
 
 plot_multifit(data_Co_noerr, prefix+"_Co")
-plot_multifit(data_Co_noerr, prefix+"_Co")
+plot_multifit(data_bg_noerr, prefix+"_bg")
 #plot_multifit(data_Cs_noerr, prefix+"_Cs")
 #plot_multifit(data_Eu_noerr, prefix+"_Eu")
 
@@ -452,8 +453,8 @@ a, a_err = params_energy[0], params_energy_err[0]
 b, b_err = params_energy[1], params_energy_err[1]
 
 print(prefix+" Energie-Kalibration 2: K = a*E + b")
-print(f"a = ({a:.4f} +- {a_err:.4f}) / keV")
-print(f"b = ({b:.2f} +- {b_err:.2f}) / 1")
+print(f"a = ({a:.6f} +- {a_err:.6f}) / keV")
+print(f"b = ({b:.4f} +- {b_err:.4f}) / 1")
 
 def C_of_E( E ):
     return a*E + b
@@ -510,7 +511,7 @@ fitdata_intrins, params_intrins, params_intrins_err, chi_intrins = ultimate_fit(
 
 print(prefix+" Intrinsische Breite: FWHM = (a^2 *E + b^2 )^(1/2)")
 print(f"a = ({params_intrins[0]:.4f} +- {params_intrins_err[0]:.4f}) / 1")
-print(f"b = ({params_intrins[1]:.4f} +- {params_intrins_err[1]:.4f}) / 1")
+print(f"b = ({params_intrins[1]:.4f} +- {params_intrins_err[1]:.4f}) * keV")
 
 def plot_FWHM_intrins(exp_data, fit_data, chi):
     
@@ -763,3 +764,6 @@ Eu_lit_header       = [
 array_to_latex_2( "../Data/Params_Eu_lit.txt", Eu_lit_params, Eu_lit_params_err, Eu_lit_header, ".4f")
 
 
+print(f"Aktivität Co: {acitv_Co/1000:.2f} kBq")
+print(f"Aktivität Cs: {acitv_Cs/1000:.2f} kBq")
+print(f"Aktivität Eu: {acitv_Eu/1000:.2f} kBq")

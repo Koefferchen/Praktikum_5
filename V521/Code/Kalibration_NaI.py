@@ -109,11 +109,13 @@ data_Co     = [ channel, None, counts_Co_clean, counts_Co_clean_err ]
 data_Cs     = [ channel, None, counts_Cs_clean, counts_Cs_clean_err ]
 data_Eu     = [ channel, None, counts_Eu_clean, counts_Eu_clean_err ]
 
+data_bg_noerr   = [ channel, None, bg, None ]
 data_Co_noerr   = [ channel, None, counts_Co - bg, None ]
 data_Cs_noerr   = [ channel, None, counts_Cs - bg, None ]
 data_Eu_noerr   = [ channel, None, counts_Eu - bg, None ]
 
 plot_multifit(data_Co_noerr, prefix+"_Co")
+plot_multifit(data_bg_noerr, prefix+"_bg")
 #plot_multifit(data_Co_noerr, prefix+"_Co")
 #plot_multifit(data_Cs_noerr, prefix+"_Cs")
 #plot_multifit(data_Eu_noerr, prefix+"_Eu")
