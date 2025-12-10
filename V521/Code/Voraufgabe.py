@@ -6,11 +6,11 @@ def plot_multifit( data_exp, save_as, datas_fit=None, labels_fit=None, E_of_C=No
     sample_format_dict_1 = {
         "label"      : "Messdaten",          
         "fmt"        : 'o', 
-        "color"      : sns.color_palette("bright")[9],                               
-        "markersize" : 0.7, 
+        "color"      : "grey",                               
+        "markersize" : 0.5, 
         "linewidth"  : 1,
         "capsize"    : 0,
-        "alpha"      : 0.6                                   
+        "alpha"      : 0.8                                   
     }
 
     sample_format_dict_gauss = {
@@ -84,7 +84,7 @@ plot_multifit(data_exp, "Voraufgabe.jpg")
 
 fitbook_1 = {
     "data_set"          : data_exp,
-    "region_of_interest": [250, 400],
+    "region_of_interest": [250, 410],
     "fit_function"      : fitfunc_gauss_bg,
     "params_guess"      : [350, 50, 500, 0, 0],
     "region_of_fit"     : None,
@@ -92,9 +92,17 @@ fitbook_1 = {
 }
 fitbook_2 = {
     "data_set"          : data_exp,
-    "region_of_interest": [650, 1060],
+    "region_of_interest": [700, 1100],
     "fit_function"      : fitfunc_gauss_bg,
     "params_guess"      : [900, 60, 300, 0, 0],
+    "region_of_fit"     : None,
+    "fit_density"       : 400
+}
+fitbook_5 = {
+    "data_set"          : data_exp,
+    "region_of_interest": [500, 700],
+    "fit_function"      : fitfunc_gauss_bg,
+    "params_guess"      : [600, 20, 60, 0, 0],
     "region_of_fit"     : None,
     "fit_density"       : 400
 }
@@ -109,11 +117,13 @@ fitbook_3_4 = {
 
 fitdata_1, params_1, params_err_1, chi_1 = ultimate_fit( fitbook_1 )
 fitdata_2, params_2, params_err_2, chi_2 = ultimate_fit( fitbook_2 )
+fitdata_5, params_5, params_err_5, chi_5 = ultimate_fit( fitbook_5 )
 fitdata_3_4, params_3_4, params_err_3_4, chi_3_4 = ultimate_fit( fitbook_3_4 )
 
-fitdata_all     = [fitdata_1, fitdata_2, fitdata_3_4]
+fitdata_all     = [fitdata_1,fitdata_5, fitdata_2, fitdata_3_4]
 fitlabels_all   = [ f"Fit 1 $(\\chi^2 = {chi_1:.1f} )$",
                     f"Fit 2 $(\\chi^2 = {chi_2:.1f})$",
+                    f"Fit 5 $(\\chi^2 = {chi_5:.1f})$",
                     f"Fit 3+4 $(\\chi^2 = {chi_3_4:.1f})$"
 ]
 
