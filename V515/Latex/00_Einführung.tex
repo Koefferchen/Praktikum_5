@@ -1,0 +1,63 @@
+\section{Einführung}
+    In diesem Versuch wird die Winkelverteilung kosmischer Myonen mithilfe einer gasbasierten Driftkammer untersucht. Im Zentrum des Versuchs steht dabei die Optimierung der Betriebsparameter bei der Prototyp-Driftkammer des B1-Spektrometers \cite{Hammann} sowie des dazugehörigen Szintillationstriggers. Nach der Kalibration des Detektors mithilfe des Strontium-$\beta$-Strahlers $^{90}$Sr und der Einstellung von Hochspannung, Diskriminatorschwelle und Zeitverzögerung wird die Apparatur zur Langzeit-Messung von kosmischen Myonen genutzt. Schließlich wird deren Winkelverteilung mithilfe der Analyse-Software \textit{ROOT} \cite{root} bestimmt.\\
+    
+    Die Durchführung des Versuchs basiert grundlegend auf der Anleitung des physikalischen Praktikums der Universität Bonn \cite{Praktikumsanleitung} sowie auf der Diplomarbeit von Daniel Hammann \cite{Hammann}. Alle in der Versuchsdurchführung erhobenen Rohdaten und das während der Versuchsdurchführung laufend verfasste Protokoll sind auf Sciebo \cite{raw_data} erhältlich. Dort ist auch das Skript \textit{analysis.c} zu finden, mit welchem die Auswertung der einzelnen Messungen vollzogen worden ist, sowie verschiedene weitere Ressourcen aus der Auswertung. (Link gültig bis 31.03.2026) \\
+    
+    Alle in diesem Protokoll enthaltenen Histogramme sind, solange nicht explizit anders angegeben, selbst mit ROOT erstellt worden. Ebenso sind alle Illustrationen und Diagramme, wenn nicht anders spezifiziert, in Programmen wie GeoGebra o.Ä. selbst erstellt worden.
+
+
+
+\subsection{Funktionsweise der Driftkammer} \label{sec:funktion_driftkammer}
+    Die Driftkammer gehört gemeinsam mit dem Geiger-Müller-Zähler und dem Proportional-Zähler zu der Klasse der Gas-Ionisations-Detektoren. Sie bestehen meist aus einer zylinder-symmtrischen Zelle, die mit nicht-leitendem Gas gefüllt ist. Innerhalb der Zelle liegt eine Spannungsdifferenz von innen nach außen an. Die Driftkammer zeichnet sich gegenüber anderen gasbasierten Detektoren dadurch aus, dass sie durch gleichzeitige Verwendung mehrerer solcher \textit{Driftzellen} zur approximativen Rekonstruktion von Teilchen-Trajektorien verwendet werden kann (siehe Abb. \ref{fig:Skizze_Driftkammer_Prinzip}).\\
+    
+    Die in diesem Versuch verwendete Driftkammer enthält 48 Zellen. Jede Zelle hat einen Anodendraht (rot) im Zentrum und wird durch sechs Kathodendrähte (blau) berandet. Durch die hexagonale Anordnung der Kathoden-Drähte wird die Zylinder-Symmetrie der Zellen approximiert. An den Kathoden-Drähten wird eine negative Hochspannung angelegt, um das nötige elektrische Feld zu erzeugen. Die geerdeten Anodendrähte werden zum Auslesen des Signals verwendet. \cite{Hammann}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.65\textwidth]{figs/Skizze_Driftkammer_Prinzip.png}
+        \caption{Schematische Darstellung der Funktionsweise einer Driftkammer (aus \cite{Hammann}). Die hexagonal-angeordneten Kathodendrähte erzeugen ein annähernd zylinder-symmetrisches elektrisches Feld, ähnlich einem Proportionalzähler. Einfallende Teilchen erzeugen Lawineneffekte nahe der Anodendrähte, deren Strompuls umgewandelt, verstärkt (Amp), diskriminiert (Diskriminator) und zeitlich versetzt (TDC) wird. Durch Zusammenführen der Ereignisse aller Drähte kann die Trajektorie des Teilchens rekonstruiert werden.}
+        \label{fig:Skizze_Driftkammer_Prinzip}
+    \end{figure}
+    
+    Passiert ein ionisierendes Teilchen des Detektor, so stößt es Elektronen aus den Valenzschalen der Gas-Atome und erzeugt dabei Elektronen-Ionen-Paare (Abb. \ref{fig:Skizze_Lawineneffekt}, a). Während die positiv geladenen Ionen langsam zum Kathodendraht diffundieren, bewegen sich die Elektronen mit hoher Geschwindigkeit zum Anodendraht in der Mitte der Zelle. Gelangt ein solches Primär-Elektron in die direkte Nähe des Anodendrahts, so erhält es vom dort starken elektrischen Feld ($|\Vec{E}(r)| \propto 1/r$ für einen unendlich dünnen Draht) ausreichend Energie, um weitere Atome zu ionisieren. Die freigesetzten Elektronen werden Sekundär-Elektronen genannt --- auch diese können wiederum mehr Atome ionisieren (siehe Abb. \ref{fig:Skizze_Lawineneffekt}, b). Die so entstehende \enquote{Lawine} aus Elektronen wird durch den Anodendraht abgeleitet und lässt darum eine etwa tropfenförmige Ansammlung von Kationen zurück (Abb. \ref{fig:Skizze_Lawineneffekt} c/d). Aufgrund ihrer positiven Ladung werden diese vom Anodendraht weg beschleunigt. Dies induziert im Anodendraht einen Strompuls, quantifiziert durch das Shockley-Ramo-Theorem, welcher als Signal detektiert werden kann (Abb. \ref{fig:Skizze_Lawineneffekt} e). Dieser Puls wird zuletzt von der Basis-Elektronik verarbeitet und an einen Computer weitergegeben. \cite{Hammann}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.65\textwidth]{figs/Skizze_Lawineneffekt.png}
+        \caption{Schematische Darstellung des Lawineneffekts im Gas-Ionisations-Detektor \cite{Kolanoski}. Ein primär ionisiertes Elektron (a) stößt weitere Atome an (b) und erzeugt dabei eine \enquote{Lawine} von Elektronen (c), die durch den Anodendraht abgeleitet werden (d). Die zurückbleibenden Kationen erzeugen einen negativen Strom-Impuls (e), welcher von der Elektronik ausgelesen wird. }
+        \label{fig:Skizze_Lawineneffekt}
+    \end{figure}
+    
+    
+    
+\subsection{Ausleseelektronik} \label{sec:ausleseelektronik}
+    In der späteren Auswertung ist die Zeit zwischen dem Eintreffen eines ionisierenden Teilchens und dem resultierenden Strompuls in den Anodendrähten von Interesse. Eine zentrale Komponente der Ausleseelektronik ist daher ein \textit{Time-Digital-Converter} (TDC). Ein TDC nimmt elektrische Pulse als Start- bzw. Stopp-Signal und inkrementiert in diskreten Zeitabständen seine Ausgabe. Somit ist die Ausgabe des TDC zum Zeitpunkt des Stopp-Signals proportional zur Zeit zwischen den Signalen. \\
+    
+    Das Stopp-Signal des TDC soll also von der Driftkammer geliefert werden. Der TDC benötigt jedoch noch immer ein Startsignal, welches den Zeitpunkt des eintreffenden Teilchens hinreichend genau markiert. Zu diesem Zweck wird direkt über bzw. unter die Driftkammer ein Szintillationsdetektor mit \textit{Photomultiplier Tube} (PMT) gestellt, welcher ebenfalls einen elektrischen Puls erzeugt, wenn ionisierende Strahlung eintrifft. Da die einfallende Strahlung sich mit einem signifikanten Bruchteil der Lichtgeschwindigkeit bewegt, kann angenommen werden, dass sie den Szintillator und die Driftkammer zeitgleich passiert. Die Ansprechzeit des Szintillations-Triggers ist deutlich kleiner als die typischen Driftzeiten in der Driftkammer, solange die jeweils angelegten Spannungen in den richtigen Größenordnungen liegen. Eine einstellbare Verzögerung des Driftkammer-Signals erlaubt es dennoch, die Stopp-Signale in einem sinnvollen Zeitbereich relativ zum Startsignal zu positionieren. \\
+
+    Alle Drähte der Driftkammer sind mit einem von drei \textit{Frontends} verbunden. Sie enthalten je einen Messverstärker, einen einstallbaren Verzögerer, den TDC, und einen Diskriminator. Das Signal wird also verstärkt/verzögert und dann von TDC bzw. Diskriminator digitalisiert: der Diskriminator gibt an, ob das Signal über der eingestellten Diskriminatorschwelle liegt oder nicht, während der TDC seine Ausgabe in Abständen von \SI{2.5}{ns} inkrementiert. Der TDC zählt auf diese Weise genau $250$ \enquote{Zeit-Bins} ab, womit die Ereignisdauer auf $\SI{250}{bins} \cdot \SI{2.5}{ns/bin} = \SI{625}{ns}$ begrenzt ist. Ändert sich die Ausgabe des Diskriminators, wird dies als Stopp-Signal an den TDC gegeben; der TDC digitalisiert die Driftzeit im entsprechenden Bin und erfasst so ein Ereignis. Zuletzt werden die Daten der Frontends von einem sog. Concentrator entgegengenommen, zusammengeführt, und an einen Computer weitergegeben (vgl. Abb. \ref{fig:Skizze_Driftkammer_Proto}). \cite{Hammann}
+
+
+
+\subsection{Ausgabeformat}
+    In dem verwendeten Betriebsmodus der Driftkammer, genannt \textit{Time-over-Threshold}-Modus (vgl. \cite[S. 23/24]{Hammann}), wird jedes mal ein Eintrag ins aktuelle Ereignis getätigt, wenn an einem Draht die Diskriminatorschwelle über- oder unterschritten wird. Dies kann aufgrund elektronischen Rauschens auch mehrmals pro Draht sein. Ein solcher Eintrag enthält die Drahtnummer sowie den Zeitpunkt des Über-/Unterschreitens der Diskriminatorschwelle (als Bin-Nummer des TDC):
+    
+    \begin{itemize}
+        \item Die Nummer des angesprochenen Drahts liegt zwischen $1$ und $48$, da die verwendete Driftkammer 48 Zellen beinhaltet.
+        \item Der Zeitpunkt, an dem das Signal die Diskriminator-Schwelle überschreitet, wird als \textit{leading edge} bezeichnet.
+        \item Der Zeitpunkt, an dem das Signal die Diskriminator-Schwelle unterschreitet, wird als \textit{trailing edge} bezeichnet.
+        \item Die Subtraktion der Leading-Edge-Zeit von der Trailing-Edge-Zeit ergibt die \textit{Time over Threshold} (ToT).
+    \end{itemize}
+    
+    Es ist möglich, dass beim Durchgang eines ionisierenden Teilchens mehrere Zellen ansprechen. Ein Ereignis wird also an allen Drähten gleichzeitig ausgelesen --- daher muss auch die Drahtnummer für jeden Eintrag im Ereignis einzeln festgehalten werden. Bei optimalen Betriebsparameteren der Driftkammer werden jedoch nur zwei direkt benachbarte Anoden-Drähte von einem Ereignis angesprochen.\footnote{Ausnahme: der sehr seltene Fall, dass zwei ionisierende Teilchen gleichzeitig die Driftkammer passieren.} \cite{Hammann}
+    
+
+   
+\subsection{Strahlungsquellen: Kosmische Strahlung, Strontium-90}
+    Kosmische Strahlung ist ein Überbegriff für sämtliche Arten von Strahlung, die uns aus dem Weltall erreicht. Der größte Teil kosmischer Strahlung aus nieder-energetischen Photonen und Protonen stammt von der Sonne, während uns ein deutlich geringerer Teil aus hoch-energetischen Teilchen von Supernovae, aktiven galaktischen Zentren (AGN) und Pulsaren erreicht. In der Atmosphäre der Erde setzen diese Teilchen Zerfallsketten in Gang, von denen auch das Myon ein Produkt ist. Das Myon $\mu^-$ entsteht gemeinsam mit einem Myon-anti-Neutrino durch den Zerfall des Pions $\pi^-$ über die elektro-schwache Wechselwirkung ($W^-$) :
+    \begin{align}
+        \pi^- \longrightarrow W^- \longrightarrow \mu^- + \bar{\nu}_\mu
+        \qquad \text{.}
+    \end{align}
+    Zwar besitzt das Myon nur eine Lebensdauer von etwa \SI{2.2}{\micro \second}, doch durch dessen hoch-relativitische Geschwindigkeit verlängert sich dessen Lebensdauer im Laborsystem, sodass es die Erdoberfläche erreicht \cite{muon_flux}. Eine weitere Charakteristik des kosmischen Myons ist dessen Wechselwirkung mit Materie. Wie sich mithilfe der Bethe-Bloch-Formel zeigen lässt, verlieren kosmische Myonen zunächst nur geringe Mengen an Energie, wenn sie Materie passieren, wodurch sie zum dominanten Zerfallsprodukt der kosmischen Strahlung werden.\\
+   
+    Da der Fluss kosmischer Myonen an der Erdoberfläche mit \SI{100}{\per \square \meter \per \second} \cite{muon_flux} sehr gering ist, steht für die Kalibration des Detektors zusätzlich der $\beta$-Strahler Strontium-90 ($^{90}$Sr) zur Verfügung, welcher beim Zerfall Elektronen zur Detektion emittiert. Zur Bestrahlung der Driftkammer und des Szintillations-Detektors wird die Quelle über einer dafür vorgesehenen Aussparung der oberen Holzplatte platziert. Der Szintillations-Detektor wird dazu senkrecht unter der Driftkammer positioniert, sodass dessen sensitive Fläche ebenfalls unter der Aussparung liegt.
+    

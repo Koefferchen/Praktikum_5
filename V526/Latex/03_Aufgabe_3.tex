@@ -1,0 +1,68 @@
+\section{Energie-Kalibration des Spektrometers} \label{sect:energiekalibration}
+
+    Nun soll die Kanal-Energie-Zuordnung des Szintillations-Spektrometers anhand einer Quelle mit bekannten Linien ermittelt werden. Auf diese Weise können nachfolgende Messungen Zur Winkelabhängigkeit der Compton-Streuung quanitativ Energien zugeordnet werden, wobei die Zuordnung von Kanal $K$ zu Energie $E$ als linear angenommen werden kann:
+    \begin{align} \label{eq:Energie-Kanal-Gerade}
+        K(E) = a \cdot E + b
+        \qquad \text{.}
+    \end{align} 
+    
+    \subsection{Durchführung} 
+    
+    Hierzu wird zunächst der Detektor in $\SI{90}{\degree}$-Stellung mit Ausrichtung auf den Target-Halter installiert. Die Caesium-Quelle bleibt abgeschirmt und stattdessen wird eine Europium-Quelle mit geringerer Aktivität im Targethalter platziert. Die Positionierung des Detektors soll dabei dazu beitragen, dass möglichst geringe Hintergrundstrahlung der Caesium-Quelle bei dieser Kalibrationsmessung beitragen. Nun werden nacheinander Messungen für eine Live Time von je $\SI{300}{s}$ mit und ohne Europium-Quelle durchgeführt. Das Hintergrund-Spektrum wird zur Elimination des Caesium-Hintergrunds verwendet. 
+    
+    \subsection{Ergebnisse}
+        Aus der Europium-Messung wird sowohl die Energie-Kanal-Zuordnung des MCA als auch die relative Detektionseffizienz des verwendeten Detektors für die beobachteten Zerfallsenergien bestimmt.
+    
+        \subsubsection{Bestimmung der Energie-Kanal-Zuordnung}
+        
+        Nach der Messung beider Spektren wird das Hintergrund-Spektrum vom Europium-Spektrum abgezogen. Die beobachteten Intensitätsmaxima werden wie zuvor durch Gaußfunktionen gemäß Gleichung \eqref{eq:Gauss} angepasst und den Literaturwerten für einige der erwarteten Maxima in Tabelle \ref{tab:Eu_Zerfallslinien} zugeordnet. Das Ergebnis dieser Anpassung ist in Abbildung \ref{fig:Eu_Kalibrationsspektrum} gezeigt.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{figs/Eu_Kalibration.jpg}
+            \caption{Frontales Kalibrations-Spektrum der $^{152}$Eu-Quelle. Von $7$ ermittelten Emissionslinien konnten $5$ zu Literaturwerten zugeordnet werden und bilden die Grundlage der linearen Energie-Kalibration. }
+            \label{fig:Eu_Kalibrationsspektrum}
+        \end{figure}
+        Abbildung \ref{fig:Eu_Kalibrationsspektrum} zeigt eine Vielzahl beobachtbarer Emissionslinien, von welchen $5$ zugeordnet werden. Der genaue Ursprung dieser Linien folgt aus dem Zerfallsschema von $^{152}$Eu sowie potentiellen Summenpeaks und charakteristischen Anregungungen der Quelle. Eine Analyse zum Ursprung der einzelnen Linien ist für die Energie-Kalibraition nicht notwendig und geht über den Rahmen dieser Arbeit hinaus. 
+        
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=\linewidth]{figs/Energie_Kalibration.jpg}
+            \caption{Lineare Anpassung von Kanal-Index $\mu$ des Peak-Schwerpunktes an die erwartete Energie $E$. }
+            \label{fig:Energie-Kalibration_Gerade}
+        \end{figure}
+        
+        Unter Verwendung der verallgemeinerten Geradengleichung zu Kanal-Energie-Zuordnung \eqref{eq:Energie-Kanal-Gerade} folgt aus den ermittelten Linien (vgl. Anhang Tab. \ref{tab:Eu_Fitparameter_Kalib}) die Zuordnung von Kanal und Energie in $\unit{keV}$ wie in Abbildung \ref{fig:Energie-Kalibration_Gerade} dargestellt. Die Fitparameter der Geradengleichungen \eqref{fig:Energie-Kalibration_Gerade} werden bestimmt zu:
+        \begin{align}
+            a = \SI{7.1575 +- 0.0014}{\per \kilo \eV} \qquad
+            b = \num{80.53 +- 0.80} 
+            \qquad \text{.}
+        \end{align}
+        % Bemerkenswert ist dabei, dass die Anpassung vorhersagt, dass die niedrigsten Kanäle des MCA nicht bis hinunter zu \enquote{0} Energie herabreichen, sondern um $b \approx 80$ Kanäle zu höheren Energien verschoben sind. Diese Eigenschaft des MCAs ist tatsächlich sinnvoll, da andernfalls nieder-energetisches Rauschen die aller-untersten Kanäle dauerhaft triggern und von der eigentlichen Messung ablenken würden. \\
+        Bemerkenswert ist, dass die gefundene Gerade keine Nullgerrade ist, sondern vielmehr einen positiven Achsenabschnitt aufweist. Das bedeutet, dass der MCA für den Fall ganz kleiner einfallender Energien dennoch bei ca. Kanal $80$ triggert. Dies liefert eine mögliche Erklärung des nicht einer Europiumlinie zugeordneten MCA-Ausschlags nahe des linken Bildrands.
+        
+        Des Weiteren fällt auf, dass das Maximum, welches mit der $\SI{1112}{keV}$-Linie assoziiert wird, im Rahmen seiner Unsicherheit nicht mit der Anpassungsgeraden verträglich ist. Dies rührt zum einen daher, dass diese Linie nicht mit hoher Sicherheit zu den prägnanten Linien in Tabelle \ref{tab:Eu_Zerfallslinien} zugeordnet werden kann, da mehrere überlappende Linien im fraglichen Energie-Intervall zu sehen sein könnten. Zum anderen wird die Lokalisation des Maximums durch den breiten, flachen Verlauf der Linie (Abb. \ref{fig:Eu_Kalibrationsspektrum}) erschwert.\\
+        
+        \subsubsection{Bestimmung der Energie-Effizienz} \label{sect:energieeffizienz}
+        
+        Zur späteren Korrektur der Messdaten ist es sinnvoll die Detektions-Effizienz des Detektors $\epsilon(E)$ als Funktion des Kanals zu bestimmen. Es wird erwartet, dass das Szintillations-Spektrometer bei besonders hohen oder niedrigen Energien $E$ $\propto K$ eine geringe Detektionsrate aufweist, da der verwendete Szintillator-Kristall NaI(Ta) nur für ein bestimmtes Energie-Intervall ausgelegt ist. Während zur Messung der totalen Effizienz des Detektors genaue Kenntnis über die Aktivität der Quelle sowie die Geometrie des Detektors nötig wäre, kann die relative Effizienz durch Division von gemessener Intensität $I\sub{meas} \propto A$ und erwarteter Intensität $I\sub{exp}$ (Tab. \ref{tab:Eu_Zerfallslinien}) sowie anschließender Normierung gewonnen werden:
+        \begin{align}
+            \epsilon(E) = \frac{I \sub{meas}}{I \sub{exp}}  \longrightarrow \frac{\epsilon(E)}{\max{(\epsilon(E))}}
+            \qquad \text{.}
+        \end{align}
+        Abbildung \ref{fig:Energie_Effizenz_Fit} zeigt die Auftragung der berechneten Effizienzwerte und die Anpassung der empirischen Fitfunktion $\epsilon \sub{Fit}(K)$.
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=\linewidth]{figs/Energie_Effizienz.jpg}
+            \caption{Punktuelle Berechnung der Energie-Effizienz $\epsilon(E)$ anhand bekannter Linien von $^{152}$Eu und Anpassung empirischer Funktion.  }
+            \label{fig:Energie_Effizenz_Fit}
+        \end{figure}
+        Wie erwartet zeigt das Spektrometer einen schmalen Bereich von vergleichsweise hoher Effizienz $(E \in [\SI{150}{keV}, \SI{300}{keV}])$ sowie einen deutlichen Abfall der Effizienz außerhalb. Um dieses Verhalten abzubilden wurde als empirische Fitfunktion die Überlagerung von einer Gaußkurve mit einer linearen Abnahme gewählt:
+        \begin{align} \label{eq:epsilon_eff_kurve}
+            \epsilon \sub{ Fit}(K) = 
+            \frac{A}{\sqrt{2 \pi} \sigma} \cdot \exp{\left( \frac{-(K - \mu)^2}{\sigma^2} \right)} 
+            - \frac{(x-d)}{c}
+            \quad \text{.}
+        \end{align}
+        Aufgrund der äußerst geringen Anzahl von Datenpunkten ist diese Anpassung nicht mit hoher Konfidenz extrapolierbar und sollte auch innerhalb des vermessenen Intervalls mit Vorsicht betrachtet werden. Während der stetige Abfall der Effizienz bei Energien $E \geq \SI{400}{keV}$ das Detektor-Verhalten mutmaßlich passend wiedergibt, sind die genaue Höhe, Lage und Form des Effizienz-Maximums aus den Daten nicht bestimmbar. Dies wirkt sich auf die spätere Effizienzkorrektur der beobachteten Intensitäten aus. Für eine genauere Bestimmung der Effizienz-Kurve wären weitere Kalibrationen mit bekannten Röntgenstrahlern notwendig. Die Anpassungsparameter der Funktion $\epsilon \sub{ Fit}(K)$ sind in Tabelle \ref{tab:Effizienz_Fitparameter} nachzulesen. \\
+        
+        Neben der gewählten Fitfunktion wurde unter anderem die Anpassung an eine Polynomreihe untersucht. Das Problem einer solchen Anpassung ist jedoch, dass diese nicht in der Lage ist den starken Anstieg der Effizienz bei $\SI{250}{keV}$ nachzubilden. Aufgrund der geringen Unsicherheit dieses Messpunktes und der qualitativen Übereinstimmung des Maxmimus mit einer weiteren Praktikumsgruppe wird nicht davon ausgegangen, dass es sich bei diesem Maxmimum um eine Fehlmessung handelt. Des Weiteren kann der Abfall bei geringen Energien $\leq \SI{150}{keV}$ aufgrund des begrenzten Datenbereichs nicht untersucht werden.

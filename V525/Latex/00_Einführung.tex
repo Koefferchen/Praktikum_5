@@ -1,0 +1,72 @@
+\section{Einführung}
+    
+    Im diesem Versuch wird die Lebensdauer des $\frac{5}{2}^+$ Anregungszustands von Cäsium $^{133}_{55}$Cs mithilfe eines Fast-Slow-Koinzidenzkreises vermessen. Um dies zu erreichen, wird der Zerfall des Barium-Isotops $^{133}_{56}$Ba zum $\frac{5}{2}^+$-Zutand von Cäsium und der anschließende Übergang in den Grundzustand $\frac{7}{2}^+$ von Cäsium mit zwei Detektoren vermessen, welche jeweils auf einen der Zerfallsschritte sensitiv sind. In spezialisierten Schaltkreisen werden beide Messungen kombiniert: Im sogenannten Slow-Kreis wird überprüft, ob eine Gleichzeitigkeit (Koinzindenz) zwischen der Entstehung eines $\frac{5}{2}^+$ Cs-Zustandes (Start) und dem Zerfall eines $\frac{5}{2}^+$ Cs-Zustandes (Stopp) besteht. Ist dies der Fall, so wird die Zeitspanne zwischen beiden Ereignissen im sogenannten Fast-Kreis vermessen und digital gespeichert. Zu den Zielen des Versuchs gehört die Untersuchung aller verwendeten Bauteile auf ihre Funktion, die Energie- und Zeit-Kalibration des Messkreises und die Herstellung der notwendigen Koinzidenzen, um zuletzt die Lebensdauer des $\frac{5}{2}^+$ Zustandes von Cäsium zu vermessen.
+    
+\subsection{Einführung in die Mess-Elektronik}
+    
+    Für die Messung von atomaren Lebensdauern wird eine Vielzahl unterschiedlicher Mess-Elektroniken verwendet, die sich in ihren Funktionen und Einstellungsmöglichkeiten unterscheiden: \\
+    
+    \textbf{Szintillations-Spektrometer}\\
+    Der verwendete Detektor ist ein Szintillations-Spektrometer und besteht aus dem anorganischen Szintillator NaJ(Ti), einer Photomultiplier-Tube (PMT) und einer Auslese-Elektronik mit integriertem Vorverstärker, genannt Basis. Trifft ionisierende Strahlung auf den Szintillator, so wird diese in nieder-energetische Strahlung umgewandelt, welche anschließend die PMT erreicht. Hier verursacht die Strahlung eine Elektronen-Kaskade, welche als Spannung abgegriffen werden kann, die proportional zur Energie des primären Photons ist. Einerseits kann dieses Signal mit hoher Zeitauflösung an der Anode (Fast-Ausgang) abgegriffen werden. Andererseits kann es mit hoher Amplituden-Auflösung an einer früheren Elektrode des Verstärkers (Slow-Ausgang) abgegriffen werden. Folglich eignet sich der Fast-Ausgang besonders zur Zeitmessung, während der sich der Slow-Ausgang besser zur Messung von Energie-Spektren eignet.\\
+    
+    \textbf{Pulsformender Hauptverstärker}\\
+    Der pulsformende Hauptverstärker verändert eingehende Pulse auf zwei Arten: Er verändert die Form des eingehenden Pulses zu einer annähernden Gaußglocke und verstärkt ihre Amplitude um einen einstellbaren Faktor. Dieses aktive Bauteil erhält die lineare Beziehung der Amplituden von Eingangs- und Ausgangssignal.\\
+    
+    \textbf{Signal-Verteiler (Splitter)}\\
+    Beim Signal-Verteiler handelt es sich um ein Bauteil, welches ein Eingangssignal reflektionsfrei in zwei gleich große Ausgangssignale aufteilt. Der Signalteiler funktioniert über $\SI{50}{\Omega}$-Abschlusswiderstände und ist ein passives Bauteil, er wird also stromlos betrieben. Die Ausgangssignale sind im Vergleich zum Eingangssignal in ihrer Amplitude gedämpft, doch die Signalform bleibt erhalten.\\
+    
+    \textbf{Delay-Verstärker}\\
+    Der Delay-Verstärker ist ein aktives Bauteil, welches ein eingehendes Signal im $\unit{\micro \second}$-Bereich verzögern und variabel verstärken kann. Eine wichtige Eigenschaft des Delay-Verstärkers ist, dass dieser auch dann Signale reflektionsfrei annimmt, wenn sein Ausgangssignal nicht abgenommen wird. Aufgrund dieser Eigenschaft bleibt der Delay-Verstärker im späteren Versuchsteil immer angeschlossen, um das Signal im anderen Schaltungszweig nicht zu beeinflussen.\\
+    
+    \textbf{ns-Delay}\\
+    Der vorliegende ns-Delay ist ein passives Bauteil, welches aus einigen Metern von Verzögerungs-Kabeln besteht, die durch Kippschalter unabhängig voneinander zugeschaltet werden können --- die Gesamtverzögerung ist additiv. Die einzelnen Kabelteile verzögern das Signal jeweils um $\Delta t \in \{ \SI{0.5}{ns}, \SI{1}{ns},\SI{2}{ns}, \SI{4}{ns}, \SI{8}{ns}, \SI{16}{ns}, \SI{32}{ns} \}$ < zuzüglich der technisch bedingten \enquote{Null-Verzögerung} von $\SI{1.5}{ns}$.\\
+    
+    \textbf{Einkanal-Analysator (SCA)}\\
+    Der Einkanal-Analysator, englisch \textit{Single Channel Analyzer}, nimmt analoge Spannungspulse an und wandelt sie in digitale Signale um. Jedes Eingangssignal mit einer Amplitude innerhalb des eingestellten SCA-Fensters erzeugt eine logische $1$, während alle anderen Signale eine logische $0$ triggern. Somit nimmt der SCA die Rolle eines Amplituden- bzw. Energie-Filters ein. Diese Funktionsweise wird intern durch zwei Komparatoren für die untere und obere Schaltschwelle sowie einem  CFD zur Detektion, wann das Maximum erreicht wird, realisiert. Der verwendete SCA beinhaltet zudem einen SCA-Delay zur variablen Verzögerung des Ausgangssignals im $\unit{\micro \second}$-Bereich.\\
+    
+    \textbf{Vielkanal-Analysator (MCA)}\\
+    Der Vielkanal-Analysator, englisch \textit{Multi Channel Analyzer}, funktioniert wie ein wie eine Zusammenschaltung von vielen SCAs, die mit ihren Fenstern einen Amplitudenbereich lückenlos überdecken. Mit Hilfe einer Recheneinheit und einem Register zählt der MCA, wie häufig Ereignisse in welchem Amplitudenbereich eingetroffen sind, und erstellt daraus ein digitales Histogramm. Der MCA wird in diesem Versuch im \textit{Gated Mode} betrieben; das heißt, er registriert nur dann anliegende Signale, sofern am separaten Gate-Eingang eine logische $1$ anliegt. Diese Funktion ermöglicht es, ausschließlich koinzidente Ereignisse, die zum selben atomaren Übergang gehören, zu zählen --- denn nur für diese Signale wird ein Gate-Signal generiert.\\
+    
+    \textbf{Constant Fraction Discriminator (CFD)}\\
+    Der CFD ist ein Bauteil, welches ählich zum SCA analoge Pulse in digitale Signale umwandelt. Dabei gibt der CFD genau dann eine logische $1$ aus, wenn ein eingehender Puls einen festgelegten Prozentsatz seiner Amplitude erreicht. Man bezeichnet diese Schwelle als Diskriminator-Schwelle und sie kann am Bauteil eingestellt werden. Intern wird der CFD realisiert, indem das Eingangssignal geformt und in zwei Teile aufgespalten wird: Ein Signalteil wird verzögert, während der andere Anteil invertiert und verstärkt wird. Durch Summierung beider Teil-Signale entsteht ein Nulldurchgang nach einer amplitudenunabhängigen Zeit. Dieser Nulldurchgang kann elektronisch mit hoher Zeitauflösung detektiert und als Trigger für das Ausgangssignal --- eine logische $1$ --- verwendet werden. Ein realer CFD detektiert nur Signale ab einer minimalen Amplitude; je höher die Diskriminatorschwelle eingestellt ist, desto höher ist diese Mindestamplitude.\\
+    
+    \textbf{Gate Delay Generator (GDG)}\\
+    Beim GDG handelt es sich um ein aktives Bauteil, welches eingehende logische Pulse variabel verlängern und verzögern kann. Er wird in diesem Versuch ausnahmslos vor dem Gate des MCAs verwendet, um das Gate-Fenster für die Zählung von Signalen am MCA-Eingang zu vergrößern.\\ 
+        
+    \textbf{Zeit-Amplituden-Konverter (TAC)}\\
+    Der TAC, englisch \textit{Time Amplitude Converter}, besitzt die digitalen Eingängen \enquote{Start} und \enquote{Stopp} sowie einen analogen Ausgang, an welchem eine Spannung proportional zu vergangenen Zeit zwischen Start und Stopp ausgibt. Realisiert wird dies durch einen Kondensator, welcher ab dem Start-Signal von einer Konstantstromquelle aufgeladen wird und beim Erhalten des Stopp-Signals die anliegende Spannung ausgegeben wird. Die maximal erlaubte Zeit zwischen Start- und Stopp-Signal $t\sub{max} \in \{\SI{50}{\nano \second}, \SI{100}{\nano \second}, \SI{200}{\nano \second} \}$ kann über einen Drehknopf eingestellt werden, beeinflusst jedoch auch den Proportionalitätsfaktor zwischen Zeit und Ausgabe-Spannung. Für alle späteren Messungen wird diese Reset-Zeit auf $\SI{100}{ns}$ eingestellt.\\
+    
+    \textbf{Koinzidenz-Einheit}\\
+    Die Koinzidenz-Einheit ist ein aktives Bauteil, welches einer einstellbaren und-Schaltung mit bis zu fünf Eingängen entspricht. In diesem Versuch wird die Koinzidenz-Einheit lediglich zur Überprüfung der Überlappung zweier SCA-Signale verwendet. Die Toleranz bezüglich der Zeitspanne zwischen beiden Ereignissen ist einstellbar. \\
+
+
+
+\subsection{\texorpdfstring{Zerfalls-Schemata von $^{22}_{11}$Na und $^{133}_{56}$Cs}{TEXT}}
+    Um den gesuchten $\frac{5}{2}^+$ Anregungszustand von Cäsium zu erzeugen, bietet sich das Barium-Isotop $^{133}_{56}$Ba an, da es mit einer häufig beobachtbaren $\SI{356}{keV}$-Linie in eben diesen gewünschten Zustand zerfällt (Abb. \ref{fig:Zerfallsschema_Ba}). Somit kann diese Linie als Start-Signal für die Zeitmessung der Lebensdauer des $\frac{5}{2}^+$ Zustandes verwendet werden. Anschließend geht der Anregungszustand in jedem Fall wieder in den Grundzustand von Cäsium über und erzeugt dabei die $\SI{81}{keV}$-Linie, welche als Stopp-Signal der Zeitmessung interpretiert wird. Es ist zu beachten, dass auch andere Zerfallskanäle mit geringer Wahrscheinlichkeit den $\frac{5}{2}^+$ Zustand bevölkern. In diesem Fall gibt es kein $\SI{356}{keV}$-Startsignal, welches dem dennoch entstehenden $\SI{81}{keV}$-Stoppsignal zugeordnet werden könnte. Ein solches Signal kann jedoch fälschlicherweise als Stoppsignal einem $\SI{356}{keV}$-Signal zugeordnet werden und die Lebensdauermessung verfälschen. Aufgrund der niedrigen Aktivität der verwendeten Bariumquelle sind solche zufälligen Koinzidenzen unwahrscheinlich und verfälschen die Messung nur geringfügig.
+    
+    Das zweite in diesem Versuch verwendete Isotop ist $^{22}_{11}$ Na, welches primär zur Energie- bzw.  Zeitkalibrierung des Aufbaus eingesetzt wird. Natrium hat die Eigenschaft, dass es mit einer relativen Häufigkeit von etwa $90 \%$ über den $\beta^+$-Kanal in $^{22}_{10}$Ne zerfällt, wobei neben der $\SI{1275}{keV}$-Linie auch ein Positron entsteht (Abb. \ref{fig:Zerfallsschema_Na}). Die kinetische Energie des Positrons dissipiert im Kristall fast instantan, wodurch in guter Näherung nur die Ruheenergie des Positrons berücksichtigt werden muss. Das Positron und ein Hüllen-Elektron annihilieren; dabei entstehen zwei Photonen, welche in entgegengesetzte Richtungen mit der Ruhe-Energie des Elektrons/Positrons ($\SI{511}{keV}$) ausstrahlen. Da die Photonen exakt gleichzeitig entstehen, kann dieses Ereignis als Referenz für Gleichzeitigkeit und zur Eichung des Messkreises verwendet werden. Die Abwesenheit vieler weiterer Linien macht Natrium zu einem hervorragenden Kalibrator.
+
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Zerfallsschema_Na.png}
+            \caption{$^{22}_{11}$Na}        
+            \label{fig:Zerfallsschema_Na}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Zerfallsschema_Ba.png}
+            \caption{$^{133}_{56}$Cs}
+            \label{fig:Zerfallsschema_Ba}
+        \end{subfigure}
+        \caption{Zerfalls-Schemata von Natrium (a) und Cäsium (b). Natrium besitzt eine geringe Anzahl von Emissionslinien, wobei auf den wahrscheinlichen $\beta^+$-Zerfall die hier interessante $\SI{511}{keV}$-Emissionslinie folgt. Diese ist im resultierenden Spektrum sehr prominent und eignet sich daher hervorragend zur Energieeichung des Aufbaus. Barium zerfällt mit hoher Wahrscheinlichkeit über die $\SI{356}{keV}$-Linie in den $\frac{5}{2}^+$ Zustand von Cäsium, weshalb dieser Übergang für die Lebensdauermessung verwendet wird. Übernommen aus \cite{Praktikumsanleitung}}
+    \end{figure}
+
+\subsection{Vorwort}
+    Viele der nachfolgenden Versuchsteile wurden analog am linken wie am rechten Detektor durchgeführt. Aus diesem Grund werden beide Durchführungen parallel diskutiert und alle Aussagen gelten sofern nicht anders spezifiziert für den linken und rechten Detektor-Messkreis gleichermaßen.\\
+    
+    Messungen von radioaktiven Zerfällen unterliegen der Poisson-Statistik, welche vorhersagt, dass die $N$-fache Messung eines Ereignisses eine statistische Unsicherheit von $\sqrt{N}$ nach sich zieht. Zur Erhöhung der Lesbarkeit wird diese Unsicherheit zwar mit ein-berechnet, aber als Einzige nicht in den Diagrammen visualisiert. Alle Berechnungen von Unsicherheit basieren auf der Gaußschen Fehlerfortplanzung, sofern nicht anders spezifiert.\\
+    Zur Minimierung der statistischen Unsicherheiten werden alle Messungen von quantitativer Bedeutung möglichst lange durchgeführt. Da jedoch die verwendete Natriumprobe nur geringe Aktivität aufwies, konnten in einigen Fällen nur bis zu $60$ Ereignisse pro Kanal registriert werden (vlg. Abb. \ref{fig:plot_Na_Fenster}). Die entstehenden Histogramme wirken hierdurch zwar stark diskretisiert, unterscheiden sich technisch aber nicht von den scheinbar kontinuierlichen Messkurven bei hohen Messraten (vlg. Abb. \ref{fig:Plot_Ba_Spektrum_Fit}).\\
+    
+    Alle in der Versuchsdurchführung erhobenen Rohdaten sowie das bei der Versuchsdurchführung laufend verfasste Protokoll sind \href{https://uni-bonn.sciebo.de/s/a6Q9sw7XMmaZbPJ}{HIER} erhältlich (Link gültig bis 31.03.2026).
+    

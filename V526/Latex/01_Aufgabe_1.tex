@@ -1,0 +1,54 @@
+\section{Aufbau}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{figs/Foto Aufbau 2.jpg}
+        \caption{Foto des Messaufbaus bestehend aus (1) abgeschirmter Caesium-Quelle, (2) Targethalter, (3) $\SI{0}{\degree}$-Stellung des Detektors mit Kollimator und (4) Winkel-Stellung $\theta$ für den Detektor. }
+        \label{fig:Foto_Aufbau}
+    \end{figure}
+    Der Messaufbau des Versuchs ist in Abbildung \ref{fig:Foto_Aufbau} zu sehen und besteht aus einer kollimierten und abgeschirmten Caesium-Quelle (1), welche über den Target-Halter (2) hinweg zum Detektor in $\SI{0}{\degree}$-Stellung (3) strahlt. Das portable Szintillations-Spektrometer kann für ein frontales Spektrum in $\SI{0}{\degree}$-Stellung positioniert werden oder alternativ auf einer drehbaren Schiene im Winkel $\theta$ --- ablesbar an einer Winkelskala am Tisch --- installiert werden. Zur Minimierung der Strahlendosis der Experimentierenden ist die Abschirmung der Caesiumquelle immer dann zu schließen, wenn diese nicht benötigt wird. Zudem sollten sich alle Experimentierenden bei geöffneter Abschirmung immer mindestens $\SI{1}{m}$ hinter der Quelle befinden. Zum Austausch des Targets wird die Abschirmung heruntergelassen.
+    
+    Zum Einsatz im Target-Halter stehen neben der Europium-Quelle verschiedene Aluminium-Quader mit den folgenden Dimensionen zur Verfügung (Tab. \ref{tab:Target_Dicken}):
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{SS} \toprule
+            {Dicke $d$ / $\unit{mm}$} & {Breite $b$ / $\unit{mm}$} \\ \midrule
+            1.00(2) &  {---}\\
+            5.00(2) &  30.00(2)\\
+            10.12(2) & 20.16(2) \\ \bottomrule
+        \end{tabular}
+        \caption{Gemessene Dimensionen der quader-förmigen Aluminium-Quader in \unit{mm}. Durch Drehung des Targets im Target-Halter kann jede effektive Target-Dicke $d \sub{eff} \in [d, b]$ eingestellt werden. Die effektive Breite des Targets muss jedoch größer als der Durchmesser des kollimierten Röntgenstrahls sein. }
+        \label{tab:Target_Dicken}
+    \end{table}
+    Das Szintillations-Spektrometer besteht aus dem anorganischen Szintillator NaI(Ta) sowie einer \textit{Photomultiplier Tube} (PMT) und wird durch eine regelbare Hochspannungsquelle versorgt. Deren vorverstärktes Signal kann am Oszilloskop visualisiert oder über einen einstellbaren pulsformenden Hauptverstärker in einen \textit{Multi Channel Analyzer} (MCA) geleitet werden. Das zur Verfügung gestellte Programm \texttt{MCA3} wertet das Signal digital in einem Histogramm aus. 
+    
+
+   
+\subsection{Justage der Messvorrichtung}
+
+    \subsubsection{Durchführung}
+    
+    Zu Beginn der Versuchs muss sichergestellt werden, dass die Signale des PMTs ausreichend in Anzahl und Amplitude sind, sodass diese zur Messung mit dem MCA im gewünschten Energie-Intervall genügen. Dazu wird das Spektrometer in $\SI{0}{\degree}$-Stellung installiert und dessen Signal bei geöffneter Caesium-Quelle (ohne Target) am Oszilloskop visualisiert. Um Signalreflektionen zu vermeiden wird der $\SI{50}{\ohm}$-Abschluss des Oszilloskops verwendet. Alternativ kann dazu ein Koaxial-T-Stück verwendet werden. Die Hochspannung der PMT wird nun erhöht, bis eine ausreichende Anzahl und Amplitude von Ereignissen beobachtet werden kann. Da der Messkreis kapazitäre Widerstände enthalten könnte, wird die Hochspannung nur langsam erhöht. \\
+    Als nächstes wird der Hauptverstärker (unipolarer Ausgang) zwischen Oszilloskop und PMT geschlossen, an welchem die Verstärkungsfaktoren \textit{Course Gain} und \textit{Fine Gain} und sowie die Pulslänge \textit{Shaping Time} eingestellt werden können. \\
+    Zuletzt kann des verstärkte Signal über den MCA durch das Programm \texttt{MCA3} digital ausgewertet werden. Anhand der markanter $\SI{661}{keV}$-Linie von $^{137}$Cs kann das Mess-Fenster durch Regelung der Verstärkung eingestellt werden. Um sowohl die Emissionslinien von $^{152}$Eu alsauch $\SI{661}{keV}$-Linie detailliert beoabchten zu können ist es sinnvoll Energien bishin zu $\SI{1100}{keV}$ abzudecken. 
+
+    \subsubsection{Ergebnisse}
+
+    Beim Erhöhen der Hochspannung des PMTs können die ersten Signal bei einer Spannung von $U_0 = \SI{350(10)}{V}$ beobachtet werden. Um möglichst viele Detektionen zu erreichen wird nun die Spannung auf $U_0 =\SI{700(2)}{V}$ gestellt und für die gesamte Dauer der Versuchsdurchführung so gelassen.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = 0.9\linewidth]{figs/TEK00001.PNG}
+        \caption{Oszillogramm eines $\SI{661}{keV}$-Signals der PMT ohne Hauptverstärker bei Betriebsspannung $U_0 =\SI{700(2)}{V}$. Die Signal-Amplitude beträgt $\SI{8.5(1)}{V}$, besitzt negative Polarität und folgt einem exponentiellen Abfall.  }
+        \label{fig:Oszi_ohne_Verstärker}
+    \end{figure}
+    Abbildung \ref{fig:Oszi_ohne_Verstärker} zeigt ein einzeln aufgenommenes $\SI{661}{keV}$-Signal. Es sticht in Amplitude und Häufigkeit gegenüber den nieder-energetischen Signalen des Compton-Untergrunds hervor. Der Compton-Untergrund von Signalen niedriger Amplitude ist aufgrund der hoch eingestellten \textit{Trigger Level} nicht beobachtbar.\\
+
+    Nach Anschluss des Hauptverstärkers verifiziert die Betrachtung mit dem Oszilloskop (Abb. \ref{fig:Oszi_mit_Verstärker}) die pulsformende und verstärkende Eigenschaft des Verstärkers. Der Verstärker ist auf $2.5x$ Gain sowie $\SI{1}{\micro \second}$ Shaping Time eingestellt. Die Erhöhung der Shaping Time auf $\SI{3}{\micro \second}$ führte zu einer Vervielfachung der Impulsbreiten.
+    Die geringere Shaping Time von $\SI{1}{\micro \second}$ hingegen trägt zur Minimierung der effektiven Totzeit des Messkreises bei. Die volle Amplitude des $\SI{611}{keV}$-Photopeaks kann aufgrund der technischen Limitierung durch das Oszilloskop nicht beoachtet werden; diese sollte jedoch theoretisch bei $2.5 \cdot \SI{8.5(1)}{V} = \SI{21.25(25)}{V}$ liegen. Aus Abbildung \ref{fig:Oszi_mit_Verstärker} wird die Compton-Kante bei $U_C = \SI{2.0(5)}{V}$ als der höchste Impuls unterhalb des Photopeaks identifiziert. 
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width= 0.9\linewidth]{figs/TEK00002.PNG}
+        \caption{Oszillogramm der PMT mit Hauptverstärker bei Betriebsspannung $U_0 =\SI{700(2)}{V}$. Neben den tief-ragenden $\SI{661}{kev}$-Impulsen ist ein Kontinuum nieder-energetischer Impulse sichtbar. Die Impulseformen sind annährend Gaußkurven.}
+        \label{fig:Oszi_mit_Verstärker}
+    \end{figure}
+    
+    Durch Einstellung des Hauptverstärkers auf $20x$ Coarse Gain, $5.35x$ Fine Gain und $\SI{1}{\micro \second}$ Shaping Time wird ein Messbereich von etwa $\SI{1100}{keV}$ realisiert; der Photopeak liegt bei Kanal $\num{5000(200)}$ von insgesamt $2^{13} = 8192$ Kanälen. 

@@ -1,0 +1,297 @@
+\section{Messung der Winkelverteilung kosmischer Strahlung}
+    Mit den nun eingestellten Betriebsparametern der Driftkammer wird nun eine Langzeitmessung mit einer Dauer von etwa \SI{16}{h} durchgeführt, aus welcher die Winkelverteilung der kosmischen Strahlung bestimmt werden kann. Der Aufbau wird in seiner fertig kalibrierten Konfiguration gelassen: die Strontium-Quelle ist also nicht im Aufbau vorhanden und der Szintillationstrigger steht parallel zu den Drähten in der Driftkammer.
+    
+    Mit der eingestellten der Szintillator-Spannung $U^\mu_{sz} = \SI{1550}{V}$ ist eine Ereignisrate von knapp \SI{2}{Events/s} zu erwarten (vgl. Tabelle \ref{tab:Szintillator_Spannungen}), weswegen über eine Messdauer von \SI{16}{h} mehr als \SI{100000}{} Ereignisse erwartet werden. Das Programm \textit{fpexperiment} wird entsprechend mit der Ereigniszahl \SI{100000}{} als Abbruchbedingung gestartet und zur Erhöhung der Stabilität der Messung sicherheitshalber mit einer \texttt{while}-Schleife umgeben. Direkt nach dem Start der Messung kann die erwartete Ereignisrate tatsächlich beobachtet werden und das Experiment muss nicht weiter beaufsichtigt werden. Die generierten Daten werden schließlich am nächsten Tag vom Assistenten digital erhalten. Im weiteren Verlauf wird dieser Datensatz untersucht. \\
+    
+    Alle kommenden Auftragungen sind Histogramme, die sich auf die Langzeitmessung kosmischer Myonen beziehen. Da wir davon ausgehen können, dass die einzelnen Myonen unabhängig voneinander in der Messappartur eintreffen, sind die Trefferzahlen poissonverteilt und unterliegen einer Unsicherheit von $\sqrt{N}$. Der Übersichtlichkeit wegen ist diese Unsicherheit nicht in die Histogramme eingetragen, wird aber bei womöglichen Funktionsanpassungen berücksichtigt.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_driftzeiten.png}
+        \caption{Driftzeitspektrum der Langzeit-Messung kosmischer Myonen. Das Spektrum zeigt im Bereich niedriger Driftzeiten die erwarteten zwei Maxima. Beim Vergleich mit der Kurzzeitmessung mit vergleichbaren Parametern (Abb. \ref{fig:vergleich_THR2} in rot) fällt auf, dass die Langzeitmessung einen deutlich stärkeren Hintergrund an hohen Driftzeiten aufweist.}
+        \label{fig:langzeitmessung_driftzeit}
+    \end{figure}
+    In dem in Abb. \ref{fig:langzeitmessung_driftzeit} gezeigten Driftzeitspektrum der Langzeitmessung fällt auf, dass lange Driftzeiten gegenüber dem erwarteten Verlauf nach Kalibrationsmessung mit denselben Einstellungs-Parametern (vgl. Abb. \ref{fig:vergleich_THR2}, rot) weitaus mehr vorkommen, als zu erwarten gewesen ist. Dies kann bedeuten, dass die Diskriminatorschwelle für die Messung der kosmischen Strahlung trotz vorheriger Kalibrierung zu niedrig eingestellt worden ist. \\
+    
+    Die Langzeitmessung kosmischer Strahlung und der Messung von Elektronen mittels Strontiumquelle unterscheiden sich grundsätzlich im Fluss detektierbarer Teilchen sowie in der Einfallsrichtung der Teilchen. Während die Strontiumquelle senkrecht von oben auf die Driftkammer strahlt, können kosmische Myonen aus verschiedenen Richtungen einfallen. Dabei könnten besonders flache Einfalls-Winkel für eine Erhöhung der Driftzeit beim Durchlauf vom Szintillations-Detektor sowie der Driftkammer führen. Nehme man schließlich an, dass die Maxima im Driftzeitspektrum $t \geq \SI{400}{ns}$ mit den Abständen von etwa \SI{40}{ns} auf mehrfache Detektion desselben Myons durch mehrere Drähte zurückzuführen wäre. Dann müsste der Abstand der angesprochenen Drähte näherungsweise $c \cdot \SI{40}{ns} \approx \SI{12}{m}$ sein. Da dies offensichtlich nicht der Fall ist, muss diese Erklärung verworfen werden. Es liegt nahe anzunehmen, dass der starke Hintergrund an Ereignissen mit hohen Driftzeiten stattdessen ein Nebenprodukt des geringen Myonenflusses und somit des geringen Signal-to-Noise Ratio ist. Eine genauere Erklärung würde weitere Untersuchungen des Aufbaus und eine deutlich detailliertere Analyse voraussetzen, was den Rahmen dieses Versuchs überschreitet.
+    
+    
+    
+\subsection{Verteilung der Ansprecher und Time over Threshold}
+    Um das Unterschiedliche Ansprechverhalten der einzelnen Drähte genauer zu analysieren, kann ein zweidimensionales Histogramm der Driftzeit gegen die Drahtnummer verwendet werden. Eine solche Auftragung ist in Abb. \ref{fig:langzeitmessung_driftzeit_pro_draht} gezeigt. Die Farbcode bezeichnet dabei die Häufigkeit, mit der ein bestimmter Draht mit einer bestimmten Driftzeit angesprochen wurde.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_driftzeiten_vs_draht.png}
+        \caption{Verteilung der Ansprecher nach Driftzeit und Drahtnummer. Das zwei-dimensionale Histogramm zeigt, dass insbesondere Drähte mit Drahtnummern $D \in [20,\, 30]$ häufig angesprochen werden (gelb). Die Ansprecher bei sehr geringen Driftzeiten rühren vom schnellen Unter- und Überschreiten der Diskriminatorschwelle her und sind nicht von Interesse. Das Histogramm zeigt qualitative Übereinstimmung mit dem totalen Driftzeitspektrum (Abb. \ref{fig:langzeitmessung_driftzeit}).  }
+        \label{fig:langzeitmessung_driftzeit_pro_draht}
+    \end{figure}
+    
+    Die beobachtete Form der Driftzeit pro Draht deckt sich etwa mit dem insgesamten Driftzeitspektrum in Abb. \ref{fig:langzeitmessung_driftzeit}: die zentralen gelben Bereiche im unteren bzw. oberen Bildbereich entsprechen dem linken Maximum sowie dem überrepräsentierten Bereich hoher Driftzeiten im Driftzeitspektrum. Das zweite, niedrigere Maximum von links äußert sich hier durch die leichte Erhellung knapp unter dem Bildzentrum. \\
+    
+    Ebenso erlaubt die Auftragung des Driftzeithistogramms pro Draht den Rückschluss auf einen wichtigen Teil des Versuchsaufbaus, nämlich die Position des Szintillationstriggers. Dieser steht parallel zu den Driftkammer-Drähten und kann in guter Näherung als zentriert über einem dieser Drähte angenommen werden. Da ein Großteil der kosmischen Strahlung den Trigger mit einem kleinem Winkel zum Lot passiert, werden die unter den Trigger gelegenen Drähte am öftesten ansprechen. Dies zeigt sich nochmal, wenn man die Gesamt-Ansprechzahl pro Draht betrachtet (Abb. \ref{fig:langzeitmessung_ansprecher}): die zentralen Drähte sprechen häufiger an als die am Rand, da der Trigger etwa zentral über den Drähten steht. Die für Abb. \ref{fig:langzeitmessung_ansprecher_filtered} verwendete Filterung ($ToT \geq \SI{100}{ns}$) ist dabei aus Abschnitt \ref{sec:filtering} vorgezogen worden und soll dafür sorgen, dass das resultierende Histogramm eine bessere Repräsentierung der tatsächlichen Winkelverteilung der Strahlung ergibt. \\
+    
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/langzeitmessung_ansprecher_pro_draht.png}
+            \caption{Ansprecher pro Draht (ohne ToT-Filterung).}
+            \label{fig:langzeitmessung_ansprecher_unfiltered}
+        \end{subfigure}
+        \hspace{0.5cm}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/langzeitmessung_ansprecher_pro_draht_filtered.png}
+            \caption{Ansprecher pro Draht (mit ToT-Filterung).}
+            \label{fig:langzeitmessung_ansprecher_filtered}
+        \end{subfigure}
+        \caption{Histogramm der gesamten Ansprecher pro Draht, ohne und mit der in \ref{sec:filtering} beschriebenen Filterungs-Methode.}
+        \label{fig:langzeitmessung_ansprecher}
+    \end{figure}
+    Anhand dieser Histogramme kann für die weitere Auswertung festgehalten werden, dass der Szintillationstrigger ungefähr über den Drähten $24$ bis $26$ zentriert ist. Das genaue Zentrum wird später für die Kurvenanpassungen variiert und dadurch genauer festgelegt. Abb. \ref{fig:langzeitmessung_ansprecher} zeigt die Ansprechverteilung der verschiedenen Drähte und es wird erwartet, dass jeder Draht eine Ansprech-Häufigkeit aufweist, die proportional zum Raumwinkel ist, den dieser Draht gegenüber dem Szintillationszähler einnimmt. Folglich werden Drähte mit größer Distanz zum Szintillator seltener angesprochen. Während dies bereits in Abbildung (a) beobachtet werden kann, führt die Filterung der Daten zu einer weiteren Raffinierung und zur Erhöhung der Symmetrie im Spektrum. Weiter fällt bei Betrachtung von Abb. \ref{fig:langzeitmessung_ansprecher_filtered} auf, dass die Drähte in weiten Teilen des Histogramms zwischen unter- und überrepräsentiert alternieren. Dies ist eine Konsequenz der etwas unintuitiven Draht-Nummerierung. In Abschnitt \ref{sec:korrelation} wird diese Nummerierung korrigiert und die Alternierung erörtert. \\
+    
+
+    Eine weitere Möglichkeit der Darstellung der gemessenen Ereignisse ist das zwei-dimensionale Histogramm der Ansprech-Häufigkeit als Funktion von Tot und Driftzeit (Abb. \ref{fig:langzeitmessung_driftzeit_vs_tot}). 
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_driftzeiten_vs_tot.png}
+        \caption{Histogramm zur Ansprech-Häufigkeit nach Driftzeit $t$ und Time over Threshold (ToT). Aufgrund der technischen Begrenzung des TDC ist das Histogramm auf $t + \text{ToT} \leq \SI{625}{ns}$ eingeschränkt und besitzt daher keine Datenpunkte im oberen Dreieck. Im unteren Dreieck korrespondiert hohe Helligkeit zu hoher Ansprech-Häufigkeit. Die hohen Ansprechzahlen bei ToT $\approx \SI{100}{ns}$ entsprechen elektronischem Rauschen und sollen herausgefiltert werden.}
+        \label{fig:langzeitmessung_driftzeit_vs_tot}
+    \end{figure}
+    
+    \newpage
+    Dieses Histogramm ermöglicht, dass Fehlmessungen, die durch ihre geringen ToTs erkannt werden, herausgefiltert werden. Die ToT ist dabei in Form des \textit{tot}-Arrays direkt in der ROOT-Datei enthalten und muss nicht selbst ermittelt werden, was die Erstellung des in \ref{fig:langzeitmessung_driftzeit_vs_tot} gezeigten Diagramms erleichtert. Die dreieckige Form dieses Diagramms ergibt sich daraus, dass die Summe von Driftzeit (äquivalent der Zeitpunkt \textit{Leading Edge}) und ToT (Zeitdifferenz von \textit{Trailing Edge} \& \textit{Leading Edge}) niemals \SI{625}{ns} überschreiten kann. Diese Summe entspricht genau dem Zeitpunkt der \textit{Trailing Edge} desselben Ansprechers, und diese muss im ausgemessenen Zeitintervall von \SI{625}{ns} erfasst werden.\\
+    
+    Neben den drei klar erkennbaren Clustering-Bereichen in Abb. \ref{fig:langzeitmessung_driftzeit_vs_tot} (vgl. Abschnitt \ref{sec:filtering}) ist am unteren Bildrand zu erkennen, dass der niedrigste ToT-Bin stark überrepräsentiert ist. Speziell zwischen einer Driftzeit von \SI{400}{ns} und \SI{500}{ns} häufen sich die Ansprecher mit $\text{ToT} \approx 0$. Das liegt daran, dass die Messelektronik eine ToT von $0$ einträgt, wenn das Trailing-Edge-Signal eines Ereignisses nicht innerhalb der maximalen Messzeit festgestellt wird \cite{Hammann}. Die Überrepräsentatierung hoher Driftzeiten in Abb. \ref{fig:langzeitmessung_driftzeit} deckt sich mit dieser Beobachtung.
+
+\subsubsection{Filterung durch Time-over-Threshold} \label{sec:filtering}
+    Das Histogramm in Abb. \ref{fig:langzeitmessung_driftzeit_vs_tot} lässt sich grob in drei Clustering-Bereiche unterteilen: Es zeigt eine niedrige Ansprechrate für hohe ToT (oben links) und hohe Driftzeiten (unten rechts) sowie eine hohe Ansprechrate für niedrige ToT und Driftzeiten (unten links). \\
+    
+    % \textcolor{red}{TODO ich cehcke nicht, warum das cluster unten rechts nicht auch einfach eine Linie ist. Muss damit zusammenhängen, welcher Prozess zu dem fetten rauschen im OG-Driftzeitspektrum geführt hat. Aber eig kann man es gerade deswegen nicht ausschließlich als Rauschen abtun - irgendein prozess muss auch kleine nicht durch Rauschen gegebene ToTs erlauben, aber nur, wenn die Driftzeit lang ist. Oder aufgrund einer Änderung im Signalverlauf bei trailing edge vs leading edge kann das rauschen zu längeren ToTs führen (macht für mich intuitiv keinen sinn).}
+    
+    Der Bereich unten links ist hierbei eine Konsequenz davon, dass das elektrische Signal eines jeden Drahtes zu einem gewissen Grad von hochfrequentem elektronischen Rauschen behaftet ist. Das Rauschen sorgt dafür, dass die Spannung die Diskriminatorschwelle meist nicht einmal passiert, sondern mehrmals um die Diskriminatorschwelle oszilliert. Dies erzeugt einen Schwall von \enquote{Ansprechern} mit einer sehr kurzen ToT. Die Ereignisse mit besonders niedriger ToT stehen daher in keinem physikalischen Zusammenhang mit der Detektion des Myons und sollen daher herausgefiltert werden. \\
+    
+    Als Konsequenz werden nun alle Ereignisse mit $\textit{ToT} \geq \SI{100}{ns}$ im weiteren Verlauf herausgefiltert. Wird Abb. \ref{fig:langzeitmessung_driftzeit_vs_tot} mit dieser Grenze neu generiert, ergibt sich Abb. \ref{fig:langzeitmessung_driftzeit_vs_tot_filtered}. Mit dieser Einstellungen sind die ungewollten Häufungen effektiv aus dem Histogramm entfernt worden und es zeigt sich eine bisher unerkannte Struktur im oberen linken Häufungsbereich, die sich mit den ersten zwei Maxima im Driftzeitspektrum \ref{fig:langzeitmessung_driftzeit} deckt.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_driftzeiten_vs_tot_filtered.png}
+        \caption{Gefiltertes Histogramm zur Ansprech-Häufigkeit nach Driftzeit $t$ und Time over Threshold (ToT)  durch $\textit{ToT} \geq \SI{100}{ns}$. Im Vergleich mit Abb. \ref{fig:langzeitmessung_driftzeit_vs_tot} wird der Unterschied klar: alle Ereignisse mit niedriger ToT sind exkludiert worden.}
+        \label{fig:langzeitmessung_driftzeit_vs_tot_filtered}
+    \end{figure}
+    
+    \newpage
+    Mit dem Anwenden dieser Filtermethode verändern sich natürlich auch das Driftzeitspektrum und das Driftzeitspektrum pro Draht. Diese sind ebenso mit der ToT-Schwelle neu erstellt worden: Abb. \ref{fig:langzeitmessung_driftzeit_filtered} und \ref{fig:langzeitmessung_driftzeit_pro_draht_filtered} zeigen, dass neben einer allgemeinen Reduktion der Ereignisrate insbesondere die unerwünschten Ereignisse hoher Driftzeit aus dem Spektrum gefiltert worden sind. Also erreicht die beschriebende Filterung eine Verbesserung der Datenqualität, da die Messreihe nun von den tatsächlichen Detektionen der Myonen dominiert wird. Dies lässt sich an der Reduktion des Hintergrunds bei hohen Driftzeiten (Abb. \ref{fig:langzeitmessung_driftzeit_filtered}) sowie durch die Verbesserung des Kontrasts in der Ansprecher-Verteilung (Abb. \ref{fig:langzeitmessung_driftzeit_pro_draht_filtered}) erkennen.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_driftzeiten_filtered.png}
+        \caption{Gefiltertes Driftzeitspektrum der Langzeit-Messung kosmischer Myonen $(\textit{ToT} \geq \SI{100}{ns})$. Gegenüber Abb. \ref{fig:langzeitmessung_driftzeit} fällt auf, dass insbesondere hohe Driftzeiten drastisch in ihrem Vorkommen reduziert worden sind. Auch niedrige Driftzeiten sind reduziert worden, aber die Form der Verteilung entspricht eher der in Abb. \ref{fig:vergleich_THR2} gezeigten Erwartung.}
+        \label{fig:langzeitmessung_driftzeit_filtered}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_driftzeiten_vs_draht_filtered.png}
+        \caption{Gefilterte Verteilung der Ansprecher nach Driftzeit und Drahtnummer $(\textit{ToT} \geq \SI{100}{ns})$. Gegenüber Abb. \ref{fig:langzeitmessung_driftzeit_pro_draht} fällt wie erwartet auf, dass Driftzeiten über \SI{525}{ns} ausgeschnitten worden sind und höhere Driftzeiten viel weniger auftreten. Dies erhöht den Kontrast für die interessanten Messungen.}
+        \label{fig:langzeitmessung_driftzeit_pro_draht_filtered}
+    \end{figure}
+
+\newpage
+\subsection{Drahtkorrelation} \label{sec:korrelation}
+    Um die räumliche Anordnung der Drähte zu erhalten, wird nun die Korrelation zwischen den Ansprechern von je zwei Drähten berechnet. Drähte, die besonders häufig ansprechen sollten demnach in benachbarten Driftzellen liegen. Zur Berechnung der Korrelation wird einer Zelle in einem 2D-Histogramm genau dann 1 hinzugefügt, wenn im beobachteten Ereignis ein Ansprecher an beiden zur Zelle gehörigen Drähten geschieht. \\
+    
+    Abb. \ref{fig:langzeitmessung_drahtkorrelation_filtered} zeigt die so errechnete Korrelation mit ToT-Filterung. Eine Version ohne Filterung ist der Vollständigkeit halber im Anhang (Abb. \ref{fig:langzeitmessung_drahtkorrelation}) gezeigt, jedoch werden aus dieser Darstellung keine Schlüsse gezogen.
+    % Das bedeutet vermutlich, dass die in der Zelle generierten Primärelektronen den Anodendraht in zwei diskreten \enquote{Wellen} erreichen. Das könnte passieren, wenn das Muon den Draht ganz knapp passiert: die nahegelegenen Elektronen werden schnell absorbiert, die weiter Entfernten erreichen den Draht erst später. Dazwischen muss die Spannung ja nur kurz unter der Diskriminatorschwelle gelegen haben.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_drahtkorrelation_filtered.png}
+        \caption{2D-Histogramm zur Visualisierung der Korrelation einzelner Draht-Ansprecher (mit Filterung $\textit{ToT} \geq \SI{100}{ns}$). Es fallen insbesondere die Korrelationen von Draht $n$ mit den Drähten $n+1$, $n+3$ (Drahtnummer ungerade) bzw. $n-1$, $n-3$ (Drahtnummer gerade) auf.}
+        \label{fig:langzeitmessung_drahtkorrelation_filtered}
+    \end{figure}
+    Bei Betrachtung der Draht-Korrelationen fällt zunächst auf, dass Drähte mit ähnlicher Nummerierung häufig nahe bei einander liegen, wie durch die helle Diagonale erkennbar wird.
+    \footnote{Die Diagonaleinträge dieses Histogramms sind nicht null, sonder werden von der Analyse ausgeschlossen. Die Korrelation von einem Draht mit sich selbst, auch Autokorrelation, ist per Defintion maximal und hält keine Informationen über die Drahtanordnung bereit.} 
+    Auch entfernte Drähte zeigen Korrelation in geringem Maße, was wahrscheinlich auf die Detektion eines flach einfallenden Myons hinweist. Im unwahrscheinlichen Fall, dass zwei Myonen gleichzeitig den Detektor passieren, muss mit einer Fehlkorrelation mehrerer Drähte gerechnet werden. Dies ist jedoch statistisch vernachlässigbar. Die Nummerierung der Drähte folgt einem regelmäßigen Muster: Es fällt auf, dass in der Mitte des Diagramms die Korrelationen von Draht $n$ mit den Drähten $n+1$, $n+3$ ($n$ ungerade) bzw. $n-1$, $n-3$ ($n$ gerade) besonders prägnant sind. Es ist zu erwarten, dass eine Zelle besonders starke Korrelationen mit genau den zwei Zellen aufweist, die in der Driftkammer diagonal darüber bzw. darunter liegen. Aus dem Abgleich dieses Arguments und der beobachteten Korrelation diesem ergibt sich die in Abb. \ref{fig:zellen_nummerierung_default} gezeigte Nummerierung für die Drähte. Man beachte, dass nur die Korrelations-Information nicht ausreicht, um zu sagen, ob die gerade oder ungerade nummerierten Drähte die obere Drahtschicht bilden. Es ist also möglich, dass die zwei Lagen getauscht werden müssten! \\
+    
+    Man bemerke, dass die Korrelation für niedrige $n$ verstärkt mit $n \pm 1$ auftritt und für höhere $n$ verstärkt mit $n \pm 3$. Dies ist eine einfache Konsequenz der Positionierung des Szintillationstriggers: um beispielsweise überhaupt Zelle $27$ zu erreichen, benötigt ein einfliegendes Myon bereits einen gewissen Winkel zum Lot (Erinnerung: der Szintillator ist ungefähr über Draht $25$ zentriert). Passiert ein Myon also nach dem Szintillator zunächst Zelle $27$, passiert es danach Zelle $30$ mit höherer Wahrscheinlichkeit als Zelle $28$. Ein analoges Argument gilt für kleine $n$.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/Zellen_Nummerierung_Default.png}
+        \caption{Räumliche Verteilung der Drähte $D_i$ gemäß Drahtkorrelation (Abb. \ref{fig:langzeitmessung_drahtkorrelation_filtered}) und Aufbau der Driftkammer (Abb. \ref{fig:Skizze_Drahtanordnung}). Es kann keine Aussage getroffen werden, welche der beiden Zeilen $i$ ungerade und $i$ gerade oben und welche unten liegt. }
+        \label{fig:zellen_nummerierung_default}
+    \end{figure}
+    
+    Für die spätere Bestimmung der Winkelverteilung und Abstandssumme bzw. Abstandsdifferenz werden die Drähte also umnummeriert, sodass sie in aufsteigender Reihenfolge von links nach rechts verlaufen. Dafür werden die Indizes der ungeraden Drähte einfach um $2$ inkrementiert (vgl. Abb. \ref{fig:zellen_nummerierung_neu}). Mit dieser Nummerierung ist der Winkel zum Lot eine monoton steigende Funktion der Drahtnummer --- unabhängig davon, wo das Lot definiert ist. Dies macht die Ermittlung der Winkelverteilung etwas intuitiver.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/Zellen_Nummerierung_Neu.png}
+        \caption{Umnummerierung der Driftzellen zur Diagonalisierung der Drahtkorrelationsmatrix (Abb. \ref{fig:langzeitmessung_drahtkorrelation_filtered}).
+        Umgestellte Zellen-Nummerierung in der Driftkammer. Es kann keine Aussage getroffen werden, welche der beiden Zeilen $i$ ungerade und $i$ gerade oben und welche unten liegt.}
+        \label{fig:zellen_nummerierung_neu}
+    \end{figure}
+    
+    Mit dieser neuen Drahtnummerierung kann auch die Korrelation neu generiert werden. Die so gefundene Korrelation ist in Abb. \ref{fig:langzeitmessung_drahtkorrelation_filtered_renumbered} gezeigt. 
+    
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.65\textwidth]{figs/langzeitmessung_drahtkorrelation_filtered_renumbered.png}
+        \caption{2D-Histogramm zur Visualisierung der Korrelation einzelner Draht-Ansprecher (mit Filterung $\textit{ToT} \geq \SI{100}{ns}$) nach Umnummerierung der Drähte. Es fällt auf, dass wie erhofft die Drähte nur noch mit ihren direkten Nachbarn stark korrelieren.}
+        \label{fig:langzeitmessung_drahtkorrelation_filtered_renumbered}
+    \end{figure}
+    
+    Es ist wie gewünscht zu erkennen, dass die Drahtkorrelation direkt neben der Diagonale am prägnantesten ist. Jeder Draht korreliert also mit seinen direkten Nachbarn. Das bestätigt, dass die in Abb. \ref{fig:zellen_nummerierung_neu} gezeigte Nummerierung korrekt ist.\\
+    
+    Ebenso hat die Umnummerierung einen Effekt auf die gesamten Hits pro Draht (vgl. Abbl \ref{fig:langzeitmessung_ansprecher} ohne die Umnummerierung). Da die Umnummerierung die ungeraden Draht-Indizes um $2$ verschiebt, werden die entsprechenden Bins im Histogramm effektiv um $2$ bins nach rechts geschoben. Das Resultat ist in Abb. \ref{fig:langzeitmessung_ansprecher_filtered_renumbered} zu sehen. 
+    % Das liegt vielleicht daran, dass sie im Aufbau über den geraden Drähten liegen: im (seltenen) Fall, dass ein Myon einfliegt und entweder selbst von einem Draht absorbiert wird oder seine gesamte überbleibende Energie in der oberen Zelle abgibt, würde nur die obere Zelle ansprechen. 
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_ansprecher_pro_draht_filtered_renumbered.png}
+        \caption{Gefiltertes und umnummeriertes Histogramm der gesamten Ansprecher pro Draht. 
+        Die vorher alternierenden \enquote{Maxima} an den Rändern des Verlaufs sind nun geringer (vgl. Abb. \ref{fig:langzeitmessung_ansprecher_filtered}) und die Ansprecherverteilung ähnelt nun einer Glockenkurve, ungefähr zentriert über Draht $25$.}
+        \label{fig:langzeitmessung_ansprecher_filtered_renumbered}
+    \end{figure}
+    
+    An der Auftragung fällt auf, dass die vorher alternierenden Maxima an den Rändern des Verlaufs deutlich reduziert sind (vgl. Abb. \ref{fig:langzeitmessung_ansprecher_filtered}). Im Zentrum des Verlaufs sind sie jedoch weiterhin erkennbar: die ungeraden Drähte sprechen öfter an. Dies könnte darauf zurückzuführen sein, dass die geraden und ungeraden Drähte zwei diskrete Draht-Schichten im Detektor bilden, von denen eine mehr anspricht als die andere. Beispielsweise nehmen die Zellen in der oberen Schicht jeweils einen aus Sicht des Triggers minimal größeren Raumwinkel ein, als die darunter Gelegenen. Das erklärt aber insbesondere noch nicht, warum in der Mitte des Verlaufs die ungeraden und an den Ränden die geraden Drähte überrepräsentiert sind. Eine vollständige Begründung dieser Diskrepanzen würde also weitere Untersuchungen am Aufbau voraussetzen, da kaum ein signifikanter Unterschied zwischen den Schichten existieren sollte.
+
+\newpage
+\subsection{Orts-Driftzeit-Beziehung} \label{sec:orts_driftzeit_beziehung}
+    Nun soll die Orts-Driftzeit-Beziehung hergeleitet werden. Dafür ist zunächst wichtig, dass die Verteilung des kleinsten Abstands einfallender Myonen in guter Näherung als gleichverteilt angenommen werden kann. Dies gilt, da die Myonen meist fast senkrecht zu den Drähten in der Driftkammer einfallen. Für die weit vom Kammerzentrum entfernten Zellen gilt dies nicht ganz, da die Winkelverteilung der Strahlung und die Beziehung Einfallswinkel-Drahtabstand eine gewisse Inhomogenität einführen. Da die einzelnen Zellen aus Sicht des Szintillationstriggers jeweils nur einen kleinen Raumwinkel einnehmen, ist die Approximation gerechtfertigt. Man bemerke auch hier, dass wieder die Rotationssymmetrie einer zylindrischen Zelle durch die sechseckigen Zellen nur approximiert wird.\footnote{Beispielsweise ist der senkrechte Abstand des Anodendrahts vom Zellenrand zwar \SI{8.5}{mm}, der Abstand zwischen Anoden- und Kathodendraht ist aufgrund der hexagonalen Geometrie aber größer. Der senkrechte Abstand ist die Höhe des gleichseitigen Dreiecks aus Anodendraht und zwei Kathodendrähten --- damit ist der eigentlich maximal mögliche Drahtabstand um einen Faktor $2/\sqrt{3}$ als der angenommene Zellenradius. Da es jedoch enorm unwahrscheinlich ist, dass ein Myon eine Zelle durchläuft, ohne näher als \SI{8.5}{mm} an den Anodendraht zu kommen, ist der Effekt im Driftzeitspektrum vernachlässigbar klein.} \\
+    
+    % Imma be honest, whatever. cant be asked rn
+    % \textcolor{red}{TODO das Ganze basiert doch darauf, dass der Ort und Driftzeit durch eine injektive, monotone Funktion verbunden sind. Ich denke gerade immer wieder über die Form des E-Felds in den Zellen nach und komme nicht so ganz darauf, wie das sein soll. Wir haben ja den Anodendraht auf 0V und die Kathoden auf 3kV. Damit haben wir so annähernd ein Topf-Potential um r=0 --- da hätte ich gedacht, die Driftzeit wäre fast kürzer, wenn das e- weit weg startet, weil es da mehr beschleunigt wird. In dem Fall sollte es auch keine Gasverstärkung geben, weil das Potential in der Mitte der Zelle abflacht. Außerdem wäre das E-Feld ganz anders, wenn man z.B. die Anode auf -1.5kV und die Kathode auf +1.5kV hätte. Aber sollen die Potentiale nicht eigentlich nur relativ zueinander wichtig sein? Ich kriege das gerade nicht so ganz auseinander.}\\
+    
+    Mit dieser Approximation kann nun die Orts-Driftzeit-Beziehung hergestellt werden, indem eine laufende Summe über das Driftzeit-Histogramm kalkuliert und dieses zuletzt auf die halbe Breite einer Driftzelle (\SI{8.5}{mm} \cite{Praktikumsanleitung}) normiert wird. Dieser Ansatz beruht auf einer einfachen Überlegung: wenn ein Anteil $x$ der erfassten Ereignisse eine Driftzeit von maximal $t$ aufweist, müssen alle Ereignisse mit diesen Driftzeiten auch den Anteil $x$ der möglichen Draht-Abstände aufweisen. Dies ergibt im kontinuierlichen Fall folgenden Integralausdruck:
+    \begin{align}
+        x(t) = \int_0^t N(t') dt'
+    \end{align}
+    
+    Dabei beschreibt $N(t')$ die auf die halbe Zellenbreite normierte Verteilung der Driftzeiten. Diskretisiert ergibt das eine laufende Summe über die einzelnen Bins des (gefilterten) Driftzeiten-Histogramms aus Abb. \ref{fig:langzeitmessung_driftzeit_filtered}. Diese Berechnung macht daraus den in Abb. \ref{fig:langzeitmessung_orts_driftzeit_beziehung_filtered} gezeigten Verlauf. Der Vollständigkeit wegen zeigt Abb. \ref{fig:langzeitmessung_orts_driftzeit_beziehung} im Anhang die Orts-Driftzeit-Beziehung ohne das ToT-Filtering; die wird jedoch für die weitere Auswertung nicht verwendet.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_orts_driftzeit_beziehung_filtered.png}
+        \caption{Orts-Driftzeit-Beziehung, errechnet als laufende Summe der gefilterten Driftzeitverteilung (Abb. \ref{fig:langzeitmessung_driftzeit_filtered}) mit anschließender Normierung auf die halbe Zellenbreite (\SI{8.5}{mm}).}
+        \label{fig:langzeitmessung_orts_driftzeit_beziehung_filtered}
+    \end{figure}
+    
+    In dieser Orts-Driftzeit-Beziehung lässt sich die Struktur des Driftzeit-Histogramms (Abb. \ref{fig:langzeitmessung_driftzeit_filtered}) erahnen: Die starke Erhöhung nahe des linken Bildrands sowie der kleinere \enquote{Buckel} in der Mitte sind eindeutig dem ersten und zweiten Peak des Driftzeitspektrums zuzuordnen. Somit entspricht die Form der Erwartung.
+
+\newpage
+\subsection{Winkelverteilung der kosmischen Strahlung}
+    Mit den bisher angestellten Überlegungen kann nun die Winkelverteilung der kosmischen Strahlung bestimmt werden. Eine letzte Messung am Experiment ergab den vertikalen Abstand zwischen Szintillationstrigger und den Frontends, an die die Drähte angeschlossen sind, als $d_{Trig} = \SI{14.0(5)}{cm}$. Da die genaue Lage der Dräht relativ zu den Frontends nicht bekannt ist, soll angenommen werden, dass alle Drähte in \SI{8.5}{mm}-Abständen in einer Ebene mit den Frontends liegen. Die zusammengenommene vereinfachte Geometrie ist in Abb. \ref{fig:trigger_draht_geometrie} gezeigt.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=0.4\textheight]{figs/Trigger_Draht_Geometrie_Winkelverteilung.png}
+        \caption{Vereinfachtes Schema der Geometrie von Szintillationstrigger (oben) und Driftkammer mit umnummerierten Drähtem (unten). Das Lot des Triggers liegt beispielhaft über Draht Nr. $n\sub{Lot} = 24$ und ein Myon Fällt im Winkel $\Phi$ ein.}
+        \label{fig:trigger_draht_geometrie}
+    \end{figure}
+    
+    Das Lot sei dabei über den Draht mit Nummer $n\sub{Lot}$ gelegt, wobei $n\sub{Lot}$ in diesem Fall zwischen zwei Drähten liegt. Die Breite des Szintillationstriggers und die der Driftzellen wird bei den folgenden Überlegungen zur Vereinfachung außer Acht gelassen, da es ansonsten für jede Detektion ein Kontinuum an möglichen Winkeln gäbe. Mit dieser Geometrie ergibt sich für den Winkel $\Phi(n)$ als Funktion der Drahtnummer $n$ mit der Unsicherheit $\Delta \Phi$ folgender Zusammenhang:
+    \begin{align}
+        \Phi = \arctan \left( \frac{(n-n_{Lot}) \cdot \SI{8.5}{mm}}{d_{Trig}} \right)
+        \qquad \qquad 
+        \Delta \Phi = \frac{\Delta d_{Trig} \cdot (n-n_{Lot}) \cdot \SI{8.5}{mm}}{d_{Trig}^2 + ((n-n_{Lot}) \cdot \SI{8.5}{mm})^2}
+        \qquad \text{,}
+    \end{align}
+    wobei der Abstand $d_{Trig}$ mit der der Unsicherheit $\Delta d_{Trig}$ behaftet ist.\\
+    
+    Somit kann nun jedem Ereignis über die Drahtnummer ein Winkel zugewiesen werden. Zählt man schließlich die detektierten Ereignisse pro Winkel, so erhält man Abb. \ref{fig:kosmische_strahlung_geometrie}. An dieses Histogramm kann mithilfe der Funktion ROOT-Funktion \textit{TH1D::Fit()} eine Kurve angepasst werden. Die gewählte Form der Kurve ist in Gleichung \ref{eq:winkelverteilung_fit} gegeben.
+    \begin{align} \label{eq:winkelverteilung_fit}
+        N(\Phi) = N_0 \cdot \cos^k (\Phi + \Phi_0)
+    \end{align}
+    
+    Diese Form ist zunächst motiviert durch die Form der Erde. Man betrachte die Erde anschaulich als Kugel im Raum, der  mit einem gleichmäßigen Strahlungsfluss (o.B.d.A. in x-Richtung) durchsetzt ist. Dies resultiert darin, dass der Teil der Erde, der senkrecht im Strahlungsfluss steht, den anteilig größten Strahlungsfluss erfährt. Der Zusammenhang ist in Abb. \ref{fig:kosmische_strahlung_geometrie} illustriert, in Wahrheit natürlich infinitesimal zu betrachten: der an einem Punkt $P$ auf der Erdoberfläche beobachtete Strahlungsdurchsatz im Winkel $\Phi$ zum Lot ist proportional zu $dx$ (orange) und somit $\propto cos(\Phi)$.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{figs/Kosmische_Strahlung_Verteilung_Geometrie.png}
+        \caption{Visuelle Stütze für die Winkelverteilung der kosmischen Strahlung als Anteil an einem gesamten kosmischen Strahlungsfluss.}
+        \label{fig:kosmische_strahlung_geometrie}
+    \end{figure}
+    
+    Ein weiterer Effekt rührt aus der in Abb. \ref{fig:trigger_draht_geometrie} gezeigten geometrischen Überlegung: die Weglänge, die ein Teilchen zwischen Szintillator und Driftkammer-Zelle zurücklegt, ist proportional zu $1/\cos^2(\Phi)$. Dies lässt sich in hinreichender Näherung auf den gesamten Weg des Myons durch die Atmosphäre extrapolieren, da die Atmosphäre die Erde dünn ummantelt. Mit höherer Weglänge sinkt die Wahrscheinlichkeit, dass das Myon sie ungestört passiert. Somit existiert ein vermuteter funktionaler Zusammenhang mit $\cos^2(\Phi)$. \\
+    
+    Die nun beobachteten Effekt summieren sich mit weiteren Effekten (Streuungseffekte, der Prozess der Myon-Produktion in der oberen Atmosphäre etc.); die Kombination ergibt empirische Winkelverteilungen der kosmischen Strahlung mit einer Proportionalität zu $\cos^k \Phi$. Der Exponent $k \in [1,3]$ hängt dabei insbesondere von der Energie der einzelnen Teilchen ab. \cite{cosmic_ray_angular_distribution} \\
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{figs/langzeitmessung_ansprecher_pro_winkel_fit.png}
+        \caption{Winkelverteilung der kosmischen Strahlung mit Funktionsanpassung der in Gleichung \ref{eq:winkelverteilung_fit} gegebenen Form. Erwartungsgemäß werden zumeist senkrecht einfallende Myonen verzeichnet und nur selten Myonen in flachen Winkeln.}
+        \label{fig:langzeitmessung_winkelverteilung_fit}
+    \end{figure}
+
+    Da aus vorhergehenden Überlegungen für dieses Experiment der Exponent $k$ nicht hervorgeht, wird er als Anpassungsparameter überreicht. $N_0$ dient schlicht zur Normierung und hat keinen Einfluss auf die eigentliche Form des Verlaufs. $\Phi_0$ wird gereicht, um zu prüfen, wie genau der Szintillator tatsächlich über Draht $n_{Lot}$ zentriert ist. Da eine Veränderung von $n_{Lot}$ jedoch auch das Winkel-Histogramm ändert, kann es nicht einfach als weiterer Fitparameter übergeben werden. Stattdessen wurde $n_{Lot}$ händisch variiert, um eine möglichst gute Fitgüte zu erreichen. Durch wiederholtes Ausprobieren und Annähern ans Optimum auf die zweite Nachkommastelle ist $n_{Lot} = \num{25.43(1)}$ festgelegt worden. \\
+    
+    
+    Abb. \ref{fig:langzeitmessung_winkelverteilung_fit} zeigt den resultierenden Fit. Es ist zu erkennen, dass die angepasste Funktion die Daten gut repräsentiert. Die gesamte Fitgüte ist $\chi^2 \approx 226$; normiert auf die $45$ Freiheitsgrade des Fits ($48$ im Histogramm gefüllte Bins minus $3$ Fitparameter) ergibt sich die reduzierte Fitgüte als $\chi^2_{red} \approx \num{5.02}$. Dies suggeriert, dass entweder die Unsicherheiten unterschätzt worden sind oder das Histogramm die Daten nur bedingt repräsentiert, was hier wahrscheinlich mit einfließt. Die Anpassungsparameter ergeben sich zu Gl. \ref{eq:winkelverteilung_fitparameter}.
+    
+    \begin{align} \label{eq:winkelverteilung_fitparameter}
+            N_0 = \num{1750(10)} 
+            \qquad \qquad
+            k = \num{2.38(3)} 
+            \qquad \qquad
+            \Phi_0 = \num{0.007(3)}
+    \end{align}
+    
+    Insgesamt lässt sich also festhalten, dass die Wahl der Fitfunktion angemessen war. Insbesondere $\Phi_0$ bestätigt, dass der gefundene Wert $n_{Lot}$ eine gute Wahl war --- \SI{0.007}{rad} entsprechen einer Winkelverschiebung von gerade mal $\approx \SI{0.4}{\degree}$. Dennoch: insbesondere die unregelmässigen \enquote{Spikes} im Zentrum des Verlaufs verschlechtern die Datenrepräsentation (diskutiert in \ref{sec:korrelation}).
+
+\subsection{Abstandssumme gegen Abstandsdifferenz} \label{sec:summe_vs_diff}
+    Zuletzt können anhand der Orts-Driftzeit-Beziehung (vgl. Abschnitt \ref{sec:orts_driftzeit_beziehung}) für benachbarte Drähte die Summe und Differenz der jeweiligen Myonen-Abstände gegeneinander aufgetragen werden. Dafür wird für die einzelnen Ereignisse zunächst geprüft, ob zwei benachbarte Drähte einen signifikanten Ansprecher verzeichnen ($ToT \geq \SI{100}{ns}$). Falls ja, werden die  Driftzeiten anhand der Orts-Driftzeit-Beziehung in einen jeweiligen Drahtabstand $x_1$ bzw. $x_2$ umgerechnet. Die Summe und Differenz der Abstände werden gegeneinander in ein Histogramm aufgetragen. Man bemerke: $x_1$ und die dazugehörige Drahtnummer $n_1$ entsprechen dabei dem (Abstand zum) Draht, zu dem der zugehörige \textit{hit} zuerst in der ROOT-Datei vorkommt. Da anzunehmen ist, dass diese Eintragung (mit wenigen Ausnahmen) chronologisch geschieht, sind die Einträge in jedem Ereignis nach Driftzeit und somit nach Drahtabstand sortiert. Dadurch sind die Abstandsdifferenzen (fast) immer negativ. \\
+    
+    Es ist zu beachten, dass die Ansprecher zweier benachbarter Zellen so nicht ausreicht, um den Pfad eines einfallen Myons eindeutig zu definieren. Abb. \ref{fig:myon_pfade} illustriert dies: bei gegebenen Drahtabständen zu zwei Zellen gibt es immer noch vier Möglichkeiten, wie diese Ansprecher entstanden sein können. Ein ausgeklügelteres Tracking bzw. die Verwendung von mehr als zwei Lagen mit Driftzellen könnten dies beheben, doch das übersteigt den Rahmen dieser Auswertung. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{figs/Myon_Pfade.png}
+        \caption{Illustration der vier möglichen Pfade eines Myons durch den Detektor bei Ansprechen zweier benachbarter Zellen. Die Kreise in den Zellen veranschaulichen den minimalen Abstands des Myons zum Draht. Die vier Pfade sind messtechnisch gleich gestellt.}
+        \label{fig:myon_pfade}
+    \end{figure}
+    
+    Geschieht der Einfall des Myons senkrecht, sollte die Summe der Abstände genau \SI{8.5}{mm} betragen. Somit ist die Abstandssumme ein Maß für den Winkel zum Lot: je weiter die Summe von \SI{8.5}{mm} entfernt ist, desto größer der Winkel zum Lot. Die Abstandsdifferenz gibt dagegen eine horizontale Verschiebung des Myons an. Somit wäre im Histogramm zunächst zu erwarten, dass eine Gerade bei $x_1 + x_2 = \SI{8.5}{mm}$ auftaucht, die unabhängig von der Differenz ist. Da der Einfallswinkel natürlich um die Senkrechte herum verteilt ist, sollte sich diese Gerade eher zu einem \enquote{Hügel} um $x_1 + x_2 = \SI{8.5}{mm}$ herum ausbreiten. \\
+    
+    Diese Erwartung folgt insbesondere aus dem Fall, dass das Myon steil zwischen den beiden Drähten verläuft --- dies entspricht der steilsten Linie in Abb. \ref{fig:myon_pfade}. Aufgrund der Winkelverteilung der Strahlung ist dieser Verlauf schließlich auch der Häufigste, insbesondere direkt unter dem Szintillator. Dennoch gilt auch für die anderen drei möglichen Pfade eine ähnliche Argumentation:
+    
+    \begin{itemize}
+        \item Für den flachsten Einfall, der zwischen den Drähten verläuft, ist die Abstandssumme stattdessen ein Maß dafür, wie weit der Einfallswinkel von $90 \degree$ (horizontal) entfernt ist: je weiter die Summe von \SI{8.5}{mm} entfernt ist, desto steiler der Einfall. Da dieser Fall jedoch selten ist und, wenn überhaupt, am Rand der Driftkammer auftreten sollte, ist der Effekt aufs Histogramm klein.
+        \item Für die zwei \enquote{Streifschüsse} gilt eine umgedrehte Argumentation: die Abstandssumme sagt zunächst nichts über den Winkel aus, jedoch ist die Abstandsdifferenz ein Maß dafür, wie verschieden der Einfallswinkel von $\pm 30 \degree$ ist. Dieser Winkel kommt daher, dass eine die zwei Drähte verbindende Linie in einem Winkel von genau $30 \degree$ zum Lot steht; ein dazu paralleler Einfall entspricht in diesem Fall einer Abstandsdifferenz von \SI{0}{mm}.
+    \end{itemize}
+    
+    Vor der eigentlichen Auswertung des Histogramms (Abb. \ref{fig:langzeitmessung_abstand_summe_vs_differenz}) ist anzumerken, dass die Driftkammer zwar \SI{100000}{} Ereignisse ausgemessen hat, aber nur ca. \SI{28000}{} Einträge im Histogramm vorkommen. 
+    Dies lässt sich darauf zurückführen, dass immer nur ein Eintrag im nachfoldenden Histogramm eingeht, wenn adjazente (benachbarte) Drähte zum selben Ereignis ansprechen, was auch auch mehrmals pro Ereignis der Fall sein kann. Würde die Driftkammer ideal funktionieren und ein einfliegendes Myon genau die passierten Zellen ansprechen lassen, würde immer mindestens ein Eintrag pro Ereignis geschehen. Die gemessene Anzahl adjazenter Ansprecher ist also detulich geringer als erwartet und weist auf daraufhin, dass die Prototyp-Driftkammer Ereignisse nur mit begrenzter Zuverlässigkeit detektiert. 
+    
+    \subsubsection{Histogramm für alle Drähte}
+        Abb. \ref{fig:langzeitmessung_abstand_summe_vs_differenz} zeigt das resultierende Histogramm, in dem Ansprecher an allen Drähten berücksichtigt werden. Die Bin-Anzahl für beide Achsen wurde für dieses und alle weiteren Summe-Differenz-Histogramme auf $60$ gesetzt, da dies beim ausprobieren verschiedener Bin-Anzahlen ein sinnvolles Mittel zwischen Auflösung und ausgefülltem Histogramm zeigte. Die Rautenform des Histogramms ist eine einfache Konsequenz davon, dass $\SI{0}{mm} \leq x_q, x_2 \leq \SI{8.5}{mm}$ gilt, denn dadurch sind die Summe und Differenz nicht unabhängig.
+       
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_abstandssumme_vs_differenz.png}
+            \caption{Histogramm der Abstandssumme gegen die Abstandsdifferenz für alle Drähte.}
+            \label{fig:langzeitmessung_abstand_summe_vs_differenz}
+        \end{figure}
+        
+         
+        Im Histogramm bestätigt sich, dass in einer überwältigenden Mehrheit der Fälle die Abstandsdifferenz negativ ist. Dies kann an der Asymmetrie um die Achse erkannt werden. Aufgrund dieser Asymmetrie in der Speicherung von Ereignissen sowie in der Auftragung von Abstandsdifferenzen im Histogramm kommt der oberen Hälfte des Histogramms keine physikalische Bedeutung zu. \\
+        
+        Es fällt auf, dass die erwartete Linie bei $x_1 + x_2 = \SI{8.5}{mm}$  ausbleibt. Im Gegenteil: es scheinen sich die Ereignisse bei einer Abstandssumme knapp über \SI{8.5}{mm} sowie bei besonders niedriger Abstandssumme zu häufen.
+        
+    \subsubsection{Histogramm für verschiedene Winkelbereiche}
+        Die Verteilung der Abstandssumme und Differenz ist abhängig vom Einfallswinkel der Strahlung und somit auch davon, welche Drähte für die Erstellung des Histogramms in Betracht gezogen werden. Daher soll untersucht werden, wie sich das Histogramm bei besonders flachem (besonders hohe/niedrige Drahtnummern) und eher senkrechtem Strahlungseinfall (mittlere Drahtnummern) verändert.\\
+    
+        Abb. \ref{fig:langzeitmessung_abstand_summe_vs_differenz_links} zeigt das resultierende Histogramm, in dem nur Ansprecher an Drähten $2 \leq n_1 \leq 19$ berücksichtigt werden.\footnote{        Ein analoges Histogramm für besonders hohe Drahtnummern ist im Anhang in Abb. \ref{fig:langzeitmessung_abstand_summe_vs_differenz_rechts} gegeben; es zeigt die gleichen Resultate.} Da hier die Einfallswinkel der Myonen flacher ist, ist zu erwarten, dass hohe Abstandssummen überrepräsentiert sind. Dies ist auch der Fall, was die Erwartung bestätigt! Jedoch sind neben den hohen Summen auch die niedrigen ein wenig überrepräsentiert; dies ist vermutlich darauf zurückzuführen, dass im betrachteten Winkelbereich auch ein Einfall wie der flachste aus Abb. \ref{fig:myon_pfade} relativ häufig vorkommt. Für diesen bedeutet nämlich eine niedrige Abstandssumme, dass der Einfallswinkel zum Lot nahe $30 \degree$ ist (vgl. Diskussion in Abschnitt \ref{sec:summe_vs_diff}).
+    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_abstandssumme_vs_differenz_links.png}
+            \caption{Histogramm der Abstandssumme gegen die Abstandsdifferenz für Drähte mit $2 \leq n_1 \leq 19$. Es fällt auf, dass sich insbesondere bei hoher Abstandssumme die Ereignisse häufen.}
+            \label{fig:langzeitmessung_abstand_summe_vs_differenz_links}
+        \end{figure}
+        
+        Im Kontrast dazu steht Abb. \ref{fig:langzeitmessung_abstand_summe_vs_differenz_mitte}, für welches nur die mittleren Drähte ($20 \leq n_1 \leq 31$) einbezogen wurden. Hier ist tatsächlich grob zu sehen, was für den ungefähr senkrechten Einfall erwartet wird: die Ereignisse häufen sich in der Mitte des Bildes, in der Nähe von $x_1+x_2=\SI{8.5}{mm}$. Jedoch erscheint die Häufung nicht, wie eigentlich erwartet, ganz unabhängig von der Differenz zu sein. Da jedoch auch die Drahtnummern im gewählten Bereich einen nicht vernachlässigbaren Winkelbereich aus Sicht des Triggers einnehmen, ist eine gewisse Abweichung vom idealen senkrechten Fall zu erwarten. Ebenso fällt auf, dass in diesem Fall noch viel weniger bis gar keine (durch die Bins an der Summen-Achse schwer, genau zu erkennen) positive Abstandsdifferenzen auftreten.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{figs/langzeitmessung_abstandssumme_vs_differenz_mitte.png}
+            \caption{Histogramm der Abstandssumme gegen die Abstandsdifferenz für Drähte mit $20 \leq n_1 \leq 31$. Es fällt auf, dass sich die Ereignisse eher zur Mitte des Bildes häufen; besonders hohe oder niedrige Summen sind selten.}
+            \label{fig:langzeitmessung_abstand_summe_vs_differenz_mitte}
+        \end{figure}
+
+% \subsection{Bonus: Winkelverteilung unter Berücksichtigung der Driftorte}
+%     \textcolor{red}{TODO??? --> wie werden die Winkel aus den Driftorten bestimmt? Wie löst man die ambiguity der vier Myonen-Pfade auf? Ich schreibe keine Tracking-Tools. Würde wenn überhaupt die 4 pfade anhand ihrer wahrscheinlichkeit nach der naiven winkelverteilung gewichten und daraus eine verbesserte bestimmen. Das kann man dann iterativ machen, bis die verteilung maybe konvergiert. Aber ist viel arbeit.}

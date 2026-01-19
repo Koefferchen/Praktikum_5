@@ -1,0 +1,166 @@
+17.12.2025
+
+P515.4.1: Messung der analogen Signale
+Einstellung der Hochspannung auf -1.71(1) kV (Ableseunsicherheit, Szintillator) und -2.808 kV (pm 1%, Driftkammer), langsam hochgedreht.
+Der Oszi wird per Sonde an einen seitlichen Abgriff der ersten Frontend-Karte angeschlossen (an der Karte geerdet).
+--> Foto auf Max' Handy.
+
+Betrachtung der Signale am Oszi (CH1 Szintillator, 50 Ohm, CH2 Driftkammer-Draht-Abgriff).
+Oszi-Bilder:
+ALL0000: Szintillator
+ALL0001: Driftkammer
+
+
+
+P515.4.2: Messung des Stroms durch die Driftkammer
+Wir stellen die Driftkammerspannung verschieden ein (sinnvoller Bereich 2-3 kV) und messen die Spannung über einen Widerstand mit DMM
+Dafür verwenden wir einmal die 90Sr-Quelle und einmal eine "Hintergrundmessung" ohne
+
+Widerstandsbild: Braun, Schwarz, Schwarz, Gold, Braun --> 1000 pm 10 kOhm
+
+Unsicherheiten Driftkammerspannung: 1%
+Unsicherheiten Driftstrom-Spannung anhand Schwankung geschätzt
+
+Driftkammerspannung (V)		Driftstrom-Spannung ohne Quelle (mV)		Driftstrom-Spannung mit Quelle (mV)
+2000				3(1)						1(1)
+2050				3(1)						2(1)
+2100				4(1)						2(1)
+2150				4(1)						3(1)
+2200				3(1)						4(1)
+2250				4(1)						5(1)
+2300				2(1)						6(1)
+2350				3(1)						8(1)
+2400				4(1)						10(2)
+2450				3(1)						14(2)
+2500				1(1)						19(3)
+2550				2(1)						23(3)
+2600				3(1)						32(3)
+2650				4(1)						45(5)
+2700				4(1)						63(4)
+2750				5(1)						85(5)
+2800				6(1)						120(6)
+2850				8(2)						170(8)
+2900				12(4)						230(10)
+2950				15(5)						Sicherung
+3000				22(10)						Sicherung
+
+
+
+P515.4.3: Einstellung der HV des Szintillators
+Dimensionen des Szintillators: 36.0(5) cm  x   4.8(2) cm
+
+Wir setzen den Szintillator unter die Kammer und messen mit und ohne Quelle die Zeit für eine bestimmte Anzahl Events
+(Linux TIME command mit fpexperiment, nutzen REAL-TIME-Ausgabe)
+
+Zeitunsicherheit: 0.1 s
+--> TIME zeigt ms an, aber die Eventraten sind so niedrig + wir haben computing time, dass das nicht sinnvoll ist
+
+(Wir können die Spannung nur so mäßig gut einstellen, daher die komischen Spannungswerte)
+
+
+U_sz / V		N_mit / 1	t_mit / s		N_ohne / 1	t_ohne
+1500			200		203.2			100		153.7
+1540			200		82.7			100		67.1		
+1590			1000		106.2			300		78.3		
+1630			2000		91.4			400		70.1		
+1700			5000		79.3			1000		106.1
+1750			10000		84.0			3000		201.1		
+1800			20000		104.5			5000		219.7		// MAX RATIO
+1850			40000		147.6			5000		134.3		
+1900			100000		287.1			10000		186.0	
+1920			100000		271.0			10000		165.6			
+2000			100000		225.0			10000		122.1		
+
+
+n_mit / 1/s	n_ohne / 1/s	n_mit/n_ohne / 1
+0.9843		0.6506		1.5129
+2.4184		1.4903		1.6228
+9.4162		3.8314		2.4576
+21.8818		5.7061		3.8348
+63.0517		9.4251		6.6898
+119.0476	14.9179		7.9802
+191.3876	22.7583		8.4096
+271.0027	37.2301		7.2791
+348.3107	53.7634		6.4786
+369.0037	60.3865		6.1107
+444.4444	81.9000		5.4267
+
+
+Delta U_sz 	= 10 V
+Delta N 	= sqrt(N)
+Delta t 	= 0.1 s
+
+
+Hintergrundrate ist ~ bei 1550 V entsprechend der Erwartung von 100 * 1/(m^2s).
+Zusatzmessung:		1560 V, 200 Counts, 71.6 s ohne Quelle
+
+
+P515.4.4: Einstellung der Betriebsparameter
+Wir stellen nach und nach die Driftkammer-Spannung und den Spannungs-Threshold ein.
+Ziel ist, im Driftzeitspektrum die Höhe der Peaks zu maximieren und das Rauschen (besonders bei hohen Zeiten) zu minimieren.
+Die steigende Flanke liegt nah am linken Bildrand - diese Einstellung ist unabhängig von den anderen zweien.
+
+Naming Convention:
+"{SPANNUNG}V{DELAY}DDC{THRESHOLD}THR"
+--> optional "hist" ans Ende für die fertigen Driftzeitspektren
+Erste Benennung durch durchnummerieren, am Ende einmal umbenennen!
+
+Startpunkt:
+2800V23DDC10THR
+
+Verschiebung der Flanke an linken Rand:
+2800V1FDDC10THR
+
+Schrittweise Parametereinstellung:
+(haben erst die counts nicht immer festgehalten whoops, ab Messung 15 immer 10000 Counts für Vergleichbarkeit)
+
+1: 2600V1FDDC10THR (Ausversehen original überschrieben)
+2: 2900V1FDDC10THR (Wahrscheinlich ist die Sicherung rausgeflogen, trotzdem halbwegs gutes Histogramm? Ausversehen original überschrieben)
+3: 2300V1FDDC10THR (Sicherung war wahrscheinlich schon raus. Ausversehen original überschrieben, png fehlt)
+4: 2850V1FDDC10THR
+5: 2700V1FDDC10THR
+6: 2750V1FDDC10THR
+
+(Ansatz: Grid Search artig zwischen 2700 und 2850 V mit verschiedenen THR)
+7: 2850V1FDDC20THR
+8: 2800V1FDDC20THR (Sicherung ist einmal rausgeflogen, haben neu gemessen)
+9: 2750V1FDDC20THR
+10: 2700V1FDDC20THR
+11: 2850V1FDDC60THR
+12: 2800V1FDDC60THR
+13: 2750V1FDDC60THR (hist root file fehlt)
+14: 2850V1FDDCA0THR
+15: 2850V1FDDCFFTHR
+16: 2800V1FDDCFFTHR
+17: 2750V1FDDCFFTHR
+
+Spezielle Suche nach THR mit 2850 V:
+18: 2850V1FDDC30THR --> Zu hoch, Peak-Counts gehen runter
+19: 2850V1FDDC28THR --> Auch schon merklich weniger als bei 20
+20: 2850V1FDDC18THR --> Nicht merklich mehr als bei 20
+21: 2850V1FDDC1CTHR --> Nur minimal niedriger als bei 18, also lieber noch etwas runter
+22: 2850V1FDDC14THR --> Merklich mehr Rauschen als bei 18
+
+
+--> Wahl der Einstellung: 2850V, 1FDDC, 18THR (20: 2850V1FDDC18THR)
+
+
+
+
+Langzeitmessung: Abstand Szintillator-Frontends (Annahme: Gleich Höhe der Drähte): 14.0(5) cm
+Spannung der Driftkammer: 2850 V
+Spannung des Szintillators: 1550 V
+Wir schätzen anhand der Driftkammerspannung eine Rate von ~1.6-2 counts/s
+Das ergibt mit eingestellten 100000 counts eine erwartete Messzeit in der Größenordnung von ~17h.
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,366 @@
+\section{Einstellung des Slow-Inzidenz-Kreises}
+
+
+
+\subsection{Kontrolle der Versorgungsspannungen}
+    Vor Beginn des Versuchs wurden die Hochspannungen, welche an den Szintillations-Spektrometern anliegen, überprüft. Die Hochspannung wurde im Vorfeld von Assistenten so eingestellt, dass die Detektionsrate beider Detektoren ausreichend hoch ist. Die verwendeten PMTs arbeiten mit negativer Hochspannung, weswegen die abgelesenen Werte negativ sind. Das Hochspannung-Netzteil zeigt die Spannungen und Ströme beider PMTs an, jedoch ist nicht bekannt, welcher Detektor an welchen Kanal angeschlossen ist. Diese Prüfung dient der Sicherstellung der Langlebigkeit verwendeter Hardware und ist für die Auswertung der Messergebnisse nicht direkt relevant. Es wird jedoch vorausgesetzt, dass diese Spannungen und Ströme im Versuchsablauf stabil bleiben. Dies wurde im weiteren Verlauf kurz nebenher bestätigt. Die abgelesenen Werte sind in Tabelle \ref{tab:hochspannung_kontrolle} festgehalten.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|} \hline
+            & Kanal A & Kanal B \\
+            \hline
+            Spannung / \si{V} & -671(1) & -626(1) \\
+            Strom / \si{A} & -0.120(1) & -0.111(1) \\ \hline
+        \end{tabular}
+        \caption{Spannung und Strom an den PMTs, abgelesen am Hochspannungs-Netzteil. Unsicherheiten nach Praktikums-Konvention anhand der Skalenunterteilung bestimmt.}
+        \label{tab:hochspannung_kontrolle}
+    \end{table}
+    
+    Des Weiteren wurde überprüft, ob alle Niedervolt-Netzspannungen, die an den Mess-Bauteilen anliegen, die korrekte Amplitude besitzen und zeitlich konstant sind. Wäre dies nicht der Fall, so bestände ein Defekt, welcher potentiell die Funktion von Mess-Bauteilen beeinträchtigte. Von beiden verwendeten NIM-Module werden Sollspannungen $U \in \{ \pm 6 \si{V}, \pm 12 \si{V}, \pm 24 \si{V} \}$ für die anderen Bauteile bereitgestellt. Durch Verwendung einer Sonde, die als Adapter auf BNC fungiert, können diese am Oszilloskop auf ihre durchschnittlichen Spannungswerte und zeitliche Konsistenz (auf verschiedenen Zeitskalen) geprüft werden. Die durchschnittlichen Spannungen sind in Tabelle \ref{tab:niederspannung_kontrolle} aufgetragen, Bild \ref{fig:Oszi_Spanungsversorgung} zeigt exemplarisch den beobachteten Spannungsverlauf.\\
+
+    \begin{figure}[H]
+        \centering
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{figs/SUSKO09.PNG}
+            \caption{Oszillogramm des $U_0 = \SI{6}{V}$ Spannungsabgriff am unteren Netzgerät. Es sind keine starken Fluktuationen in der Gleichspannunsgversorgung sichtbar. Exemplarisch und repräsentativ für alle in diesem Schritt beobachteten Oszilloskop-Bilder.}
+            \label{fig:Oszi_Spanungsversorgung}
+        \end{minipage}
+        \hspace{1cm}
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \begin{tabular}{|c|c|}
+                \hline
+                Sollspannung / $\unit{V}$ & Gemessene Spannung / $\unit{V}$ \\
+                \hline
+                \multicolumn{2}{|c|}{Oberes NIM-Modul} \\
+                \hline
+                +24 & 23.7(1)  \\
+                +12 & 11.90(5) \\
+                +6  & 5.95(5)  \\
+                -6  & -5.8(1)  \\
+                -12 & -11.85(5) \\
+                -24 & -23.6(1) \\
+    
+                \hline
+                \multicolumn{2}{|c|}{Unteres NIM-Modul} \\
+                \hline
+                +24 & 23.7(1)  \\
+                +12 & 11.90(5) \\
+                +6  & 6.00(5)  \\
+                -6  & -5.8(1)  \\
+                -12 & -11.80(5) \\
+                -24 & -23.5(1) \\
+                \hline
+            \end{tabular}
+            \caption{Durchschnittswerte der an den NIM-Modulen bereitgestellte Niederspannungen, abgelesen am Oszilloskop. Die gemessenen Durchschnittswerte weichen bis zu $\SI{0.5}{V}$ von ihren Sollwerten ab. }
+            \label{tab:niederspannung_kontrolle}
+        \end{minipage}
+    \end{figure}
+    Tabelle \ref{tab:niederspannung_kontrolle} zeigt, dass die Niedervolt-Spannungen in allen Fällen nahe ihrer Sollwerte lagen. Die Betrachtung auf dem Oszilloskop (vgl. Abb. \ref{fig:Oszi_Spanungsversorgung}) zeigt ebenfalls, dass keine makroskopischen Schwankungen in den Spannungsamplituden vorlagen. Somit kann der Versuch ordnungsgemäß fortgeführt werden.
+
+
+
+\subsection{Kontrolle der Slow-Pulse des Photomultipliers}
+    Im ersten Teil der Versuchsdurchführung wurden die Slow-Pulse mit und ohne Hauptverstärker miteinander verglichen, um die Funktionsweise des pulsformenden Hauptverstärkers zu verifizieren. Als Quelle wird Natrium verwendet. Abbildung \ref{fig:Schaltplan_Kontrolle_Slow-Pulse} zeigt den entsprechenden Schaltplan.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{figs/Aufbau_2.jpg}
+        \caption{Schaltplan zur Kontrolle der Slow-Pulse.}
+        \label{fig:Schaltplan_Kontrolle_Slow-Pulse}
+    \end{figure} 
+    Die aufgenommenen Oszillogramme (Abb. \ref{fig:Oszi_Kontrolle_Slow-Pulse}) zeigen, dass in einem kurzen Zeitfenster ein Vielzahl Ereignisse verschiedener Amplituden gemessen werden. Das reine Slow-Signal weist dabei wie erwartet eine wohldefinierte Amplitude und einen langsamen Abfall auf, während das Slow-Signal nach Durchlauf des pulsformenden Verstärkers annähernd die Form einer Gaußfunktion annimmt. Es fällt auf, dass die Amplituden der Signale mit und ohne Hauptverstärker in linearem Zusammenhang stehen. Während auf dem Oszillogramm mehrere Impulse gleichzeitig angezeigt werden, handelt es sich tatsächlich um eine Überlagerung einer hohen Zahl nacheinander gemessener Impulse. Jeder beobachtete Spannungsimpuls entspricht einer Schar von Photonen, die mit ähnlicher Energie in einem kurzen Zeitfenster nacheinander gemessen wurden. Aufgrund der Linienbreite der beobachteten Photonen und abweichenden Impulsformen weist das Oszillogramm geringe zeitliche Schwankungen auf.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO13.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO16.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Oszillogramm des Slow-Signals mit (\texttt{CH II}) und ohne (\texttt{CH I}) pulsformenden Hauptverstärker. Der Hauptverstärker erhöht die Spannungsamplitude und formt das Signal zu einer annähernden Gaußglocke. Die Detektionsrate am rechten Detektor ist deutlich höher, wie man an der Intensität der Linien erkennt.}
+        \label{fig:Oszi_Kontrolle_Slow-Pulse}
+    \end{figure}
+    
+
+
+\subsection{Triggerung mit dem SCA}
+    Nun wurde das durch den Hauptverstärker geformte Slow-Signal mit einem Splitter\footnote{Die Teilung des Slow-Signals erfolgt mit einem symmetrisch-spaltenden Splitter, der durch $\SI{50}{\Omega}$-Abschlüsse lastunabhängig funktioniert. Diese Eigenschaft der Signal-Teilung wird nicht durch jedes beliebige Kabel erfüllt, weswegen hier ein Splitter verwendet wird.} symmetrisch gespalten und einmal über einen Delay-Verstärker sowie einmal über den SCA mit offenem SCA-Fenster an das Oszilloskop gegeben (Abb. \ref{fig:Schaltplan_SCA-Trigger}). Dabei soll der SCA-Zweig für die spätere Triggerung des MCA-Gates vorbereitet werden, damit im weiteren Verlauf Energie-Spektren aufgenommen werden können. In erster Linie wird dafür nun die Koinzidenz des SCA-Trigger-Signals mit dem anlogen Slow-Signal benötigt, welche durch Verzögerung am Delay-Verstärker eingestellt werden kann. Die Verstärkung des analogen Signals sollte so gewählt werden, dass sich die Amplitude der $\SI{511}{keV}$-Linie im Bereich $[\SI{3}{V}, \SI{4}{V}]$ befindet, damit diese noch im Aufnahmebereich des MCAs liegt.\\
+
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Aufbau_3a.jpg}
+            \caption{}
+            \label{fig:Schaltplan_SCA-Trigger}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Aufbau_3b.jpg}
+            \caption{}
+            \label{fig:Schaltplan_SCA+GDG-Trigger}
+        \end{subfigure}
+        \caption{Schaltpläne zur Triggerung mit dem SCA. Mit Schaltplan (a) wird zunächst zeitliche Koinzidenz und die Einstellung der Impulshöhe vorgenommen. Anschließend wird mit einem GDG in Schaltplan (b) der Trigger-Impuls verlängert.}
+    \end{figure}
+    Die Oszillogramme in Abbildung \ref{fig:Oszi_Triggerung_SCA} zeigen in blau das Rechtecksignal bei Triggerung des SCAs und die gleichzeitig eintreffenden analogen Signale vom Hauptverstärker in gelb. Die Verzögerung des Delay-Verstärkers und die Verstärkung des Hauptverstärkers wurden entsprechend des Mess-Vorhabens angepasst und es ist zu sehen, dass die Signale von SCA und Delay-Verstärker zeitlich koinzident sind. Bei der $\SI{511}{keV}$-Linie handelt es sich mutmaßlich um den Impuls mit etwa der halben Amplitude des SCA-Signals. Der Grund für diese Vermutung ist, dass diese Linie am Oszilloskop am kontinuierlichsten beobachtbar war, also besonders häufig auftritt, wie es von der $\SI{511}{keV}$-Linie zu erwarten wäre. Keine andere Linie erschien so häufig oder mit einer ähnlich wenig variierenden Amplitude. Die genaue Amplitude der $\SI{511}{keV}$-Linie kann aus dem Oszillogramm zu $U_{511} = \SI{3.5 +- 0.3}{V}$ bestimmt werden.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO14.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO18.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Oszillogramm des Slow-Signals durch den Delay-Verstärker (\texttt{CH I}) und durch den SCA (\texttt{CH II}). Die SCA-Fenster sind ganz geöffnet, sodass sämtliche Emissionlinien beobachtbar sind. Am rechten Detektor wurde die untere SCA-Schwelle gering angehoben, um Signal-Dopplungen aufgrund eines technisch bedingten Randeffekts im dazugehörigen Potentiometer zu verhindern. Ohne diese Einstellungen erschien ein zweiter SCA-Puls nahe des rechten Bildrands, der möglicherweise spätere Messungen verfälschen könnte.}
+        \label{fig:Oszi_Triggerung_SCA}
+    \end{figure}
+    Während die Einstellung der Signalzweige am linken Detektor ohne Komplikationen verlief, bestand beim rechten Detektor anfangs das Problem, dass trotz Triggerung des Oszilloskops mit dem SCA mehrere SCA-Pulse flimmernd am rechten Bildrand zu beobachten waren (Abb. \ref{fig:Oszi_Triggerung_SCA_Geister}). Diese Problem konnte nur behoben werden, indem die untere SCA-Schwelle leicht angehoben wurde. Eine mögliche Erklärung für dieses unerwünschte Phänomen ist, dass das Schwellen-Potentiometer hier Randeffekte verursachte, wie es an anderer Stelle bei Potentiometern der Delay-Einstellung auch beobachtet wurde.
+    Eine andere mögliche Erklärung ist, dass die zusätzlichen verspäteten SCA-Impulse von Signal-Reflektionen im Aufbau herrühren. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{figs/SUSKO19.PNG}
+        \caption{Oszillogramm des Slow-Signals durch den Delay-Verstärker (\texttt{CH I}) und durch den SCA (\texttt{CH II}) am rechten Detektor. Mit der unteren SCA-Schwelle am Minimum sind regelmäßig Doppel-Erscheinungen des SCA-Signals sichtbar.}
+        \label{fig:Oszi_Triggerung_SCA_Geister}
+    \end{figure}
+    Um die anschließende Aufnahme der Energie-Spektren von $^{22}$Na und $^{133}$Ba zu ermöglichen, wurde nun ein GDG hinter den SCA geschaltet (Abb. \ref{fig:Schaltplan_SCA+GDG-Trigger}), dessen Aufgabe es ist, durch Verzögerung und Verlängerung der SCA-Signale den vollständigen Einschluss der analogen Impulse im Trigger-Fenster zu erreichen. Da der MCA zu jedem eintreffenden Impuls das Maximum innerhalb des Gate-Signalfensters misst, muss gewährleistet werden, dass das Maximum jedes Impulses zeitlich innerhalb des Gate-Pulses liegt. Die Oszillogramme in Abbildung \ref{fig:Oszi_Triggerung_SCA+GDG} zeigen das Ergebnis dieser Justage an beiden Detektoren. Trotz der leicht erhöhten SCA-Schwelle am rechten Detektor ist keine Extinktion von Signalen niedriger Amplitude zu beobachten.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO15.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO20.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Oszillogramm des Slow-Signals durch den Delay-Verstärker (\texttt{CH I}) und durch den SCA mit GDG (\texttt{CH II}). Das SCA-Signal wurde durch den GDG verbreitert und verzögert, sodass es als Gate-Signal für das Signal aus dem Delay-Verstärker fungieren kann.}
+        \label{fig:Oszi_Triggerung_SCA+GDG}
+    \end{figure}
+    Die Gate-Zweig mit SCA und GDG sowie der analoge Zweig mit Delay-Verstärker sind nun hinreichend koinzident, sodass der MCA angeschlossen werden kann.
+
+
+
+\subsection{Energiespektren von Na und Ba aufnehmen}
+    Damit im späteren Verlauf die Slow-Signale für die Detektion der $\SI{356}{keV}$- und $\SI{81}{keV}$-Linie verwendet werden können, musste eine Energieeichung des MCA durchgeführt werden. Ziel ist dabei, alle Verstärker im Aufbau so einzustellen, dass im Messbereich des MCA sowohl die $\SI{511}{keV}$-Linie des Natriums als auch die $\SI{81}{keV}$-Linie des Bariums klar erkennbar sind. Später wird auch noch an die $\SI{31}{keV}$-Linie des Bariumspektrums, welche der charakteristischen K-$\alpha$-Linie entspricht, gefittet werden.
+    \footnote{Diese Linie ist so prominent im Spektrum vorhanden, da sie eine Konsequenz jedes einzelnen Barium-Zerfalls ist. Barium zerfällt immer durch Elektroneneinfang: dabei wird ein Elektron --- meist aus der K-Schale --- in den Kern absorbiert. Diese \enquote{Lücke} wird durch ein Elektron einer höheren Schale --- meist der L-Schale --- gefüllt, wobei die charakteristische Strahlung entsteht.} 
+    Um die nötige Justage durchzuführen, wurde der SCA-Ausgang über den GDG ans Gate des MCA geleitet, während das Signal des Delay-Verstärkers am analogen MCA-Eingang lag. Dieser Aufbau ist in Abbildung \ref{fig:Schaltplan_MCA_Energiespektren} gezeigt. Nun lagen am MCA gerade die Signale aus Abbildung \ref{fig:Oszi_Triggerung_SCA+GDG} an; die Ausgabe des MCA ist also ein Histogramm der dort (an Kanal 1) sichtbaren Amplituden. Die Ergebnisse aller folgenden MCA-Messungen wurden durch das Programm \textit{MCA3} am bereitgestellten PC aufgenommen und für die Auswertung als einfache Text-Dateien exportiert.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.42\linewidth]{figs/Aufbau_4.jpg}
+        \caption{Schaltplan zur Messung der Energiespektren von $^{22}$Na und $^{133}$Ba mit dem MCA. }
+        \label{fig:Schaltplan_MCA_Energiespektren}
+    \end{figure}
+    
+    Zunächst wird das Natrium-Spektrum aufgenommen, wobei darauf geachtet wird, dass der $\SI{511}{keV}$-Peak klar erkennbar ist. Das resultierende Spektrum ist in Abbildung \ref{fig:Plot_Na_Spektrum} gezeigt. Dort ist für beide Detektoren am linken Rand der Compton-Untergrund erkennbar, gefolgt vom scharfen $\SI{511}{keV}$-Peak. Der weitere sichtbare Peak etwas weiter rechts im Bild ist vermutlich auf die $\SI{1274}{keV}$-Linie des Natriumspektrums zurückzuführen (vgl. Abb. \ref{fig:Zerfallsschema_Na}), wird jedoch im weiteren Verlauf nicht weiter untersucht.
+
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/01_Na_Spektrum_Links.jpg}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/04_Na_Spektrum_Rechts.jpg}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Messung des Energie-Spektrums von $^{22}$Na am MCA. Am linken Rand ist das Compton-Kontinuum sichtbar, welches von der dominanten $\SI{511}{keV}$-Linie und schließlich dem $\SI{1275}{keV}$-Übergang gefolgt wird. Die Messung am rechten Detektor basiert auf einer geringeren Zählrate, wodurch sichtbar wird, dass die scheinbar kontinierliche Messkurve auf dem diskreten Histogramm des MCAs basiert. Dies führt auch direkt zu der Bildung der sichtbaren horizontaler Linien.}
+        \label{fig:Plot_Na_Spektrum} 
+    \end{figure}
+    
+    Nun wurde die Verstärkung am Hauptverstärker so weit hochgedreht, sodass die $\SI{511}{keV}$- Linie am rechten Rand des vom MCA erfassten Energiespektrums lag (Abb. \ref{fig:Plot_Na_Spektrum_Fit}). Auf diese Weise wird die größtmögliche Energie-Auflösung in Kanälen des MCA erreicht, während alle relevanten Linien gleichzeitig beobachtbar sind (vgl. Barium-Spektrum in Abb. \ref{fig:Plot_Ba_Spektrum_Fit}). Von nun an darf die Verstärkung des Hauptverstärkers nicht mehr verändert werden, da sie den Skalierungsfaktor der Energie-Kanal-Zuordnung bestimmt. Zur Bestimmung der Position der Linien $\mu(K)$ in Abhängigkeit vom Kanalindex $K$ wird eine Gaußglocke der Form 
+    \begin{align} \label{equ:spektrum_gauss_fit_allgemein}
+        G(K) \coloneqq N \cdot \exp{\left(- \frac{1}{2}  \frac{(K - \mu)^2}{\sigma^2}  \right)}
+    \end{align}
+    an die bekannten Linien numerisch angepasst. Dabei beschreibt $N$ die Höhe des Intensitätsmaximums, $\mu$ die Position des Maximums uns $\sigma$ die Breite des Maximums. Die Beziehung zwischen der $1\sigma$-Breite der Kurve zum \textit{Full Width at Half Maximum} $\sigma \sub{FWHM}$ lautet
+    \begin{align} \label{equ:FWHM_Umrechnung}
+        \sigma \sub{FWHM} = 2 \sigma \sqrt{2 \cdot \ln{(2)}} \qquad \text{.}
+    \end{align}
+
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/02_Na_Links_511keV_Fit.jpg}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/05_Na_Rechts_511keV_Fit.jpg}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Messung des Energie-Spektrums von $^{22}$Na am MCA. Die $\SI{511}{keV}$-Linie wurde durch Einstellung des Hauptverstärkers an den rechten Rand des Messbereichs verschoben. Die Kanal-Energie-Zuordnung wurde aus den Fits bekannter Linien berechnet und nachträglich angebracht.}
+        \label{fig:Plot_Na_Spektrum_Fit}
+    \end{figure}
+
+\subsection{Energiekalibration} \label{sect:energiekalibration}
+    Abbildung \ref{fig:Plot_Na_Spektrum_Fit} zeigt, dass für beide Detektoren analoge Natrium-Spektren aufgenommen worden sind, wobei beim rechten Detektor ein geringfügig kleinerer Verstärkungsfaktor zur Stauchung des Spektrums in der Horizontalen führt. Nach dem Compton-Kontinuum bei niedrigen Energien kann der $\SI{511}{keV}$-Peak beobachtet werden, dessen Anpassung nach Gleichung \eqref{equ:spektrum_gauss_fit_allgemein} optisch akkurat wirkt und eine Güte von $\chi^2 \leq 40$ aufweist.
+    
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/03_Ba_Links_Fits.jpg}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/06_Ba_Rechts_Fits.jpg}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Messung des Energie-Spektrums von $^{133}$Ba am MCA. Die Positionen $4$ bekannter Linien wurden zusammen mit der $\SI{511}{keV}$-Natrium-Linie zur Berechnung der Kanal-Energie-Zuordnung verwendet. Neben der K$_\alpha$-Linie von $^{133}$Ba bei $\SI{31}{keV}$ wurden $3$ Übergänge des Zerfallsprodukt $^{133}$Cs angepasst und es ist ein potentieller Summen-Peak bei ungefähr $\SI{110}{keV}$ zu sehen.}
+        \label{fig:Plot_Ba_Spektrum_Fit}
+    \end{figure}
+
+    Um den so gefitteten Peaks Energien zuordnen zu können, ist der Rückgriff auf die in \cite{Praktikumsanleitung} gegebenen Zerfallsschemata (Abb. \ref{fig:Zerfallsschema_Na} bzw. \ref{fig:Zerfallsschema_Ba}) nötig. Damit ist eine eindeutige Zuordnung der gefitteten Peaks zur $K_\alpha$-Linie ($\SI{31}{keV}$ \cite{Reference_31keV}) und drei Spektrenllinien ($\SI{81}{keV}$, $\SI{302}{keV}$ und $\SI{356}{keV}$ \cite{Reference_81keV+302keV+356keV}) von $^133$Cs sowie der $\SI{511}{keV}$-Linie des Natriums \cite{Reference_511keV} möglich. Die Parameter der einzelnen Fitfunktionen sind in \ref{tab:energiekalibration_fitparameter_links} und \ref{tab:energiekalibration_fitparameter_rechts} tabelliert.
+    
+    Neben den im Termschema angegebenen Maxima können aufgrund der Messmethodik noch weitere Linien erscheinen. Neben dem Compton-Untergrund, welcher im Natrium-Spektrum sehr deutlich und im Barium-Spektrum nur klein auftritt, können insbesondere andere charakteristische Energien und sog. \enquote{Summenpeaks} entstehen. Die charakteristischen Energien, beispielsweise die außerordentlich prominente K-$\alpha$-Linie am linken Rand des Bariumspektrums, entstehen bei Übergängen innerhalb der Elektronenhülle. Beispielsweise könnte die K-$\beta$-Linie des Cäsiums (ca. $\SI{35}{keV}$, \cite{Emission_Energies}) im Spektrum auftreten, wobei sie von der K-$\alpha$-Linie so stark überschattet würde, dass sie kaum sichtbar ist. Ein Summenpeak tritt dagegen auf, wenn die Photonen von zeitlich koinzidenten Zerfällen gleichzeitig in der PMT detektiert werden, wodurch ein Signal proportional zur summierten Energie der beiden ausgegeben wird. Die PMT kann die zwei Teilchen schließlich nicht unterscheiden.
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|} \hline
+            $\mu \sub{expect}$ / \unit{keV} & $\mu$ / \unit{keV} &  $\mu$ / Kanal & $\sigma$ / Kanal & N / 1 \\ \hline
+            $\num{30.8500 +- 0.0000}$ & $\num{30.5664 +- 0.0080}$ & $\num{397.5602 +- 0.0607}$ & $\num{37.6649 +- 0.0589}$ & $\num{5446.2894 +- 10.4189}$   \\
+            $\num{80.9979 +- 0.0011}$ & $\num{83.3656 +- 0.0158}$ & $\num{1177.0230 +- 0.1637}$ & $\num{57.6777 +- 0.1738}$ & $\num{1487.1983 +- 4.5936}$   \\
+            $\num{302.8508 +- 0.0005}$ & $\num{297.3266 +- 0.1850}$ & $\num{4335.6788 +- 2.6836}$ & $\num{194.4091 +- 5.8166}$ & $\num{166.1371 +- 1.2063}$   \\
+            $\num{356.0129 +- 0.0007}$ & $\num{348.1703 +- 0.0882}$ & $\num{5086.2721 +- 1.1581}$ & $\num{210.4838 +- 1.3549}$ & $\num{412.9380 +- 1.4201}$   \\
+            $\num{510.99895069(16)}$ & $\num{505.0525 +- 0.0950}$ & $\num{7402.2875 +- 1.1092}$ & $\num{247.8865 +- 1.3231}$ & $\num{180.8478 +- 0.8415}$ \\ \hline
+        \end{tabular}
+        \caption{Fit-Parameter $(\mu, \sigma, N)$ der Anpassung von Gaußfunktionen an die erwarteten Linien $\mu \sub{expect}$ am linken Detektionskreis. Die Linien stimmen in allen Fällen nahe überein, wenn auch die Messwerte um ein Vielfaches der Unsicherheiten von den Literaturwerten abweichen. Dies spricht für eine systematische Unterschätzung der Unsicherheiten durch die Anpassung.}
+        \label{tab:energiekalibration_fitparameter_links}
+    \end{table}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|} \hline
+            $\mu \sub{expect}$ / \unit{keV} & $\mu$ / \unit{keV} &  $\mu$ / Kanal & $\sigma$ / Kanal & N / 1 \\ \hline
+            $\num{30.8500 +- 0.0000}$ & $\num{30.5027 +- 0.0084}$ & $\num{360.0011 +- 0.0617}$ & $\num{37.4778 +- 0.0629}$ & $\num{5655.5953 +- 10.8250}$   \\
+            $\num{80.9979 +- 0.0011}$ & $\num{83.8812 +- 0.0166}$ & $\num{1147.4415 +- 0.1671}$ & $\num{56.5631 +- 0.1895}$ & $\num{1587.8571 +- 4.9020}$   \\
+            $\num{302.8508 +- 0.0005}$ & $\num{300.1843 +- 0.1665}$ & $\num{4338.3482 +- 2.3923}$ & $\num{188.6364 +- 5.1834}$ & $\num{176.0178 +- 1.2477}$   \\
+            $\num{356.0129 +- 0.0007}$ & $\num{351.1981 +- 0.0913}$ & $\num{5090.9035 +- 1.1797}$ & $\num{212.5678 +- 1.3501}$ & $\num{438.4864 +- 1.4507}$   \\
+            $\num{510.99895069(16)}$ & $\num{497.3309 +- 0.1073}$ & $\num{7246.6568 +- 1.2924}$ & $\num{238.6558 +- 1.2434}$ & $\num{101.8400 +- 0.6153}$\\ \hline
+        \end{tabular}
+        \caption{Fit-Parameter $(\mu, \sigma, N)$ der Anpassung von Gaußfunktionen an die erwarteten Linien $\mu \sub{expect}$ am rechten Detektionskreis. Das qualitative Verhalten stimmt mit dem linken Detektor überein.}
+        \label{tab:energiekalibration_fitparameter_rechts}
+    \end{table}
+    
+    Die Tabellen \ref{tab:energiekalibration_fitparameter_links} und \ref{tab:energiekalibration_fitparameter_rechts} zeigen in der ersten Spalte die Literaturwerte der vermuteten Emissionslinien im Vergleich zu den Fit-Parametern des entsprechenden Maximums gemäß Gleichung \eqref{equ:spektrum_gauss_fit_allgemein}. Die Berechnung der experimentell ermittelten Maxima $\mu$ in $\unit{keV}$ folgt aus der linearen Kanal-Energie-Zuordnung.
+    Diese Zuordnung geschieht zunächst ohne die Annahme, dass der MCA korrekt funktioniert und eine etwa lineare Energie-Kanal-Beziehung besteht. Die Linearität ist zwar visuell bereits einigermaßen ersichtlich, wird aber durch den linearen Fit an die vorgenommene Kanal-Energie-Zuordnung bestätigt: wenn die eben ermittelten Gaußian-Schwerpunkte $\mu$ gegen die jeweils dazugehörige Energie aufgetragen werden, ergibt sich Abb. \ref{fig:Plot_Energie_Kalibration}. An diese Datenpunkte wird ein linearer Fit der in Gleichung \ref{equ:energiekalibration_linear} gegebenen Form durchgeführt; die dadurch ermittelten Fitparameter sind in Tabelle \ref{tab:Fitwerte_E-Kalibration} aufgetragen.
+    \begin{align} \label{equ:energiekalibration_linear}
+        K(E) \coloneqq \alpha \cdot E + \beta
+    \end{align}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|} \hline
+            Parameter   &$\alpha$ / \unit{\per \eV} & $\beta$ / Kanal \\ \hline
+            Links & $\num{14.7628 +- 0.0017}$ & $\num{-53.6841 +- 0.0871}$   \\ \hline
+            Rechts & $\num{14.7520 +- 0.0018}$ & $\num{-89.9751 +- 0.0915}$   \\ \hline
+        \end{tabular}
+        \caption{Fit-Parameter der Energie-Kalibrationen links und rechts für die Geradengleichung $K = \alpha \cdot E + \beta $ (vgl. Abb. \ref{fig:Plot_Energie_Kalibration}).}
+        \label{tab:Fitwerte_E-Kalibration}
+    \end{table} 
+
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Energy_Kalibration_Fit_Links.jpg}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Energy_Kalibration_Fit_Rechts.jpg}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Linearer Fit des Mittelwert $\mu$ von bekannten Emissionslinien gegen ihre vorhergesagten Energien. Die geringe Güte $\chi^2$ des Fits ist auf die geringen Unsicherheiten $\Delta \mu$ zurückzuführen, während der Fit in beiden Fällen optisch akkurat wirkt.}
+        \label{fig:Plot_Energie_Kalibration}
+    \end{figure}
+    Bei dieser Anpassung wurde der Kanal-Index $K$ in Y-Richtung aufgetragen, da die Unsicherheiten der dazugehörigen Werte $\mu$ (in der Einheit [Kanal]) als Grundlage der Bestimmung der Fit-Parameter verwendet werden sollen. Zwar ist es auch möglich, sowohl Unsicherheiten in X- als auch in Y-Richtung in die Anpassung einfließen zu lassen, dies ist jedoch technisch aufwendiger und hier nicht notwendig, da die Unsicherheiten der Literaturwerte klein gegen die Unsicherheiten der Fit-Parameter sind.
+
+    Zuletzt kann für die einzelnen Spektrallinien, an die eine Gaußfunktion angepasst worden ist, die Energieauflösung bestimmt werden. Dafür sei die Energieauflösung als die \textit{Full Width at Half Maximum} der angepassten Gaußkurve, angegeben in \si{keV}, definiert. Man erinnere: die Definition der Gaußkurve anhand Gleichung \ref{equ:spektrum_gauss_fit_allgemein} führt direkt auf die Definition der FWHM $\sigma_{FWHM}$ nach Gleichung \ref{equ:FWHM_Umrechnung}. Die so bestimmte FWHM beschreibt jedoch noch eine Anzahl MCA-Kanäle, keine Energie. Indem Gleichung \ref{equ:energiekalibration_linear} nach $E(K) = (K-\beta)/\alpha$ umgestellt wird, kann eine Umrechnung der FWHM in die Energieauflösung geschehen: 
+    \begin{align*}
+        \Delta E = \frac{\sigma_{FWHM}}{\alpha} = 2 \sqrt{2\ln{(2)}} \cdot \frac{\sigma}{\alpha}
+    \end{align*}
+    
+    Die Fehlerschätzung geschieht durch Gauß'sche Fehlerfortpflanzung unter der Annahme, dass $\sigma$ und $\alpha$ unabhängig voneinander sind. Dies ergibt --- jeweils für den linken und rechten Detektor mit den in Tabelle \ref{tab:energiekalibration_fitparameter_links} bzw. \ref{tab:energiekalibration_fitparameter_rechts} festgehaltenen $\sigma$-Werten und den $\alpha$-Werten aus \ref{tab:Fitwerte_E-Kalibration} durchgerechnet --- die in Tabelle \ref{tab:energiekalibration_energieauflösung_links} und \ref{tab:energiekalibration_energieauflösung_rechts} (der Übersichtlichkeit halber im Anhang) gegebenen Energieauflösungen. Beide Detektoren ergeben in ähnlichen Energieauflösungen. Die Linien höherer Energien, welche im Spektrum weiter rechts und breiter erscheinen, weisen wie erwartet eine niedrigere Auflösung auf.
+
+    
+
+\subsection{Einstellung der SCA-Fenster} \label{sec:Einstellung_SCA-Fenster}
+    Da die SCAs im weiteren Verlauf als Energiefilter eingesetzt werden sollen, ist es wichtig, die unteren und oberen SCA-Schwellenwerte in \si{keV} zu kennen. Ebenso sollte die korrekte Funktion der SCAs verifiziert werden. Dafür wurden in diesem Schritt die eben aufgenommenen Natrium-Spektren noch einmal aufgenommen, dieses Mal jedoch mit Begrenzung durch den SCA. Die Schaltung wird hierfür nicht verändert, ist also noch immer durch Abb. \ref{fig:Schaltplan_MCA_Energiespektren} gegeben.
+    
+    Als nun die SCA-Schwellen verstellt wurden, beobachteten wir am Computer, dass das Spektrum außerhalb eines bestimmten Intervalls --- eben dem SCA-Fenster --- aufhörte, zu \enquote{wachsen}. Wir stellten dieses Fenster so ein, dass nur noch der $\SI{511}{keV}$-Peak wuchs, und starteten eine neue Messung. Das resultierende Spektrum ist in Abb. \ref{fig:plot_Na_Fenster} gezeigt: es ist nur noch der $\SI{511}{keV}$-Peak zu erkennen, die Zählrate in allen anderen Bereichen ist null.\footnote{Die niedrige Peak-Höhe und dadurch höhre Unsicherheit dieser Spektren ist durch limitierte Messzeit bedingt. Da jedoch keine quantitative Analyse dieser Spektren geschehen wird, beeinträchtigt dies nicht die weitere Auswertung.} Dies entspricht genau der Erwartung, dass der SCA die eingehenden Signale nach Amplitude filtert. Eine weitere Bestätigung dieses Verhaltens fanden wir durch Betrachtung der Gate- und Eingangssignale am Oszilloskop statt dem MCA, zu sehen in Abb. \ref{fig:Oszi_Na_Fenster}. Wie bereits mit offenem SCA-Fenster (vgl. Abb. \ref{fig:Oszi_Triggerung_SCA+GDG}) beobachtet, zeigt das Oszilloskop eine zeitliche Überlagerung des Gate-Signals und des annähernd gaußförmigen Slow-Pulses. Jedoch treten hier nur noch Pulse innerhalb eines kleinen Amplitudenintervalls auf, da der SCA (und daher das Oszillskop) nur triggern, wenn der eingehende Puls eine gewisse Amplitude hat.
+    
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/07_Na_Spektrum_Fenster_Links.jpg}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/08_Na_Spektrum_Fenster_Rechts.jpg}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Messung des Energie-Spektrums von $^{22}$Na am MCA nach Einstellung der Einkanal-Fenster am SCA um die $\SI{511}{keV}$-Linie. Die diskrete Natur der Messung am MCA wird durch die geringen Zählraten erkennbar. }
+        \label{fig:plot_Na_Fenster}
+    \end{figure}
+    
+     Die Position der SCA-Schwellen entspricht dem ersten bzw. letzten Kanal im Spektrum, welcher mindestens ein Ereignis gemessen hat. Bei Analyse der Daten wird die Unsicherheit der Schwellen empirisch auf $5$ Kanäle abgeschätzt. Tabelle \ref{tab:SCA-Fenster_Schwellen_Na} zeigt, dass für den linken Detektor ein höher gelegenes SCA-Fenster verwendet wurde.
+     
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|} \hline
+            Detektor & $K \sub{min}$ / Kanal & $K \sub{max}$ / Kanal & $E \sub{min}$ / $\unit{keV}$ & $E \sub{max}$ / $\unit{keV}$ \\ \hline
+            Links & $\num{7021 +- 5}$ & $\num{8018 +- 5}$ & $\num{479.2248 +- 0.3432}$ & $\num{546.7596 +- 0.3445}$   \\ 
+            Rechts & $\num{6699 +- 5}$ & $\num{7917 +- 5}$ & $\num{460.2067 +- 0.3438}$ & $\num{542.7717 +- 0.3456}$ \\ \hline
+        \end{tabular}
+        \caption{Positionen der unteren und oberen SCA-Schwellen in Abbildung \ref{fig:plot_Na_Fenster} in Kanalindex $K$ sowie in Energie $E$.}
+        \label{tab:SCA-Fenster_Schwellen_Na}
+    \end{table}
+    Anschließend wurde das entsprechende Signal nun mit dem Oszilloskop betrachtet und wie erwartet sind alle Impuls-Linien bis auf die als $\SI{511}{keV}$-Linie verschwunden. Somit erfüllt der SCA seine Funktion der Energie-Selektion: es sind nur noch Signale in einem kleinen Amplitudenbereich sichtbar (vgl. Abb. \ref{fig:Oszi_Na_Fenster}).
+    
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO21.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO22.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Betrachtung von MCA-Eingang (\texttt{CH I}) und MCA-Gate (\texttt{CH II}) am Oszilloskop mit eingestelltem SCA-Fenster. Aufgrund des Einkanalfensters sind nur noch Impulse der $\SI{511}{keV}$-Linie zu sehen. }
+        \label{fig:Oszi_Na_Fenster}
+    \end{figure}
+    
+    % Reines finales formatierungs-Ding, wir haben hässliche Seitenumbrüche
+    \newpage
+    Für die weiterführenden Messungen mit dem Fast- Schaltkreis und die finale Lebensdauermessung wurden der Splitter und Delay-Verstärker nicht mehr benötigt. Dennoch bleiben beide Komponenten in der Schaltung verbaut. Zwar sind beide Komponenten darauf ausgelegt, dass keine Verfälschungen des an den SCA-Signals auftreten --- der abgekoppelte Delay-Verstärker entspricht praktisch einer einfachen $\SI{50}{\Omega}$-Abschlussimpedanz --- aber wir können uns dessen nie ganz sicher sein. Es könnte beispielsweise zu ungewollten Signalreflexionen kommen, dessen Entfernung durch Ausbau der Komponenten die Validität der vorhergehenden Verstärker- und Energieanpassung beeinträchtigen könnte. Um also solche unerwarteten Veränderungen des in den SCA laufenden Signals zu vermeiden, bleiben beide Bauteile verbaut.
+    
+
+\subsection{Herstellung der Slow-Koinzidenz}
+    Für die spätere Lebensdauermessung ist es essenziell, dass die Mess-Elektronik des linken und rechten Detektors gleichzeitig eine logische $1$ ausgeben, wenn die gesuchte Zerfallskette durch den $5/2^+$-Zustand auftritt. Daher muss nun die zeitliche Koinzidenz beider SCA-Signale gewährleistet werden. Um dies zu bewerkstelligen, sind nach dem Schaltplan in Abb. \ref{fig:Schaltplan_Na_Slow-Koinzidenz} die SCA-Signale beider Aufbauhälften verglichen worden. Dabei muss die Natriumquelle verwendet werden, da die Elektron-Positron-Annihilation, die auf den $\beta^+$-Zerfall folgt, (in hinreichender Näherung) zeitlich koinzidente Lichtpulse in die zwei Szintillatoren emittiert. Durch Einstellung der Verzögerungen an den SCAs ist die in Abb. \ref{fig:Oszi_Na_Slow-Koinzidenz} gezeigte Koinzidenz erreicht worden.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{figs/Aufbau_7.jpg}
+        \caption{Schaltplan zur Herstellung der Slow-Koinzidenz für die $^{22}$Na-Quelle.}
+        \label{fig:Schaltplan_Na_Slow-Koinzidenz}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\Woszi]{figs/SUSKO23.PNG}
+        \caption{Oszillogramm der SCA-Ausgänge vom linken (\texttt{CH I}) und rechten Slow-Signal. Durch Verzögerung am SCA-Delay wurde die Überlappung beider Signale und somit Slow-Koinzidenz hergestellt.}
+        \label{fig:Oszi_Na_Slow-Koinzidenz}
+    \end{figure}
+    
+    An diesem Bild ist erkennbar, dass die Signale der zwei SCAs sich stark ähneln; im Idealfall wären sie genau gleich. Der minimale Unterschied in der Amplitude und Dauer der Signale ist zu klein, als dass die Koinzidenzmessung im weiteren Verlauf davon gestört würde. Die Formen beider Signale entsprechen näherungsweise Rechtecksignalen, welche jedoch an den Kanten aufgrund der endlichen Bandbreite des SCAs abgerundet wirken. Die Signale haben die gleiche Dauer von etwa $\SI{600+-50}{ns}$, was in einigen Fällen zu gering wäre, um als Gate-Signal für den MCA zu fungieren. Aus diesem Grund ist ein GDG zwischen der logischen $1$ des SCAs und dem MCA-Gate notwendig. Beide Signale sind nicht exakt gleichzeitig, aber sie überlappen weitestgehend und sind somit im Sinne der Koinzidenzeinheit koinzident.

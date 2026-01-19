@@ -1,0 +1,71 @@
+\section{Untersuchung einer Bodenprobe}
+    Zuletzt soll mit dem HPGe-Detektor das Spektrum einer Bodenprobe ausgemessen werden. Indem anschließend die Energien der beobachteten Spektrallinien den bekannten Spektren häufiger radioaktiver Isotope verglichen werden, können Rückschlüße auf das Vorkommen radioaktiver Elemente in der Probe gezogen werden. 
+
+\subsection{Durchführung}
+    Die verwendete Probe beinhaltet knapp ein Kilogramm Erde, die nahe dem Allgemeinen Verfügungszentrum 1 der Universität Bonn (Endenicher Alle 11-13, 53115 Bonn) entnommen wurde. Die Erde ist in einem dünnen, durchsichtigen Plastikbeutel verpackt und wird direkt vor dem HPGe-Detektor platziert, um die Detektionsrate zu maximieren. Die Messung wird über einen Zeitraum von $\SI{18}{h}$ durchgeführt, da die Aktivität der Probe sehr niedrig ist. Insbesondere werden die relativen statistischen Unsicherheiten $\Delta N / N \coloneq 1/\sqrt{N}$ durch längere Messzeiten reduziert. Dies erleichtert die spätere Auswertung.
+    
+    Um einfallende Hintergrundstrahlung zu reduzieren, werden Detektor und Probe mit Blöcken aus Blei abgeschirmt (vgl. Abb. \ref{fig:Aufbau_HalbleiterDetektor}). Der Strahlungshintergund kann jedoch gefiltert werden, um das Probenspektrum zu isolieren. Dazu wird zusätzlich eine Hintergrundmessung durchgeführt, für die die Probe aus dem Aufbau entfernt wird. Die Geometrie der Abschirmung und die Messdauer bleiben dabei unverändert. Diese Korrektur basiert auf der berechtigten\footnote{Die Messung mit Probe wurde zwischen ca. 17:00, 04.12.2025 und 11:00, 05.12.2025 durchgeführt. Die Hintergrundmessung wurde zwischen ca. 13:00, 05.12.2025 und 09:00, 06.12.2025 durchgeführt. In diesen Zeiträumen sind keine Ereignisse geschehen, die eine signifikante Änderung des Hintergrundspektrums implizieren würden.} Annahme, dass die Komposition des Hintergrundspektrums sich in der Zeit zwischen den Messungen nicht verändert hat. Das erhaltene Hintergrund-Spektrum kann in der Auswertung vom Probenspektrum abgezogen werden, um die Beiträge der Hintergrundstrahlung zu unterdrücken. 
+    
+
+
+\subsection{Extraktion der \texorpdfstring{$\gamma$}{TEXT}-Energien}
+    Die Messung des Proben- und Hintergrundspektrums ergibt die in Abb. \ref{fig:spektrum_langzeitmessung_probe} und \ref{fig:spektrum_langzeitmessung_hintergrund} gezeigten Spektren. Da die Messdauer für beide Spektren identisch ist, kann das Hintergrundspektrum ohne eine vorherige Normierung von dem Probenspektrum abgezogen werden. Dieses Spektrum, der Übersichtlichkeit wegen zunächst ohne Anpassungskurven in Abb. \ref{fig:spektrum_langzeitmessung_differenz} (Anhang), enthält 12 wohldefinierte $\gamma$-Linien. An jede $\gamma$-Linie ist eine Gauß-Funktion mit additivem linearen Untergrund (vgl. Gleichung \ref{eq:Gauss_mit_Bg}) angepasst worden; dies ergibt Abbildung \ref{fig:spektrum_langzeitmessung_differenz_fit}. Da die angepassten Kurven sehr schmal sind, zeigen Abb. \ref{fig:spektrum_bodenprobe_zoom_1} bis \ref{fig:spektrum_bodenprobe_zoom_6} die einzelnen angepassten Kurven in einer Detailansicht. Die Fitparameter aller Kurven sind in Tabelle \ref{tab:langzeit_fit_params} festgehalten.
+    
+    Notiz: Sowohl das Probenspektrum als auch das Hintergrundspektrum weisen Maxima bei ca. Kanal $800$ auf, dessen unterschiedliche Höhen auf einen Einfluss der Probe hindeuten könnten. Jedoch zeigt sich dies im Differenzspektrum nur als erhöhter Wert in einem einzigen Kanal, wobei nebenliegende Kanalwerte im niederenergetischen Rauschen untergehen oder sogar negativ daraus hervorstechen. Daher wird eine Anpassung an diesen Wert übersprungen.
+    
+    Mithilfe der in Gleichung \ref{eq:Energie_Kanal_Gerade} mit den Parametern aus \ref{eq:energiekalibration_parameter} beschriebenen Energiekalibration des HPGe-Detektors können die Anpassungsschwerpunkte der gefundenen Maxima in die dazugehörigen Energien umgerechnet werden. 
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\columnwidth]{figs/spektrum_differenz_fit.png}
+        \caption{Differenz der Langzeitmessungs-Spektren mit und ohne Bodenprobe mit 12 angepassten Funktionen an die 12 wohldefinierten Maxima. Der letzte Kanal am rechten Bildrand ist außen vor gelassen worden, da dieser als \enquote{Overflow-Bin} alle Ereignisse mit einer Energie außerhalb des MCA-Messbereichs zählt und das gesamte Spektrum dominieren würde.}
+        \label{fig:spektrum_langzeitmessung_differenz_fit}
+    \end{figure}
+    
+    \begin{table}[H]
+        \centering
+        \Large
+        \begin{tabular}{ccccc}
+            \toprule
+            Peak-Index & $\mu$ / Kanal & $\gamma$-Energie / \si{keV} & $A$ / 1 & Quelle\\
+            \midrule
+            0 & 2419,3(3) & 238,59(3) & 4900(200) & $^{212}$Pb\\
+            1 & 2994,4(8) & 295,27(8) & 1200(170) & $^{214}$Pb\\
+            2 & 3431,1(1,2) & 338,31(12) & 1170(170) & $^{228}$Ac \\
+            3 & 3568,6(4) & 351,87(4) & 2580(170) & $^{214}$Pb\\
+            4 & 5179,2(1,2) & 510,61(12) & 810(130) & $e^+e^-$-Annihilation\\
+            5 & 5913,9(5) & 583,02(5) & 1710(130) & $^{228}$Ac\\
+            6 & 6179,0(5) & 609,15(5) & 1930(130) & $^{214}$Bi\\
+            7 & 6710,4(1,1) & 661,52(11) & 330(70) & $^{137}$Cs\\
+            8 & 9241,6(7) & 911,00(7) & 990(100) & $^{228}$Ac\\
+            9 & 9827,3(9) & 968,72(9) & 890(90) & $^{228}$Ac\\
+            10 & 11361,4(1,1) & 1119,92(11) & 340(70) & $^{214}$Bi\\
+            11 & 14814,7(3) & 1460,27(3) & 4900(200) & $^{40}$K\\
+            \bottomrule
+        \end{tabular}
+        \normalsize
+        \caption{Peak-Schwerpunkte der $\gamma$-Linien im Differenzspektrum mit die daraus errechneten $\gamma$-Energien und angepassten Flächen der einzelnen Linien. Die $\gamma$-Energien erlauben den Rückschluss auf mögliche Konstituenten der Bodenprobe. Die Intensität einzelner Linien ist proportional zu deren Fläche, quantifiziert also die Häufigkeit des dazugehörigen Prozesses --- in vielen Fällen die Konzentration des unterliegenden Isotops. Die letzte Spalte gibt kurz an, welche Quelle als wahrscheinlichste für diese Linie gefunden wurde.}
+        \label{tab:my_label}
+    \end{table}
+    
+    
+\subsection{Zuordnung der \texorpdfstring{$\gamma$}{TEXT}-Energien zu ihren Quellen}
+    Die nun extrahierten Energien können, unter Anderem bei Zuhilfenahme des NuDat-3-Verzeichnisses Nuklearer $\gamma$-Energien \cite{nudat3}, ihren jeweiligen Quellen zugeordnet werden. Alle im weiteren Verlauf benannten Intensitäten sind \cite{nudat3} entnommene relative Intensitätswerte.
+    
+    \begin{itemize}
+        \item Linie 0 stammt vermutlich aus der Thorium-Reihe, speziell aus dem Zerfall von $^{212}$Pb mit einer Energie von \SI{238.632(2)}{keV}. Dieser Zerfall ist ein besonders guter Kandidat, da $^{212}$Pb eine vergleichsweise lange Halbwertszeit von ca. \SI{10}{h} besitzt und die zugehörige $\gamma$-Linie eine besonders hohe relative Intensität von \SI{43.6(5)}{\%} hat. \cite{Pb_212_Energien}
+        
+        \item Linien 1 und 3 stimmen exzellent mit $\gamma$-Linien des Isotops $^{214}$Pb aus der Uran-Radium-Reihe überein --- die Literaturwerte sind \SI{295.224(2)}{keV} und \SI{351.9320(21)}{keV}. Diese Zuordnungen sind insbesondere wahrscheinlich, da $^{214}$Pb eine Halbwertszeit von etwa \SI{27}{min} besitzt --- lang genug, um für die Messung relevant zu sein --- und die relative Intensitäten beider Linien (\SI{18,47(11)}{\%} bzw. \SI{35.72(24)}{\%}) hoch sind. \cite{Pb_214_Energien}
+        
+        \item Linie 4, mit einer Energie von \SI{510,61(12)}{keV}, ist am ehesten dem Annihilationsprozess von einem Elektron und einem Positron zuzuordnen. Dieser ist beispielsweise eine Konsequenz des $\beta$+-Zerfalls eines $^{22}$Na-Kerns, kann aber auch ein Produkt vieler verschiedener anderer Kerne sein. Beliebige hochenergetische $\gamma$ können zur Paarproduktion und daher zu einem \SI{511}{keV}-$\gamma$ geführt haben --- man erinnere, dass der \enquote{Overflow-Bin} das Spektrum dominierte, es gab also genug $\gamma$ mit hinreichenden Energien. Somit lässt sich diese Linie keiner einen Quelle zuordnen.
+        
+        \item Linien 2, 5, 8 und 9 stammen am ehesten vom Isotop $^{228}$Ac in der Thorium-Zerfallsreihe (Halbwertszeit \SI{6.15(2)}{h}). Die Literaturwerte sind \SI{338.320(3)}{keV}, \SI{583.41(5)}{keV}, \SI{911.204(4)}{keV} und \SI{968.971(17)}{keV} mit relativen Intensitäten \SI{11.27(19)}{\%}, \SI{0.111(10)}{\%}, \SI{25.8(4)}{\%} und \SI{15.8(3)}{\%}. Die erste, dritte und vierte dieser Linien sind somit eindeutig zugeordnet und typische Indikatoren für dieses Actinium-Isotop. Jedoch verwundert die niedrige erwartete Intensität der \SI{583}{keV}-Linie, besonders, da sie die anderen drei dominiert. Eine wahrscheinliche Erklärung findet sich in der Betrachtung von $^{228}$Th, ein Tochternuklid von $^{228}$Ac: es hat einen häufigen Kern-Übergang, der unmittelbar auf den Zerfall des Actiniumzerfalls folgt und ebenso ein $\gamma$ mit \SI{583.41(5)}{keV} freisetzt. \cite{Ac_228_Energien, Th_228_Levels}
+        
+        \item Linien 6 und 10 gehören eindeutig zu $^{214}$Bi aus der Uran-Radium-Reihe (Halbwertszeit \SI{19.71(2)}{min}). Die dazugehörigen Literaturwerte sind \SI{609.321(7)}{keV} und \SI{1120.294(6)}{keV} mit Intensitäten von \SI{45.44}{\%} (ohne Unsicherheitsangabe!) und \SI{14.90(8)}{\%}. Dieses Bismuth-Isotop hat nur eine weitere dominante Linie bei \SI{1764.491(14)}{keV}; da sie außerhalb unseres Messbereichs liegt, fehlen uns keine Linien aus diesem Spektrum. \cite{Bi_214_Energien}
+        
+        \item Linie 7, mit einer Energie von \SI{661,52(11)}{keV}, entspricht eindeutig der dominanten \SI{661,7}{keV}-Zerfallslinie von $^{137}Cs$ \cite{Praktikumsanleitung} - die Probe ist also mit Caesium belastet. Dieses Isotop kommt nicht natürlich vor, sondern ist menschlichen Aktivitäten zuzuordnen, z.B. dem Einsatz von Radioaktivität in medizinischen Anwendungen oder der Produktion von Kernbrennstoff/-waffen. Auch das Chernobyl-Desaster hat messbare Mengen Caesium über Europa verbreitet; es ist aufgrund der langen Halbwertszeit von \SI{30.08(9)}{a} nicht auszuschließen, dass diese Kontamination knapp messbar ist. \cite{Cs_137_Energien, caesium_sources}
+        
+        \item Linie 11 ist dem Isotop $^{40}$K zuzuordnen (Halbwertszeit \SI{1.248(3)e9}{a}), da dieses eine prominente Linie mit einer Literaturwert-Energie von \SI{1460.820(5)}{keV} und einer Intensität von \SI{10.66(17)}{\%} besitzt. Da dieses Kalium-Isotop keine weiteren prominenten Linien besitzt, ist diese Zuordnung einfach und eindeutig. \cite{K_40_Energien}
+    \end{itemize}
+    
+    Insgesamt zeigt sich in der Messung der Bodenprobe ein erwartetes Bild: insbesondere Nuklide der natürlichen Uran-Radium- und Thorium-Zerfallsreihen sowie einige häufige leichtere radioaktive Nuklide sind verzeichnet worden. Eine quantitative Analyse der radioaktiven Probenbelastung wäre über die angepassten Kurvenflächen $A$ --- unter Einbezug der bereits bestimmten energieabhängigen Effizienz und Ansprechfunktion --- wohl machbar, übersteigt aber den Rahmen der hier geforderten Auswertung.

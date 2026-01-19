@@ -1,0 +1,12 @@
+\section{Voraufgabe: Funktionsanpassung an Energie-Spektren}
+
+        Um sinnvoll Spektren auswerten zu können, ist in einem JupyterHub-Environment ein Python-Programm geschrieben worden, um möglichst einfach Gaußkurven (mit linearem Untergrund) an Linien in einem Spektrum anzupassen. Dies erhält als Eingaben (neben Formatierungsparametern) nur das Spektrum --- ein numpy-array mit Ganzzahlen --- sowie eine Liste der gewünschten Fitregionen. Die Initial-Parameter für die numerische Kurvenanpassung werden daraus automatisch generiert (können noch verändert werden), diese durchgeführt und das Ergebnis mit relevanten Informationen in einem Diagramm aufgetragen. Für das in \cite{Praktikumsanleitung} gegebene Beispielspektrum ergibt dies Abb. \ref{fig:Voraufgabe}.
+        
+        Eine Limitierung dieses Ansatzes ist, dass der Fall stark überlagerter Linien nicht direkt berücksichtigt wird. In Abb. \ref{fig:Voraufgabe} ist dies an der orangenen Fitkurve zu erkennen: sie überlagert die hellblaue teils, weswegen der Anstieg der hellblauen Kurve nun als linearer Untergrund für die orangene interpretiert wird. Es wäre zu erwarten (bzw. hoffen, diese Anpassungen können numerisch instabil werden), dass eine Anpassung einer Summe zweier Gaußfunktionen mit einheitlichem Untergrund --- möglicherweise mit komplexerer Form --- ein visuell besser passendes Ergebnis liefern würde.
+        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = \textwidth]{figs/Voraufgabe.png}
+            \caption{Voraufgabe: Gegebenes Beispielspektrum mit angepassten Gaußkurven (plus jeweils linearer Untergrund). Gegebene Fit-Grenzen (Kanalnummern): [(200,450), (475, 700), (750,1100), (3000, 3550), (3600,4200)].}
+            \label{fig:Voraufgabe}
+        \end{figure}

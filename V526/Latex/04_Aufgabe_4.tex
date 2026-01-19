@@ -1,0 +1,105 @@
+\section{Messung der Streuspektren}
+    Im letzten Versuchsteil sollen die Winkelabhängigkeit der gestreuten Photonenenergie (Compton-Energie, vgl. Gl \ref{eq:E^prime(E)}) sowie des dazugehörigen Wirkungsquerschnitts (Klein-Nishina, vgl. Gl \ref{eq:sigma_diff_KN}) geprüft werden. Dafür wird das Streuverhalten am Aluminium-Target in verschiedenen Winkeln vermessen. \\
+
+
+
+\subsection{Durchführung}
+    Für alle kommenden Messungen wird das $^{137}$Cs-Präparat als Strahlungsquelle verwendet. Es wird das Aluminium-Target mit einer gemessenen Dicke von \SI{1.00(2)}{mm} verwendet, welches stets in einem Winkel von \SI{90(3)}{\degree} im Strahlengang steht (vgl. Abbildung \ref{fig:Foto_Aufbau}, dort ohne Target). Das Szitillationsspektrometer wird --- nun ohne den \SI{1}{mm}-Kollimator --- in \SI{5}{\degree}-Schritten zwischen \SI{35}{\degree} und \SI{120}{\degree} relativ zur Strahlrichtung verstellt (Unsicherheit \SI{1}{\degree}). Für jede Einstellung wird eine Messung mit und ohne Target durchgeführt, wobei letztere als Hintergrundmessung von der Spektralmessung abgezogen werden wird. Die Messdauer (Live Time) beträgt für jede Messung \SI{300}{s}. Wie bereits bei der Energiekalibration wird der Ausgang des Photomultipliers über den Hauptverstärker in einen MCA geleitet, sodass dieser ein Histogramm der Signalamplituden erstellt. Das Spektrum wird im Programm MCA3 des bereitgestellten Computers aufgenommen und als einfache Textdatei exportiert. 
+\subsection{Ergebnisse}
+    Die Auswertung der gemessenen Streuspektren dient zwei übergeordneten Zielen: es soll die Winkelabhängigkeit sowohl der Energie als auch der Intensität der gestreuten Compton-Strahlung verifiziert werden. Dazu gehört zunächst, dass beide gesuchten Größen aus den gemessenen Streuspektren extrahiert werden.
+    
+    Alle gemessenen Streuspektren sind nach Abzug der jeweiligen Hintergrundmessung auf Sciebo \cite{raw_data} erhältlich. 
+    Bevor die quantitative Auswertung beginnt, können einige qualitative Beobachtungen an den Spektren (vgl. Anhang: Abb. \ref{fig:streuspektrum_fit_beispiel_35} und \ref{fig:streuspektrum_fit_beispiel_120}) getätigt werden:
+
+    Alle Spektren enthalten negative \enquote{Zählraten}. Dies ist ein rein statistisches Phänomen durch Abzug des Hintergrundspektrums und führt in den meisten Fällen zu mittleren Ereignisraten nahe $0$.
+    
+    In allen Spektren ist ein wohldefiniertes Maximum erkennbar, an welches später eine Gaußglocke angepasst werden kann. Dieses liegt mit steigendem Winkel im Spektrum immer weiter links, was sich mit der Erwartung \eqref{eq:E^prime(E)} deckt, dass die Energie des gestreuten Photons bei Vorwärtsstreuung $(\theta = 0)$ maximal wird und danach monoton fällt. 
+    
+    Die Spektren weisen ein sehr starkes Rauschen relativ zur Höhe der eben benannten Erhöhung. Die genaue Form dieses Rauschens ist von der Geometrie des Aufbaus abhängig und wird nicht detailliert beleuchtet werden. Es fällt jedoch insbesondere bei höheren Winkeln auf, dass die Amplitude des Rauschens bei Kanal $K \approx 5000$ plötzlich stark abnimmt. Dies deckt sich mit der Position des Caesium-Peaks in Abb. \ref{fig:Ceasium_ALLmm}! Dies weist darauf hin, dass die \SI{661}{keV}-Strahlung des Caesiums neben der Compton-Streuung am Target noch über andere Wege zum Detektor gelangen kann und unterwegs kontinuierliche Energieverluste erfahren kann.
+    
+    Die Zählraten bei Energien über \SI{661}{keV} (ca. Kanal 5000) sind nicht ganz null. Da so hochenergetische ionisierende Strahlung in der tagtäglichen Belastung selten ist, ist zu vermuten, dass dies eine Konsequenz der Messweise ist. Wenn zwei Photonen gleichzeitig im Szintillationsspektrometer eintreffen, können sich die resultierenden Elektronenkaskaden addieren. Die einzelnen Photonen können dann nicht unterschieden werden; stattdessen wird die Summe ihrer Energien verzeichnet.
+    
+    \subsubsection{Extraktion von Compton-Energie und Intensität}
+        Zur quantitativen Auswertung wird zunächst das Hintergrund-Spektrum von der jeweiligen Messung abgezogen. Anschließend wird eine Gaußfunktion nach Gleichung \eqref{eq:Gauß_Linear} an eine Umgebung um das beobachtete Maximum angepasst, wodurch Intensität $I \propto A$ und, Position $\mu$ und Breite $\sigma$ bestimmt werden können. 
+        Da das Compton-Kontinuum von Wechselwirkungen im Detektor mit manchen Streu-Maximas überlappt, wird als Anpassungsfunktion eine Gaußkurve mit einem linearen Hintergrund $(K \cdot m + b)$ als Funktion des Kanals $K$ kombiniert.
+        \begin{align} \label{eq:Gauß_Linear}
+            \textbf{GL}(K) = \frac{A}{\sqrt{2 \pi} \sigma} \cdot \exp{\left( \frac{-(K - \mu)^2}{\sigma^2} \right)}  + K \cdot m + b
+        \end{align}
+        Aufgrund des starken Rauschens wird die Gaußglocke nur an einen engen Bereich um das relevante Maximum angepasst. Die dafür verwendeten horizontalen Anpassungsgrenzen sind manuell so gesetzt worden, dass das Maximum sinnvoll eingeschlossen wird. Zwei solche Anpassungen sind im Anhang (Abb. \ref{fig:streuspektrum_fit_beispiel_35} und \ref{fig:streuspektrum_fit_beispiel_120}) gezeigt, um die Form des Spektrums in beiden Winkel-Extremen zu illustrieren.
+        
+        Die gesetzten Grenzen und damit gefundenen Anpassungsparameter sind in Tabelle \ref{tab:streuspektren_fitparameter_gauß_linear} aufgetragen. Aus diesen Parametern werden alle weiteren benötigten Größen gewonnen.
+
+    \subsubsection{Verifizierung der Compton-Energie-Relation}
+        Als erstes soll die Winkelabhängigkeit der Energie Compton-gestreuter Photonen geprüft werden. Diese kann aus dem Fitparameter $\mu$ in Tabelle \ref{tab:streuspektren_fitparameter_gauß_linear} gewonnen werden: Da $\mu$ eine Kanalnummer ist, kann die Energiekalibration aus Abschnitt \ref{sect:energiekalibration} darauf angewendet werden. Dort ist jedoch die Zuordnung Energie $\rightarrow$ Kanal als Funktion $K(E)$ geschehen; Gleichung \ref{eq:energiekalibration} zeigt die resultierende inverse Funktion, die hier verwendet wird. Alle Energien $E$ sind in \si{keV} angegeben; Kanalnummern $K$ sind einheitenlos. 
+        \begin{align} \label{eq:energiekalibration}
+            E(K) &= 0.13971(3) \si{keV} \cdot K - 11.25(11) \si{keV}
+        \end{align}
+        \begin{figure*}[ht]
+            \centering
+            \includegraphics[width = \textwidth]{figs/compton_energie_fit.png}
+            \caption{Anpassung der Compton-Energie-Kurve an die gefundenen gestreuten Energien mit angepasster Compton-Streuenergie-Funktion. Zusätzlich ist gestrichelt der erwartete Energieverlauf für die Energie $E_\gamma = \SI{661.7}{keV}$ eingezeichnet. Die winkelabhängige Verschiebung des Photopeaks $E^\prime(\theta)$ stimmt mit der theoretischen Form aus Gl. \eqref{eq:E^prime(E)} überein.}
+            \label{fig:compton_energie_fit}
+        \end{figure*}
+        Die gefundenen Energien sind in Tabelle \ref{tab:streuspektren_fitparameter_gauß_linear} aufgetragen. An diese Daten wird eine Funktion der in Gl. \ref{eq:E^prime(E)} gegebenen Form angepasst, wobei $E_\gamma$ --- die Energie der Photonen vor der Compton-Streuung --- der einzige Fitparameter ist. Abbildung \ref{fig:compton_energie_fit} zeigt die gemessene winkelabhängige Energie $E^\prime_\gamma(\theta)$ des gestreuten Photons und die Anpassung des theoretischen Models \eqref{eq:E^prime(E)}.
+        Die Anpassung resultiert in einer visuell guten Repräsentation der gefundenen Energien, was die Form der Winkelabhängigkeit der Compton-Energie bestätigt. Der gefundene Fit-Parameter für $E_\gamma$ ist:
+        \begin{align}
+            E_\gamma = \SI{647.8(1.0)}{keV}
+        \end{align}
+        Diese Energie liegt etwas unter dem erwarteten Wert von \SI{661.7}{keV} \cite{Praktikumsanleitung}. Die kleine Unsicherheit des ermittelten Wertes (\SI{1}{keV}) suggeriert eine hohe Konfidenz; der Literaturwert liegt also weit außerhalb des $1\sigma$-Intervalls des ermittelten Werts. Dabei ist der Unterschied zwischen dem gemessenen und erwarteten Kurvenverlauf ($E_\gamma = \SI{661.7}{keV}$ gar nicht so groß: der erwartete Verlauf ist in Abb. \ref{fig:compton_energie_fit} zusätzlich gestrichelt eingezeichnet. Dies unterstreicht, dass die numerische Anpassungsunsicherheit des Parameters $E_\gamma$ die Gesamt-Unsicherheit inklusive systematischen Fehlers nicht repräsentiert.
+        
+        Dass alle gefundenen Energien etwas unter der Erwartung liegen, könnte etwa daran liegen, dass die beobachteten Photonen neben der Comptonstreuung am Target auch an anderen Teilen des Aufbaus streuen können. Dies beinhaltet die Abschirmung der Caesiumquelle, aber auch die Comptonstreuung innerhalb des Szintillators oder in der restlichen Laborumgebung. Zusätzlich zur Unsicherheit der Winkeleinstellung nimmt der Detktor selbst einen endlichen Raumwinkel ein, statt wie angenommen einen singulären Winkel. Diese Fehlerquellen betreffen ebenso die Energiekalibration, welche natürlich auch diese Auswertung beeinflusst. Es kann also sein, dass die ermittelte Energiekalibration alle Energien knapp unterschätzt. Somit ergibt sich die Diskrepanz zwischen ermitteltem $E_\gamma$ und dem Literaturwert als Kombination systematischer Fehler und numerischer bzw. Mess-Unsicherheiten.
+        
+        
+    \subsubsection{Verifizierung des Klein-Nishina-WQS}
+        Zuletzt soll die relative Intensität der Compton-Strahlung mit der theoretischen Erwartung der Klein-Nishina-Formel (Gl. \ref{eq:sigma_diff_KN}) verglichen werden. Dafür dient der Parameter $A$ aus den Gauß-Anpassungen an die aufgenommenen Streuspektren (Tabelle \ref{tab:streuspektren_fitparameter_gauß_linear}). Aufgrund der Form der angepassten Funktion in Gl. \ref{eq:Gauß_Linear} entspricht $A$ der gesamten Fläche unter der Gaußkurve und nicht dessen Amplitude. Im Bezug auf die aufgenommenen Spektren bezeichnet $A$ also die Anzahl detektierter Ereignisse, die einer gegebenen Gaußglocke zugehörig sind. Dies lässt auf die Intensität der einfallenden Strahlung zurückschließen, da diese Zählrate in sehr guter Näherung proportional zur Intensität ist. Die Proportionalität ist nur nicht genau gegeben, weil der Detektor eine gewisse Totzeit besitzt, in der andere Ereignisse verpasst werden könnten, und weil simultan einfallende Photonen fälschlich als ein Photon höherer Energie aufgezeichnet werden.
+
+        \begin{figure*}[ht]
+            \centering
+            \includegraphics[width = 0.8\textwidth]{figs/target_abschwächung_geometrie.png}
+            \caption{Geometrie der Intensitäts-Abschwächung im als rechteckig angenommenen Target. Selbst erstellt in GeoGebra.}
+            \label{fig:abschwächung_target_geometrie}
+        \end{figure*}
+        
+        Um die beobachteten Intensitäten sinnvoll mit der Klein-Nishina-Formel zu vergleichen, werden beide in ein Polarkoordinaten-Diagramm eingetragen. Davor können zwei Korrekturen der Intensitäten vorgenommen werden. \\
+        Zunächst die Detektionseffizienz: Da der verwendete Detektor nicht alle einfallenden Photonen tatsächlich detektiert, sollte mit der in Abschnitt \ref{sect:energieeffizienz} ermittelten Detektoreffizienz-Kurve korrigiert werden. In diesem Fall ist die gefundene Effizienzkurve jedoch nicht aussagekräftig, da die angepasste Effizienzkurve die gefundenen relativen Effizienzwerte nicht sinnvoll repräsentiert. Entsprechend sind die Unsicherheiten der einzelnen Fitparameter auch so groß, dass die Fehlerbalken im resultierenden Diagramm alle sichtbaren Werte überschatten würden. Daher wird die spätere graphische Darstellung einmal mit, einmal ohne diese Korrektur vorgenommen. Im Falle der mit einbezogenen Korrektur werden jedoch die Unsicherheiten der Detektoreffizienz vernachlässigt, da das resultierende Bild undurchschaubar wäre. Für eine qualitativ hochwertige Korrektur der Rohdaten müsste die Effizienz-Kalibrierung an deutlich mehr bekannten Röntgenstrahlern durcheführt werden. \\
+        
+        Eine zweite Korrektur ergibt sich aus der Weglänge, die ein Compton-gestreutes Photon im Target selbst zurücklegen muss. Man betrachte den Streuprozess idealisiert in einer horizontalen Ebene. Wird das Target als Rechteck der Dicke/Höhe $d_{max}$ angenommen, welches mittig entlang seiner Breite $b = \SI{20,00(2)}{mm}$ angestrahlt wird, ergibt sich die in Abb. \ref{fig:abschwächung_target_geometrie} gezeigte Geometrie. Es sei für die Analyse angenommen, dass das Photon genau einmal Compton-gestreut wird. Die zwei eingezeichneten Fälle sollen illustrieren, dass das Photon eine andere Weglänge durchläuft, wenn es das Target durch verschiedene Seiten des Rechtecks verlässt. Die durchlaufene Weglänge im Target ergibt damit rein geometrisch Gl. \ref{eq:target_weglänge}:
+        \begin{align} \label{eq:target_weglänge}
+            L_{T} = 
+            \begin{cases}
+                d + \frac{d_{max}-d}{\lvert \cos{\theta} \rvert}, &\text{if } d \cdot \lvert \tan{\theta} \rvert < \frac{b}{2} \\
+                d + \frac{b}{2 \lvert \sin{\theta} \rvert}, &\text{else}
+            \end{cases}
+        \end{align}
+        
+        Um die resultierende Gesamt-Abschwächung des Signals zu erhalten, muss die resultierende Abschwächung $\exp{(-\mu d)}$ über alle möglichen $d$-Werte --- gewichtet mit der Wahrscheinlichkeitsverteilung für $d$ --- gemittelt werden. Dafür wird die Wahrscheinlichkeitsdichtefunktion für $d$ herangezogen. Sie ähnelt der Standard-Exponentialverteilung $\mu \exp{(-\mu d)}$, mit dem wichtigen Unterschied eines Skalierungsfaktors $1 / (1 - \exp{(-\mu d_{max})})$, da nur Ereignisse mit einbezogen werden, bei denen das Photon überhaupt einen Streuprozess durchläuft. Dies ergibt das in Gl. \ref{eq:target_abschwächung} gegebene Integral:
+        \begin{align} \label{eq:target_abschwächung}
+            \langle I_{rel}(\theta) \rangle &= \int_0^{d_{max}} e^{-\mu \cdot L_{T}} \cdot \frac{\mu \cdot e^{-\mu d}}{1 - e^{-\mu d_{max}}} dd
+        \end{align}
+    
+        Mit eingesetztem $d_{max} = \SI{1}{mm}$ kann die Stammfunktion mithilfe von Integrations-Software analytisch bestimmt werden (vgl. Gl. \ref{eq:stammfunktion_weglänge}).
+        
+        Da bei der Versuchsdurchführung nicht abgesehen wurde, dass die Breite des \SI{1}{mm}-Targets relevant sein würde, ist sie nicht gemessen worden. Auf einem Foto des Laborraums ist es jedoch im Hintergrund neben den anderen Targets mit bekannten Dimensionen zu sehen; davon kann die Breite sehr grob als $b=\SI{15(5)}{mm}$ geschätzt werden.
+        
+        \begin{figure*}[ht]
+            \centering
+            \begin{subfigure}[t]{0.45\textwidth}
+                    \includegraphics[width =\linewidth]{figs/Intensitäten_vs_Klein_Nishina.png}
+                    \caption{Mit Weglängen-, aber ohne Effizienzkorrektur.}
+                    \label{fig:intensität_vs_kn_unkorrigiert}
+            \end{subfigure}
+            \hspace{1cm}
+            \begin{subfigure}[t]{0.45\textwidth}
+                    \includegraphics[width = 1\linewidth]{figs/Intensitäten_korrigiert_vs_Klein_Nishina.png}
+                    \caption{Mit Weglängen- \& Effizienz-Korrektur. Unsicherheiten der Effizienz ignoriert.}
+                    \label{fig:intensität_vs_kn_korrigiert}
+            \end{subfigure}
+            \caption{Intensitäten der Compton-Strahlung gegen den eingestellten Detektorwinkel. Unsicherheiten der Effizienzkorrektur der Übersicht wegen vernachlässigt. Dargestellt gegenüber theoretischem Klein-Nishina-Wirkungsquerschnitt. Beide Darstellungen sind auf eine relative Intensität $I(\theta = \SI{35}{\degree})$ normiert worden.}
+        \end{figure*}
+
+        Werden in die Stammfunktion die Dimensionen des verwendeten Targets eingegeben, ergeben sich jedoch Intensitätskorrekturen, die gegenüber den Intensitätsunsicherheiten aus der Anpassung an die Spektren verschwinden. Es ist hierbei anzumerken, dass diese Analyse, auch mit genauer Messung von $b$, nur eine Approximation darstellt. Die Streuprozesse geschehen nämlich nicht nur in einer Ebene, und der verwendete Detektor nimmt aus Sicht des Targets auch keinen einzelnen, wohldefinierten Winkel $\theta$ ein, sondern einen kleinen Raumwinkel darum.
+        
+        Die resultierenden Winkel-Intensitäts-Auftragungen sind in Abb. \ref{fig:intensität_vs_kn_unkorrigiert} und \ref{fig:intensität_vs_kn_korrigiert} gezeigt.\footnote{Anmerkung: aufgrund der Komplexität der in dieser Analyse erarbeiteten Ausdrücke ist es möglich, dass sich neben zu idealisierten Annahmen auch analytische Fehler in die Analyse geschlichen haben. Zwar haben die beim Testen der Analyse generierte Winkel-Intensitäts-Zusammenhänge eine physikalisch sinnvoll Form mit einem klaren Minimum bei $\theta = \SI{90}{\degree}$, jedoch sollten stärkere Abschwächungen als die berechneten möglich sein. So verursacht beispielsweise eine Weglänge von $\SI{5}{mm}$ im Target bereits eine Abschwächung um etwa $10 \%$ (vgl. Gl. \ref{eq:Lambert-Beer}); dies sollte mit dem verwendeten Target bei $\theta \approx \SI{90}{\degree}$ möglich sein.} Dabei ist für beide Darstellungen die Weglängenkorrektur erfolgt, die Korrektur anhand der Detektionseffizienz nur in Abb. \ref{fig:intensität_vs_kn_korrigiert}. Es fällt auf, dass die effizienzkorrigierten Werte für kleinere Winkel den Verlauf des Klein-Nishina-Wirkungsquerschnitts visuell gut wiedergeben. Jedoch ist dies bei höheren Winkeln gerade andersherum; die korrigierten Intensitäten sind teils viel zu klein. Dies liegt an dem aller Voraussicht nach nicht physikalisch korrekten Maximum in der relativen Detektionseffizienz-Kurve (vgl. Abb. \ref{fig:Energie_Effizenz_Fit}), da die Intensitäten durch die zu hohen relativen Effizienzen geteilt werden.
+        
+        Im Kontrast dazu steht die Darstellung ohne Effizienzkorrektur (Abb. \ref{fig:intensität_vs_kn_unkorrigiert}), wo alle beobachteten Intensitäten den erwarteten Verlauf deutlich übertreffen, besonders bei hohen Winkeln. Diese Diskrepanz kann neben allen bisher diskutierten messtechnischen Gründen auch auf die möglicherweise inakkurate Intensitätskorrektur anhand der Weglänge im Target oder auf die vernachlässigte Möglichkeit mehrerer Compton-Streuprozesse zurückgeführt werden. Die genauere Bestimmung aller relevanten Korrekturen übersteigt die Möglichkeiten des verwendeten Versuchsaufbaus und dementsprechend auch dieser Auswertung. Beide Verläufe folgen sehr grob dem erwarteten Wirkungsquerschnitt. Es scheint wahrscheinlich, dass mit weiteren aufwändigen Korrekturen der Intensitäten --- etwa durch eine dedizierte Detektoreffizienz-Messung und einen noch detaillierteren Einbezug der Weglänge im Target --- eine bessere Übereinstimmung der zwei Verläufe erreicht werden könnte.
+    

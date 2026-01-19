@@ -1,0 +1,55 @@
+\section{Anhang}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.9\textwidth]{figs/PMT_circuit_diagram.png}
+    \caption{Schaltplan der im Versuch verwendeten PMT-Basis SCIONIX VD14-E2-X26-X-NEG, entnommen aus dazugehörigem Datenblatt in \cite{Datenblätter_sciebo}.}
+    \label{fig:schaltplan_PMT}
+\end{figure}
+
+
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $\mu_{\mathrm{expect}}$ / keV & $\sigma$ / Kanal & $\sigma_{\mathrm{FWHM}}$ / Kanal & $\Delta E$ / keV \\ \hline
+            $30.8500$ & $37.665(59)$ & $88.64(14)$ & $6.00(9)$ \\
+            $80.9979$ & $57.68(17)$ & $135.83(41)$ & $9.20(28)$ \\
+            $302.8508$ & $194.41(58)$ & $457.61(1.37)$ & $31.01(93)$ \\
+            $356.0129$ & $210.48(14)$ & $495.69(32)$ & $33.59(22)$ \\
+            $511.0000$ & $247.89(13)$ & $583.28(31)$ & $39.52(21)$ \\ \hline
+        \end{tabular}
+        \caption{Energieauflösung für die bei der Energiekalibration am linken Detektor ($\alpha = \num{14.7628 +- 0.0017}$) beobachteten Spektrallinien. Es ist wie erwartet zu beobachten, dass Linien höherer Energie --- welche im Spektrum auch breiter erscheinen --- eine niedrigere Auflösung (also höheres $\Delta E$) haben.}
+        \label{tab:energiekalibration_energieauflösung_links}
+    \end{table}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $\mu_{\mathrm{expect}}$ / keV & $\sigma$ / Kanal & $\sigma_{\mathrm{FWHM}}$ / Kanal & $dE$ / keV \\ \hline
+            30.8500 & $37.48(06)$ & $88.28(15)$ & $5.98(10)$ \\
+            80.9979 & $56.56(19)$ & $133.17(45)$ & $9.02(31)$ \\
+            302.8508 & $188.64(52)$ & $444.10(122)$ & $30.08(83)$ \\
+            356.0129 & $212.57(14)$ & $500.63(32)$ & $33.91(22)$ \\
+            510.9990 & $238.66(12)$ & $561.71(29)$ & $38.06(20)$ \\ \hline
+        \end{tabular}
+        \caption{Energieauflösung für die bei der Energiekalibration am rechten Detektor ($\alpha = \num{14.7520 +- 0.0018}$) beobachteten Spektrallinien. Es ist wie erwartet zu beobachten, dass Linien höherer Energie --- welche im Spektrum auch breiter erscheinen --- eine niedrigere Auflösung (also höheres $\Delta E$) haben.}
+        \label{tab:energiekalibration_energieauflösung_rechts}
+    \end{table}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|} \hline
+            Promptkurve & $\mu$ [Kanal] & $\sigma$ [Kanal] & $N$ [1] \\ \hline
+            1 &$\num{853.9139 +- 1.2208}$  & $\num{87.9301 +- 0.9650}$ & $\num{41.3256 +- 0.6406}$   \\
+            2 &$\num{2106.3963 +- 1.3076}$ & $\num{86.7388 +- 1.0545}$ & $\num{36.5818 +- 0.6164}$   \\
+            3 &$\num{3355.8001 +- 1.2672}$ & $\num{86.6421 +- 0.9951}$ & $\num{38.5000 +- 0.6245}$   \\
+            4 &$\num{4613.2961 +- 1.3065}$ & $\num{86.9003 +- 1.0201}$ & $\num{36.6535 +- 0.6094}$   \\
+            5 &$\num{5872.2741 +- 1.3323}$ & $\num{87.1437 +- 1.0495}$ & $\num{35.6587 +- 0.6033}$   \\
+            6 &$\num{7122.0522 +- 1.2680}$ & $\num{86.4191 +- 1.0220}$ & $\num{38.8872 +- 0.6330}$ \\ \hline
+        \end{tabular}
+        \caption{Fit-Parameter der Anpassung von Gaußfunktionen nach Gleichung \eqref{equ:spektrum_gauss_fit_allgemein_promptkurve} an die $6$ gemessenen Promptkurven von $^{22}$Na (vgl. Abb. \ref{fig:Plot_Promptkurve}).}
+        \label{tab:Fitparameter_Promptkurve}
+    \end{table}

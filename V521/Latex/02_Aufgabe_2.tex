@@ -1,0 +1,349 @@
+\section{\texorpdfstring{$\gamma$}{TEXT}-Spektroskopie am Halbleiter- \& Szintillations-Detektor}
+
+
+\subsection{Aufbau}
+    Für den Versuch stehen neben den beiden Detektoren ein \textit{Multi Channel Analyzer} (MCA) und ein Oszilloskop zur Verfügung. Der MCA verfügt über einen pulsformenden Verstärker, welcher mithilfe der Software \texttt{$MC^2$ Analyzer} \cite{MC2_analyzer} eingestellt werden kann. Die Proben $^{60}$Co, $^{137}$Cs und $^{152}$Eu können vor den Detektoren auf einem Probenhalter in verschiedenen Abständen positioniert werden und die Abstände zwischen Mittelpunkt der Probe und Oberfläche des Detektors können mithilfe eines Maßstabs nachgemessen werden. Die Durchmesser von HPGe-Kristall und NaI-Kristall betragen \SI{55.7}{mm} und \SI{50.8}{mm} \cite{Praktikumsanleitung}. Abbildung \ref{fig:Fotos_Aufbau} zeigt die beiden Detektoren während der Versuchsdurchführung.
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.7\textwidth}
+                \includegraphics[width=\linewidth]{figs/Foto_HPGe_Detektor.jpg}
+            \end{subfigure}
+            \hspace{0.25cm}
+            \begin{subfigure}{0.25\textwidth}
+                \includegraphics[width=\linewidth]{figs/Foto_NaITa_Detektor.jpg}
+            \end{subfigure}
+            \caption{Fotos des verwendeten HPGe-Halbleiter-Detektors (links) sowie des NaI(Ta)-Szintillations-Detektors (rechts). Der HPGe-Detektor wird dauerhaft von flüssigem Stickstoff gekühlt und wird für Langzeitproben mit Blei-Blöcken abgeschirmt.}
+            \label{fig:Fotos_Aufbau}
+        \end{figure}
+
+
+\subsection{Durchführung}
+
+    \subsubsection{Justage des Aufbaus}
+        Zu Beginn des Versuchs müssen die Detektionssignale überprüft werden und die beiden Detektionskreise jeweils auf einen sinnvollen Energiebereich eingestellt werden. Hierzu wird das Oszilloskop am Detektor angeschlossen und die $^{137}$Cs-Quelle eingesetzt. Da der HPGe-Detektor zur Stabilisierung der Betriebsspannung mehrere Tage benötigen kann, ist diese bereits eingestellt und wird nicht verändert. Die Betriebsspannung am PMT des Szintillations-Detektors wird langsam hoch-geregelt und darf \SI{700}{V} nicht überschreiten. Es sollten nun exponentiell abfallende Signale beobachtbar sein, welche in Amplitude und Signaldauer dokumentiert werden. \\
+        Als nächstes wird das Signal des Detektor am MCA angeschlossen und das resultierende Spektrum mit der Software \texttt{$MC^2$ Analyzer} beobachtet. Durch Einstellung der Verstärkung \textit{Fine Gain} wird der Messbereich auf ein Energie-Intervall von etwa \SI{1550}{keV} eingestellt. \\
+        Mit diesen Einstellungen wird der restliche Versuch unverändert durchgeführt. Die genannten Schritte müssen an beiden Detektoren analog angewandt werden. Um die Stabilität der Messung zu garantieren wird die Datenaufnahme am Szintillations-Detektor erst \SI{30}{min} nach Einstellung der Hochspannung begonnen.
+    
+    \subsubsection{Vermessung bekannter Quellen}
+        Nach erfolgreicher Justage der Detektoren werden die drei bekannten Proben sowie ein Hintergrund-Spektrum von beiden Detektoren spektroskopiert. Die Messung erfolgt über die um die Totzeit des MCA korrigierte Messzeit \textit{live time} von \SI{300}{s}. Zusätzlich wird zur Korrektur von Beiträgen durch die Hintergrundstrahlung eine Messung ohne Quelle durchgeführt. Die Proben werden in einem Abstand positioniert, bei welchem die Zählrate unterhalb von \SI{2.5}{kHz} liegt, da höhere Zählraten häufiger zu Summenpeaks im Spektrum und somit zu einer Verschlechterung der Datenqualität führen können. Bei jeder Messung wird der Abstand $D$ zwischen Detektor und Probe zur späteren Bestimmung der absoluten Effizienz ausgemessen.  
+        
+
+
+\subsection{Ergebnisse}
+    
+    \subsubsection{Justage des Aufbaus}
+        Beim Erhöhen der Hochspannung am Szintillations-Detektor können nach und nach mehr Signale detektiert werden. Zur Maximierung der Zählrate wird die Hochspannung schließlich auf \SI{691(1)}{V} (I = \SI{492(1)}{\micro \ampere}) festgelegt. Durch Erhöhung der Trigger-Schwelle am Oszilloskop lassen sich nun an beiden Detektoren Signale erkennen, welche mit dem \SI{661}{keV}-Peak der Caesium-Quelle identifiziert werden (Abb. \ref{fig:Oszi_Signale}). 
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/scope_1.png}
+                \caption{HPGe}
+            \end{subfigure}
+            \hspace{0.5cm}
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/scope_0.png}
+                \caption{NaI}
+            \end{subfigure}
+            \caption{Oszillogramme der Detektions-Signale vom \SI{661}{keV}-Photopeak von $^{137}$Cs am HPGe-Detektor (a) und am NaI-Detktor (b). Die Signale zeigen einen schnellen Anstieg sowie den erwarteten exponentiellen Abfall. Die Amplituden betragen \SI{2.33+-0.05}{V} (a) und \SI{1.99(5)}{V} (b) und weisen grob geschätzt Halbwertszeiten von  \SI{40(10)}{\micro \second} (a) und \SI{45(10)}{\micro \second} (b).} 
+            \label{fig:Oszi_Signale}
+        \end{figure}
+        Die Signale an beiden Detektoren sind nahezu identisch, was darauf zurückzuführen ist, dass die Ströme der Ladungssammlung am HPGe-Detektor sowie die Ströme der PMT am NaI-Detektor intern in Spannungsimpulse umgewandelt und vorverstärkt werden. Der exponentielle Abfall des Signals lässt vermuten, dass die Signalverarbeitung in den Detektoren auf der Verwendung von Kondensatoren basiert. Die Amplituden der Signale von etwa \SI{2}{V} liegen in der typischen Größenordnung und die kurzen Anstiegszeiten sind vorteilhaft für die Anwendung der Detektoren in Koinzidenzkreisen. Im MCA werden diese Signale anschließend verstärkt und in die Form einer Gaußglocke gebracht, welche die Auslese-Elektronik zuletzt in ein Impulshöhen-Spektrum umwandelt. Zur Einstellung des Energiebereichs auf $\gtrsim \SI{1550}{keV}$ wird der Fine Gain auf \num{5.0} (HPGe) und \num{1.5} (NaI) gestellt. \\
+        
+        Die Aktivitäten der Proben werden den Aufschriften der Aufbewahrungsbehälter entnommen und sind zusammen mit den verwendeten Distanzen $D$ zum jeweiligen Detektor in Tabelle \ref{tab:Quellen_Distanzen} aufgelistet. Die Rohdaten der Messungen sind auf Sciebo \cite{raw_data} verfügbar.
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{ccccc} \toprule
+                 Quelle &
+                  $t_{1/2}$ / \unit{yr} &
+                  $B(t_0)$ / \unit{kBq} &
+                  $B(t\sub{now})$ / \unit{kBq} & 
+                  $D$ / \unit{mm} \\ \midrule
+                 Co & \num{5.271}   & \num{67}  & \num{39} & \num{20(5)} \\ 
+                 Cs & \num{30.007}  & \num{405} & \num{368} & \num{100(5)} \\
+                 Eu & \num{13.517}  & \num{709} & \num{572} & \num{150(5)} / \num{200(5)} \\ \bottomrule
+            \end{tabular}
+            \caption{Auflistung verwendeter Quellen und deren Halbwertszeiten $t_{1/2}$ \cite{nudat3}, deren Aktivität zum Zeitpunkt $t_0$ ($1.10.2021$), und die daraus extrapolierte Aktivität am Versuchstag $t \sub{now}$ ($04.12.2025$). Die Quellen wurden in den jeweils gleichen Abständen $D$ vor beiden Detektoren positioniert. Eine Ausnahme dazu stellt Europium dar, dessen Abstand aufgrund zu hoher Zählraten am NaI-Detektor auf \SI{200}{mm} erhöht wird (\SI{150}{mm} am HPGe-Detektor).}
+            \label{tab:Quellen_Distanzen}
+        \end{table}
+    
+    \subsubsection{Energie-Kalibration}
+        Die Hintergrundspektren zeigen das erwartete nieder-energetische Rauschen mit niedrigen Ereigniszahlen, welches hier sinnvoll vom allen Proben-Spektren abgezogen werden kann (vgl. Anhang Abb. \ref{fig:Backgrounds}). Das Hintergrund-Spektrum wird also von den anderen Messreihen subtrahiert, bevor deren weitere Auswertung geschieht.
+        
+        Zur Energie-Kalibration werden nun Gaußfunktionen mit einem linearen Hintergrund $G(K)$ mit folgender Form auf einen kleinen Bereich um den jeweiligen Peak angepasst
+        \begin{align} \label{eq:Gauss_mit_Bg}
+            G(K) = \frac{A}{\sqrt{2 \pi} \sigma} \cdot \exp{\left( \frac{-(\mu-K)^2}{2\sigma^2} \right)} + a \cdot K + b 
+            \qquad \text{mit} \qquad
+            \sigma \sub{FWHM} = \sigma \cdot 2 \sqrt{2 \ln{2}} 
+            \qquad \text{,}
+        \end{align}
+        wobei $K$ den Kanal-Index des MCA darstellt. Aus den Anpassungen können neben dem linearen Hintergrund $(a,b)$ der Peak-Schwerpunkt $\mu$, die Halbwertsbreite $\sigma \sub{FWHM}$ und die Fläche des Photopeaks $A$ bestimmt werden. Der lineare Hintergrund ermöglicht eine exakte Lokalisierung der Emissionslinien trotz Compton-Hintergrund, welcher insbesondere bei den Spektren des NaI-Detektors stark sichtbar wird.\\\
+        
+        Die nachfolgenden Abbildungen zeigen die Spektren der jeweils selben Probe an beiden Detektoren im Vergleich. Zur besseren Beurteilung sind diese bereits mit einer Energie-Kalibrierung ausgestattet, welche im weiteren Verlauf hergeleitet wird. Alle Anpassungs-Parameter nach Gleichung \eqref{eq:Gauss_mit_Bg} sind in den Tabellen \ref{tab:Gaussfit_Params_HPGe} und \ref{tab:Gaussfit_Params_NaI} nachzulesen. Aufgrund der schmalen Breite der Linien im HPGe-Spektrum sind diese noch einmal vergrößert in den Abbildungen \ref{fig:spektrum_Co_Zoom}, \ref{fig:spektrum_Cs+Eu_Zoom} und \ref{fig:spektrum_Eu_Zoom_2} dargestellt. 
+        
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/HPGe_Co.jpg}
+                \caption{HPGe}
+                \label{fig:spektrum_Co_HPGe}
+            \end{subfigure}
+            \hspace{0.5cm}
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/NaI_Co.jpg}
+                \caption{NaI}
+                \label{fig:spektrum_Co_NaI}
+            \end{subfigure}
+            \caption{Gemessenes Energie-Spektrum der $^{60}$Co-Quelle. An beiden Detektoren sind die charakteristischen Linien bei \SI{1173}{keV} und \SI{1332}{keV} klar erkennbar. }
+            \label{fig:spektrum_Co}
+        \end{figure}
+        Abbildung \ref{fig:spektrum_Co} zeigt die Cobalt-Spektren an beiden Detektoren im Vergleich. Sofort fällt auf, dass der Halbleiter-Detektor eine um Größenordnungen höhere Energie-Auflösung als der Szintillations-Detektor aufweist, was mit der Theorie übereinstimmt. Dies erkennt man an der äußerst geringen Breite der entsprechenden Linien. Während der Compton-Hintergrund am Szintillations-Detektor stark dominiert, ist dieser am Halbleiter-Detektor im Verhältnis zu Peak-Höhe kaum zu sehen. Beim Compton-Kontiuum handelt es sich eine Konsequenz des Compton-Effekts im Detektor: die möglichen Winkeländerungen $\theta \in [0\degree, 180\degree]$ des gestreuten Photons ergeben einen endlichen Bereich möglicher Energieverschiebungen. Das Elektron im Kristall, an welchem Der Compton-Effekt geschieht, erhält einen Teil der Photonen-Energie --- gerade diese wird als Strahlungs-Kontinuum im Spektrum des NaI-Detektors sichtbar. Charakteristisch für das Compton-Spektrum sind die Rand-Maxima bei \SI{240 +- 10}{keV} und \SI{850 +- 50}{keV}, welche auf die extremalen Streuwinkel $\theta = \SI{180}{\degree}$ und $\theta = \SI{0}{\degree}$ zurückzuführen sind. \\
+        
+        Das Energie-Spektrum von Caesium kann in Abbildung \ref{fig:spektrum_Cs} betrachtet werden. Die Spektren verhalten sich analog zu den eben diskutierten Cobalt-Spektren und werden zur Anpassung des \SI{661}{keV}-Peaks verwendet.
+        
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/HPGe_Cs.jpg}
+                \caption{HPGe}
+                \label{fig:spektrum_Cs_HPGe}
+            \end{subfigure}
+            \hspace{0.5cm}
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/NaI_Cs.jpg}
+                \caption{NaI}
+                \label{fig:spektrum_Cs_NaI}
+            \end{subfigure}
+            \caption{Gemessenes Energie-Spektrum der $^{137}$Cs-Quelle. An beiden Detektoren ist die charakteristische Caesium-Linie bei \SI{661}{keV} klar erkennbar. }
+            \label{fig:spektrum_Cs}
+        \end{figure}
+        
+        Zuletzt werden die Spektren von Europium untersucht, welche in Abbildung \ref{fig:spektrum_Eu} zu sehen sind. Die Zuordnung der Maxima gemäß der erwarteten Maxima nach Tabelle \ref{tab:Eu_Literatur_Linien} ist im Fall des Halbleiter-Detektors einfach, wird am Szintillations-Detektor jedoch durch die geringe Energie-Auflösung und die geringe Effizienz des Detektors bei hohen Energien erschwert. Aus diesem Grund werden im letzteren Fall nur die prägnantesten Linien zur Energie-Kalibration herangezogen. 
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/HPGe_Eu.jpg}
+                \caption{HPGe}
+                \label{fig:spektrum_Eu_HPGe}
+            \end{subfigure}
+            \hspace{0.5cm}
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/NaI_Eu_13000.jpg}
+                \caption{NaI}
+                \label{fig:spektrum_Eu_NaI}
+            \end{subfigure}
+            \caption{Gemessenes Energie-Spektrum der $^{152}$Eu-Quelle. Aufgrund der hohen Energie-Auflösung des HPGe-Detektors können hier $11$ charakteristische Linien nach Tabelle \ref{tab:Eu_Literatur_Linien} zugordnet werden. Aufgrund des geringen SNR durch das Compton-Kontinuum am NaI-Detektor ist hier lediglich eine Anpassung von $5$ Linien möglich. Weiterhin weist das Spektrum des NaI-Detektors nieder-energetische Röntgenlinien auf, welche nicht auf Anregungsübergänge zurückzuführen sind.}
+            \label{fig:spektrum_Eu}
+        \end{figure}
+        
+        Eine weitere Auffälligkeit stellt eine unerwartete Linie im Spektrum des NaI-Detektors bei \SI{40(10)}{keV} dar. Diese folgt nicht aus einem Photo-Übergang der Zerfallsprodukte von $^{152}$Eu und aufgrund der niedrigen Energie und hohen Amplitude ist es unwahrscheinlich, dass es sich um einen Escape-Peak, Rückstreu-Peak oder Summen-Peak handelt. Stattdessen wird vermutet, dass es sich um charakteristische Röntgenstrahlung von einem Material im oder nahe des Detektors handeln könnte. Hierfür spricht auch die Tatsache, dass ein ähnliches Maximum bei der Untersuchung von $^{137}$Cs auftritt. Für die Energie-Kalibration ist dieses Phänomen jedoch nicht bedeutsam, da bereits ausreichend bekannte Linien zur angepasst zur Verfügung stehen. \\
+        
+        Die Energie-Kalibration erfolgt unter der Annahme, dass eine lineare Zuordnung zwischen Kanal-Index $K$ und des gemessenen Energie $E$ besteht:
+        \begin{align} \label{eq:Energie_Kanal_Gerade}
+            K(E) = \alpha \cdot E + \beta 
+            \qquad \Longleftrightarrow \qquad 
+            E(K) = \frac{K - \beta}{\alpha}
+            \qquad \text{.}
+        \end{align}
+        Wendet man diese Überlegung auf die ermittelten Maxima $\mu$ und die Literaturwerte $E(\mu)$ für zugehörigen Energien an, so erhält man für die Detektoren die in Abbildung \ref{fig:E_Kalibration} gezeigten Zusammmenhänge.
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/HPGe_Kalibration_E_2.jpg}
+                \caption{HPGe}
+                \label{fig:E_Kalibration_HPGe}
+            \end{subfigure}
+            \hspace{0.5cm}
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/NaI_Kalibration_E_2.jpg}
+                \caption{NaI}
+                \label{fig:E_Kalibration_NaI}
+            \end{subfigure}
+            \caption{Energie-Kanal-Kalibration anhand angepasster $\gamma$-Linien der bekannten Quellen $^{60}$Co, $^{137}$Cs, $^{152}$Eu.}
+            \label{fig:E_Kalibration}
+        \end{figure}
+        Die Unsicherheiten dieser Anpassung sind äußerst gering, da sowohl die Literaturwerte sehr genau bekannt sind als auch die Positionen der Maxima in den Spektren mit hoher Präzision bestimmt werden kann. Trotz der somit geringen Güte $\chi^2$ der Anpassungen ist die lineare Zuordnung optisch äußerst zutreffend und ergibt einen qualitativen Geradenfit mit folgenden Parametern:
+        \begin{align}
+            \label{eq:energiekalibration_parameter}
+            \begin{aligned}
+                &\text{HPGe:} \\
+                &\text{NaI: }
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &\alpha = \SI{10.14617 +- 0.00004}{\per \kilo \eV} \\
+                &\alpha = \SI{8.2606 +- 0.0008}{\per \kilo \eV}
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &\beta  = \num{-1.49 +- 0.02} \\
+                &\beta  = \num{133.5 +- 0.4} 
+                \qquad \text{.}
+            \end{aligned}
+        \end{align}
+        Auf Basis dieser Parameter wurde die Energie-Skalierung in allen bisherigen und nachfolgenden Darstellungen errechnet. Diese zeigt hohe Übereinstimmung mit den erwarteten Positionen bzw. Energien der Linien.
+    
+    \subsubsection{Analyse der Halbwertsbreiten}
+        Im vorherigen Abschnitt konnte bereits festgestellt werden, dass die Linienbreiten am Halbleiter-Detektor deutlich geringer sind als am Szintillations-Detektor. Dieser Zusammenhang lässt sich weiter durch die Halbwertsbreiten-Funktion $\Delta E$ in Abhängigkeit von der Energie des jeweiligen Photopeaks quantifizieren. Hierzu werden die gewonnen Daten $(E,\sigma)$ aus Tabellen \ref{tab:Gaussfit_Params_HPGe} und \ref{tab:Gaussfit_Params_NaI} gegeneinander aufgetragen, wobei für den Halbleiter-Detektor die theoretisch erwartete Funktion nach Gleichung \eqref{eq:Halbwertsbreite_HPGe} mit der intrinsischen Halbwertsbreite $\Delta E_d \propto \sqrt{E_\gamma}$ angepasst wird. Im Fall des Szintillations-Detektors wird das Skalierungs-Verhalten empirisch durch eine Wurzelfunktion angenähert:
+        \begin{align} \label{eq:Halbwertsbreite_NaI}
+            \Delta E = y \cdot \sqrt{ E_\gamma } + z
+            \qquad \text{.}
+        \end{align}
+        Abbildung \ref{fig:FWHM_Funktion} zeigt die energieabhängigen Halbwertsbreiten und deren Anpassungfunktionen nach Gleichungen  (\ref{eq:Halbwertsbreite_HPGe}, \ref{eq:Halbwertsbreite_NaI}).
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/HPGe_FWHM_intrins.jpg}
+                \caption{HPGe}
+                \label{fig:FWHM_Funktion_HPGe}
+            \end{subfigure}
+            \hspace{0.5cm}
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/NaI_FWHM.jpg}
+                \caption{NaI}
+                \label{fig:FWHM_Funktion_NaI}
+            \end{subfigure}
+            \caption{Funktionale Analyse der Energie-Abhängigkeiten der FWHM-Halbwertsbreiten $\Delta E(E_\gamma)$ von Photo-Peaks. Über den gesamten Energiebereich weisen die Photo-Peaks am NaI-Detektor (a) höhere Breiten als am HPGe-Detektor (b) auf}
+            \label{fig:FWHM_Funktion}
+        \end{figure}
+        Beim Vergleich beider Anpassungen fällt kann zunächst bestätigt werden, was sich auch optisch in den Energie-Spektren widerspiegelte: Die Halbwertsbreiten am Szintillations-Detektor sind etwa um den Faktor $30$ größer als vergleichbare Breiten des Halbleiter-Detektors. Die Anpassungsfunktionen beschreiben die Breiten der Photopeaks dabei mit hoher Güte $(\chi^2 \approx 1)$. Lediglich bei der Anpassung des Szintillations-Detektors tritt zu höheren Energien eine Diskrepanz zwischen Modell und Messung auf. Die Anpassungfunktionen werden durch folgende Parameter beschrieben:
+        \begin{align*}
+            \begin{aligned}
+                &\text{HPGe:} \\
+                &\text{NaI: }
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &x = \SI{0.0477 +- 0.0005}{keV^{1/2}}\\
+                &y = \SI{2.37 +- 0.04}{keV^{1/2}}
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &\Delta E_e  = \SI{1.246 +- 0.008}{keV} \\
+                & z  = \SI{-28.7 +- 0.5}{keV}
+                \qquad \text{.}
+            \end{aligned}
+        \end{align*}
+        Die Halbwertsbreiten des HPGe-Detektors reichen im Messbereich reichen von etwa \SI{1.4}{keV} bishin zu \SI{2.2}{keV}, sodass der Anteil der elektronisch bedingten Halbwertsbreite $\Delta E_e  = \SI{1.246 +- 0.008}{keV}$ eine signifikante Rolle für die Energieauflösung spielt. Erst im Energiebereich von mehreren \unit{MeV} wäre dieser konstante Beitrag deutlich geringer als der steigende Anteil $\propto x$ durch die Ladungssammlung und könnte dann vernachlässigt werden. Für diesen Versuch stellt die elektronische Ungenauigkeit eine Grenze für das erreichbare Auflösungvermögen dar. 
+    
+    \subsubsection{Bestimmung der Ansprechfunktion Peak-to-Total}
+        Eine weitere Möglichkeit, die Güte eines Detektors zu untersuchen, stellt das Peak-to-Total-Verhältnis dar. Aus den durch die Anpassungen gewonnen Daten ist die Anzahl an Ereignissen, welche mit einem Photopeak assoziiert wird, durch die Fläche $A$ der zugehörigen Gaußfunktion $G(K)$ bestimmt. Im Fall von Caesium, wo nur ein Peak besteht, ergibt sich das Peak-to-Total $P\sub{T}$ durch Division dieser Fläche durch die Gesamtzahl gemessener Ereignisse $N \sub{tot}$. \\
+        
+        Ein ähnliches Verhältnis lässt sich nun auch für die Cobalt-Quelle aufstellen. Da es hier zwei nah beieinander liegende Emissionslinien gibt, wird für die Ereignisse im Photopeak die Summe der beiden zugehörigen Flächen $A(\SI{1173}{keV}) + A(\SI{1332}{keV})$ angenommen und die Energie dieses kummulierten Photopeaks wird als Mittelwert beider Photo-Energien bei $\SI{1550}{keV}$ angenommen \cite{Praktikumsanleitung}.
+        \begin{align}
+            \begin{aligned}
+                & \\
+                &\text{HPGe:} \\
+                &\text{NaI: }
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &E_\gamma(\text{Cs}) = \SI{661.7}{keV} \\
+                &P\sub{T}(\text{Cs}) = \SI{19.59 +- 0.08}{\percent}\\
+                &P\sub{T}(\text{Cs}) = \SI{33.18 +- 0.10}{\percent}
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &\langle E_\gamma(\text{Co}) \rangle = \SI{1250}{keV} \\
+                &P\sub{T}(\text{Co}) = \SI{12.75 +- 0.07}{\percent}\\
+                &P\sub{T}(\text{Co}) = \SI{22.79 +- 0.18}{\percent}
+            \end{aligned}
+            \label{eq:peak_to_total}
+        \end{align}    
+        Die Berechnung zeigt, dass der Szintillationsdetektor einen deutlich höheren Anteil der gemessenen Ereignisse im Photopeak einordnet, was auf eine gute Ansprechfunktion des Detektors hinweist. Beide Detektoren stimmen darin überein, dass hin zu höheren Energien $E_\gamma$ des Photopeaks die Ansprechfunktion des Detektors abfällt. Dies könnte mitunter an der mutmaßlich bei höheren Energien abfallenden Effizienz beider Detektoren liegen. Dadurch würden nieder- bis mittel-energetische Ereignisse durch den Detektor überrepräsentiert, was zu einer Verminderung der Ansprechfunktionen bei hohen Energien führte. \\
+        
+        Die oben geführte Berechnung beruht auf den Hintergrund-bereinigten Spektren der Messung bekannter Quellen. Es erscheint sinnvoll, eventuelle Hintergrundstrahlung von anderen Quellen im Raum herauszurechnen, denn die Detektion solcher Strahlung außerhalb des Photopeaks ist nicht auf ein \enquote{Versagen} des Detektors zurückzuführen.
+        
+        % Wären im Spektrum weitere Peaks zu beoabachten, die auf Rückstreuuung in der Umgebung beruhen, dann müssten diese ebenfalls vom Spektrum abgezogen werden, da ihre Messung im Spektrum wiederum nichts mit einer geringen Ansprechfunktion des Detektors zu tun hätte, sondern auf einen mangelhaften Aufbau hinwies. Da keine solcher Peaks mit signifikanter Ereigniszahl vorliegen, kann auf diese Korrektur hier in guter Näherung verzichtet werden. \textcolor{red}{kann man sich tatsächlich drüber streiten, denn wir haben einen solchen Peak im NaI-Cs-Spektrum}
+        
+        % \textcolor{orange}{ja idk, ich hätte eigentlich gedacht, man lässt solche peaks drin. Ein wirkliches Versagen des Detektors können wir ja gar nicht nachweisen, woher sollen wir denn wissen, ob ein Photopeak-Photon eingetroffen ist ohne detektiert zu werden? Bzw. welche bedeutung hat "total", wenn nicht gerade Beiträge aus anderen Peaks oder Hintergrundstrahlung? Nur Sowas wie der Compton-Untergrund bei Streuung im Detektor selbst? Etwas schwammig.}
+
+    \subsubsection{Analyse der Detektor-Effizienz}
+        Im letzten Schritt der Kalibration der Detektoren wird nun die energieabhängige totale Effizienz $\epsilon(E_\gamma)$ berechnet. Ihre Berechnung für die Caesium-Quelle folgt aus Anwendung von Gleichung \eqref{eq:abs_effizienz} mit den bekannten Durchmessern $d$ der Detektionskristalle NaI und HPGe, wobei die Aktivität der Quelle $B($Cs$)$ sowie die Distanz zur Quelle aus Tabelle \ref{tab:Quellen_Distanzen} entnommen werden kann. Mit der Anzahl an Ereignissen $N\sub{detect} = A$ (Tab. \ref{tab:Gaussfit_Params_HPGe}, \ref{tab:Gaussfit_Params_NaI}), welche mit dem \SI{661}{keV}-Peak assoziiert werden, folgen die absoluten Effizienzen
+        \begin{align*}
+            \begin{aligned}
+                &\text{HPGe:} \\
+                &\text{NaI: }
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &\epsilon(\SI{661}{keV}) = \SI{3.9 +- 0.4}{\percent} \\
+                &\epsilon(\SI{661}{keV}) = \SI{9.8 +- 1.0}{\percent}
+                \qquad \text{.}
+            \end{aligned}
+        \end{align*}
+        Die Berechnung zeigt, dass nur ein Bruchteil der \SI{661}{keV}-Photonen am Detektor tatsächlich detektiert werden kann. Der größte Teil passiert den Detektor, wird gestreut oder hinterlässt aufgrund von statistischen Effekten bei der Ladungssammlung (z.B. Rekombination) und nicht-stattfindenden Photoeffekten in der PMT kein Signal im Photopeak. Eine zweite Beoabchtung ist, dass die Detektions-Effizienz des Szintillations-Detektors die des Halbleiter-Detektors um ein Vielfaches bei der gegebenen Energie übersteigt. Dies passt zur Erwartung, denn die höhere Ordnungszahl von Iod ($Z = 53$) gegenüber Germanium ($Z = 32$) erlaubt einen höheren Wirkungsquerschnitt $\sigma \sub{photo} \propto Z^5$ gegenüber dem Photoeffekt, welcher zur Detektion führt. \\
+        
+        Analog zum Vorgehen bei Caesium kann die Effizienz einzeln für sämtliche Linien von Europium berechnet werden. Hierbei muss jedoch berücksichtigt werden, dass die Aktivität der Quelle $B(E)$ bezüglich eines bestimmten Übergangs $E$ der Produkte von Europium jeweils mit der relativen Häufigkeit des Übergangs (vgl. Tab. \ref{tab:Eu_Literatur_Linien}) skaliert werden muss. Abbildung \ref{fig:Effizienzkurve} zeigt die daraus folgenden energieabhängigen totalen Effizienzen als Effizienzkurve.
+        
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/HPGe_abs_Effizienz.jpg}
+                \caption{HPGe}
+                \label{fig:Effizienzkurve_HPGe}
+            \end{subfigure}
+            \hspace{0.5cm}
+            \begin{subfigure}{0.47\textwidth}
+                \includegraphics[width=\linewidth]{figs/NaI_abs_Effizienz.jpg}
+                \caption{NaI}
+                \label{fig:Effizienzkurve_NaI}
+            \end{subfigure}
+            \caption{Effizienz $\epsilon(E_\gamma)$ der Detektoren anhand des $^{152}$Eu-Spektrums als Funktion der Energie des Photo-Peaks. }
+            \label{fig:Effizienzkurve}
+        \end{figure}    
+        Abb. \ref{fig:Effizienzkurve} zeigt, dass die Effizienz $\epsilon(E)$ beider Detektoren im Energie-Bereich $E \in [\SI{100}{keV}, \SI{1500}{keV}]$ bei höheren Energien fällt. Dieses Verhalten ist bekannt und kann durch folgende empirische Fitfunktion angenähert werden \cite[S.299]{Effiz_Kurve}:
+        \begin{align}
+            \epsilon(e) = \exp{\left( -a_1 \cdot e  + a_2 \cdot e^2 \right)}
+            \qquad \text{mit} \qquad 
+            e = \ln{(E/\SI{1.022}{keV})} 
+            \qquad \text{.}
+        \end{align}
+        Die in den Abbildungen \ref{fig:Effizienzkurve_HPGe} und \ref{fig:Effizienzkurve_NaI} angepassten Effizienzkurven folgen dieser funktionalen Form mit den Parametern 
+        \begin{align*}
+            \begin{aligned}
+                &\text{HPGe:} \\
+                &\text{NaI: }
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &a_1 = \num{-1.4558 +- 0.0321} \\
+                &a_1 = \num{-1.7667 +- 0.0355}
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &a_2 = \num{-0.1887 +- 0.0049} \\
+                &a_2 = \num{-0.2177 +- 0.0060}
+                \qquad \text{.}
+            \end{aligned}
+        \end{align*}
+        Was diese funktionale Form jedoch nicht widerspiegelt, ist der erwartete Abfall der Effizienzkurve hin zu noch kleineren Energien \cite[S. 242]{Leo}. Bereits die genauere Betrachtung der nieder-energetischen Datenpunkte in Abbildung \ref{fig:Effizienzkurve} deutet an, dass die Kurve bei niedrigen Energien schließlich eine Glockenform annimmt, welche zu minimaler Effizienz bei minimalen Energien konvergiert. Mit den gegebenen Quellen kann dieses Verhalten jedoch nicht überprüft werden, da der niederenergetische Bereich nicht hinreichend abgedeckt ist. Allgemein lässt sich sagen, dass die Regressionsfunktion das abfallende Verhalten der Effizienz zu hohen Energien korrekt beschreibt und auch mit der zuvor bestimmten Effizienz für Caesium übereinstimmt. 
+
+    \subsubsection{Berechnung der Aktivität von \texorpdfstring{$^{60}$Co}{TEXT}}
+        Zuletzt werden die berechneten Effizienzkurven in ihrer Wirksamkeit getestet, indem die Aktivität der Caesiumquelle durch Korrektur des Caesium-Spektrums mit der Effizienzkurve berechnet wird. Dazu wird folgendermaßen vorgegangen.\\
+        
+        Die Effizienzkurve, welche im vorherigen Aufgabenteil bestimmt wurde, geht davon aus, dass nur Ereignisse, welche Teil der Gaußkurve zu einem Photopeak sind, auch korrekt detektiert wurden. Nun müssen also die Ereignisszahlen assoziiert mit den Flächen der Cobalt-Peaks $A(\SI{1173}{keV})$ und $A(\SI{1332}{keV})$ energie-abhängig durch $\epsilon(E_\gamma)$ korrigiert werden. Aus den Parametern der zugehörigen Gaußkurven generieren wir das \enquote{bereinigte} Cobalt-Spektrum, welches auch lineare Hintergründe nicht mehr beinhaltet:
+        \begin{align}
+            N^\prime(K) = 
+            \frac{A_1}{\sqrt{2 \pi} \sigma_1} \cdot \exp{\left( \frac{-(\mu_1-K)^2}{2\sigma_1^2} \right)} +
+            \frac{A_2}{\sqrt{2 \pi} \sigma_2} \cdot \exp{\left( \frac{-(\mu_2-K)^2}{2\sigma_2^2} \right)}
+            \qquad \text{.}
+        \end{align}
+        Anschließend korrigieren wird dieses bereinigte Spektrum durch Division mit der Effizienz $\epsilon(E(K))$ und summieren über alle Kanäle, wodurch wir die Anzahl $N\sub{reach}$ der Photonen erhalten, welche den Detektor innerhalb der Messzeit $T = \SI{300}{s}$ erreicht haben. Zuletzt dividieren wir durch den Raumwinkel des Detektors und die Messzeit, wodurch wir die Aktivität $B$ der Quelle erhalten. 
+        \begin{align}
+            B   = \frac{N\sub{reach}}{T}\frac{4 \pi D^2}{\pi d^2}
+                = \frac{4 D^2}{ d^2 T} \cdot \sum_i{  \frac{N^\prime(K_i)}{ \epsilon(E(K_i)) }}
+        \end{align}
+        Durch Anwendung dieser Iteration folgt schließlich die rückgerechnete Aktivität der Cobalt-Probe (vgl. $B = \SI{39}{kBq}$):
+        \begin{align*}
+            \begin{aligned}
+                &\text{HPGe:} \\
+                &\text{NaI: }
+            \end{aligned}
+            \qquad \qquad
+            \begin{aligned}
+                &B\text{(Co)} = \SI{32.80 +-  16.40}{kBq} \\
+                &B\text{(Co)} = \SI{35.41 +-  17.70}{kBq}
+                \qquad \text{.}
+            \end{aligned}
+        \end{align*}
+        Die berechneten Werte stimmen hervorragend mit dem theoretischen Wert überein und bestätigen somit die Gültigkeit der Effizienzkurve bei hohen Energien $E_\gamma$. Die Größe der Unsicherheit lässt sich darauf zurückführen, dass die Abstände $D$ und somit die eingeschlossenen Raumwinkel der Detektoren nur ungenau bekannt sind. Dennoch liegen die berechneten Werte weniger als $\SI{20}{\percent}$ vom erwarteten Wert entfernt. 

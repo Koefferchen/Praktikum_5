@@ -1,0 +1,68 @@
+\section{Einführung}
+    In diesem Versuch wird die Wechselwirkung von $\gamma$-Strahlung mit Materie anhand des Compton-Effekts untersucht. Hierbei soll der totale Wirkungsquerschnitt $\sigma \sub{tot}$ mithilfe des Lambert-Beerschen Gesetzes ermittelt werden, indem Strahlungsintensitäten hinter Targets verschiedener Dicken gemessen werden. Anschließend wird die Winkelabhängigkeit der Compton-Streuung nachgewiesen, indem Streuspektren aus verschiedenen Winkeln aufgenommen werden. Das Ziel dieses Versuchs ist somit die quantitative Messung der Compton-Streuung. 
+    
+\subsection{Compton-Streuung}
+    Bei Compton-Streuung handelt es sich um einen elastischen Stoß eines Photons der Energie $E_\gamma$ mit einem ruhenden, quasifreien Elektron mit Ruheenergie $E_e = m_e c^2$ und Masse $m_e$. Durch die Behandlung des Photons als klassisch stoßendes Teilchen folgt aus der relativistischen Kinematik, dass das gestreute Photon im Winkel $\theta$ zum einfallenden Photon die Energie $E^\prime _\gamma$ besitzt \cite{formula_E_prime}:
+    \begin{align} \label{eq:E^prime(E)}
+        E_\gamma^\prime = \frac{E_\gamma}{ 1+ \frac{E_\gamma}{E_e}(1 - \cos{(\theta)}) }
+        \qquad \text{.}
+    \end{align}
+    Bei Betrachtung von Gleichung \eqref{eq:E^prime(E)} fällt auf, dass die Energie des gestreuten Photons $E^\prime _\gamma$ bei Vorwärtsstreuung $(\theta = \SI{0}{\degree})$ maximal sowie bei Rückwärtsstreuung $(\theta = \SI{180}{\degree})$ minimal wird und dazwischen monoton fällt. Für beliebig hohe Energien $E_\gamma$ $(\theta \neq 0)$ steigt die Energie des gestreuten Photons --- wenn auch etwas unintuitiv --- asymptotisch gegen $E^\prime_\gamma \rightarrow E_e / (1-\cos{(\theta)})$. \\
+    
+    Neben der Winkelabhängigkeit $E_\gamma^\prime (E_\gamma, \theta)$ der gestreuten Photonen lässt sich nun die Intensität der gestreuten Strahlung durch den Klein-Nishina-Wirkungsquerschnitt charakterisieren \cite{formula_sigma_diff}:
+    \begin{align} \label{eq:sigma_diff_KN}
+        \frac{d \sigma}{d \Omega} = \frac{\alpha^2}{2 m_e^2}
+        \left(\frac{E^\prime_\gamma}{E_\gamma}\right)^2  \left(\frac{E^\prime_\gamma}{E_\gamma} + \frac{E_\gamma}{E^\prime_\gamma} - \sin^2{(\theta)} \right)
+        \qquad \text{,}
+    \end{align}
+    wobei $\alpha \approx \frac{1}{137}$ die Feinstrukturkonstante darstellt. Durch Einsetzen von Gleichung \eqref{eq:E^prime(E)} erhält man schließlich die relative Intensität $\frac{d \sigma}{d \Omega}(E_\gamma, \theta)$ als Funktion der Energie des einfallenden Photons $E_\gamma = h \nu$ und des Streuwinkels $\theta$. $h$ ist hier das Plancksche Wirkungsquantum und $\nu$ die Frequenz des einfallenden Photons. \\
+    
+    Die Abschwächung von Strahlung mit Wellenlänge $\gamma$ und Intensität $I_0$ durch Materie der Dicke $d$ folgt dem Lambert-Beerschen Gesetz
+    \begin{align} \label{eq:Lambert-Beer}
+        I(d) = I_0 \exp{(-\mu d)}  \qquad \qquad 
+        \mu = n_e \cdot \sigma \sub{tot}
+    \end{align}
+    mit dem totalen Abschwächungskoeffizienten $\mu(E_\gamma)$, welcher proportional zum Elektronendichte des Targets $n_e$ und dem totalen Wirkungsquerschnitt pro Elektron $\sigma \sub{tot}$ der Streuung ist. Im Fall des $\SI{661}{keV}$-Peak von $^{137}$Cs \cite{NUNDAT_decays} dominiert der Compton-Effekt die Streuung und es gilt in guter Näherung:
+    \begin{align}
+        \sigma \sub{tot} = \sigma \sub{photo} + \sigma \sub{Compt} \approx \sigma \sub{Compt}
+        \qquad \text{.}
+    \end{align}
+   Während der Photoeffekt nur bei nieder-energetischer Strahlung $E_\gamma \lesssim \SI{100}{keV}$ relevant wird, ist Paarbildung hier kinematisch verboten $(E_\gamma < \SI{1022}{keV})$ und muss somit nicht mit einbezogen werden. Schließlich kann der totale Wirkungsquerschnitt aufgrund von Compton-Streuung durch Integration von Gleichung \eqref{eq:sigma_diff_KN} über den Raumwinkel $d\Omega$ berechnet werden:
+    \begin{align} \label{eq:sigma_tot_KN}
+        &\sigma \sub{tot} = \frac{\pi \alpha^2}{m^2}\frac{1}{x^3}
+        ( f_1(x) + f_2(x) ) \notag \\
+        &\text{mit } \quad f_1(x) \coloneqq \frac{2x(2 + x(1 + x)(8 + x))}{(1 + 2x)^2} \notag \\ 
+        &\text{und } \quad f_2(x) \coloneqq ((x - 2)x - 2) \ln(1 + 2x)
+        \qquad \text{,}  
+    \end{align}
+    wobei $x = E_\gamma / m_e$  und $\sigma \sub{tot}$ in natürlichen Einheiten gegeben sind $(\hbar = c = 1)$. Bei der Messung von hoch-energetischer Strahlung mit einem Szintillations-Spektrometer können durch den Compten-Effekt Teile der Photon-Energie dem Detektor entfliehen, sodass im Detektor ein Spektrum niedrigerer Energien, das Compton-Kontinuum, deponiert wird. Durch Summierung über alle mögliche Winkel $\theta$, in die das gestreute Photon entkommen kann, erhält man ein Kontinuum niedriger Energien mit einem harten Einschnitt zu höheren Energien, der Compton-Kante. Zusäzlich zum (gestreuten) Photopeak wird ein solcher Hintergrund mit geringerer Amplitude für die Messung erwartet.
+    
+\subsection{Strahlungsquellen}
+    Im nachfolgenden Versuch wird die Quelle $^{137}$Cs als näherungsweise monochromatische Röntgenquelle verwendet. $^{137}$Cs zerfällt über den $\beta^-$-Kanal zu verschiedenen Anregungszuständen des Isotops $^{137}$Ba. Durch die Abregung vom $\frac{11}{2}^-$-Zustand in den $\frac{3}{2}^+$-Grundzustand entsteht die dominante $\SI{661}{keV}$-Linie, welche im weiteren Verlauf verwendet werden wird. \cite{NUNDAT_decays}
+    
+    Neben der Caesiumquelle steht das Europium-Isotop $^{152}$Eu zur Verfügung, welches sich aufgrund der Vielzahl an messbaren Emissionslinien im Röntgenbereich zur Energie-Kalibration eignet. Tabelle \ref{tab:Eu_Zerfallslinien} zeigt die prominentesten Zerfallslinien der Europium-Quelle, welche zur Energie-Eichung des Szintillations-Spektrometers herangezogen werden können. 
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{SS} \toprule
+             {Energie $E_\gamma$ / \unit{keV}}  & {rel. Intensität $I$ / $\%$} \\ \midrule
+             \num{121.7817(3)}   & \num{28.53(16)} \\
+             \num{244.6974(8)}   & \num{7.55(4)} \\
+             \num{344.2785(12)}  & \num{26.59(20)} \\
+             \num{778.9045(24)}  & \num{12.93(8)} \\
+             \num{867.380(3)}    & \num{4.23(3)} \\
+             \num{964.057(5)}    & \num{14.51(7)} \\
+             \num{1085.837(10)}  & \num{10.11(5)} \\
+             \num{1112.076(3)}   & \num{13.67(8)} \\
+             \num{1408.013(3)}   & \num{20.87(9)} \\ \bottomrule
+        \end{tabular}
+        \caption{Auflistung der häufigsten Emissionslinien von $^{152}$Eu zur Energie-Kalibration des Szintillations-Spektrometers. \cite{Eu_Zerfallslinien}}
+        \label{tab:Eu_Zerfallslinien}
+    \end{table}
+
+
+
+\subsection{Vorwort}
+    Messungen von radioaktiven Zerfällen unterliegen der Poisson-Statistik, welche vorhersagt, dass die $N$-fache Messung eines Ereignisses eine statistische Unsicherheit von $\sqrt{N}$ nach sich zieht. Zur Erhöhung der Lesbarkeit wird diese Unsicherheit zwar mit einberechnet, aber als nicht in den Diagrammen visualisiert. Alle Berechnungen von Unsicherheit basieren auf der Gaußschen Fehlerfortplanzung, sofern nicht anders spezifiziert.
+    
+    Alle in der Versuchsdurchführung erhobenen Rohdaten, das bei der Versuchsdurchführung laufend verfasste Protokoll und einige zusätzliche Diagramme aus der Auswertung sind auf Sciebo \cite{raw_data} erhältlich. (Link gültig bis 31.03.2026)

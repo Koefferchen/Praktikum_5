@@ -1,0 +1,143 @@
+\section{Kalibration der Detektoren}
+    Für die späteren Messungen müssen zunächst die Spannungen an Szintillationstrigger und Driftkammer kalibriert und die Auswirkung dieser Einstellungen auf Detektionsrate und die Driftzeitverteilung beobachtet werden. Im Anschluss werden zusätzlich zu den Spannungen auch die in der Kontrolldatei \textit{setup.xml} einstellbaren Parameter für die Zeitverzögerung und Diskriminatorschwelle in den Frontends optimiert, um den Aufbau auf die Langzeitmessung vorzubereiten.
+
+ \subsection{Messung der analogen Signale}
+    Zu Beginn des Versuchs werden die analogen Signale des Szintillations-Detektors sowie eines Anoden-Drahtes der Driftkammer verglichen, um eventuelle technische Defekte frühzeitig festzustellen. Ausgemessen wird die kosmische Strahlung. Hierzu wird die Hochspannung $U\sub{sz}$ des Szintillations-Detektors langsam auf \SI{-1.71(1)}{kV} erhöht und die Hochspannung $U\sub{dk}$ der Driftkammer auf \SI{-2.81(3)}{kV} eingestellt. Der Ausgang der PMT des Szintillations-Detektors wird auf den Kanal \texttt{CH I} des Oszilloskops geschaltet. An Kanal \texttt{CH II} wird ein Tastkopf angeschlossen, der anschließend am äußersten Pin links der Driftkammer gegen Masse befestigt wird. Abbildung \ref{fig:Oszi_Bilder} zeigt zwei der beobachteten Signale.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/Oszi_Driftkammer.JPG}
+            \caption{Driftkammer: $U\sub{dk} = \SI{-2.81 +- 0.281}{kV}$}
+            \label{fig:Oszi_Driftkammer}
+        \end{subfigure}
+        \hspace{0.5cm}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/Oszi_Szintillator.JPG}
+            \caption{Szintillations-Detektor: $U\sub{sz} = \SI{-1.71(1)}{kV}$}
+            \label{fig:Oszi_Szintillator}
+        \end{subfigure}
+        \caption{Oszillogramme der analogen Signale der Driftkammer (a) und des Szintillations-Detektors (b). }
+        \label{fig:Oszi_Bilder}
+    \end{figure}
+    Beim Vergleich der beiden Signale fällt zunächst auf, dass das Signal der Driftkammer wesentlich homogener geformt ist, während das Signal am Szintillator erhebliche Schwankungen an der abfallenden Signalkante zeigt. Gleichzeitig ist die Signallänge am Szintillator mit weniger als \SI{5}{ns} um etwa den Faktor $100$ kürzer als an der Driftkammer. Für beide Effekte ist die Wahl der Basis-Elektronik an den Detektoren verantwortlich. Im Gegensatz zur amplituden-formenden Verstärkung wird an der PMT des Szintillations-Detektors eine Elektronik mit hoher Zeitauflösung verwendet, damit dieser als Szintillations-Trigger für das Experiment genutzt werden kann. Dies impliziert jedoch auch eine Verschlechtung der Amplituden-Formung wie in Abbildung \ref{fig:Oszi_Bilder} beobachtet. die Amplitude des Szintillator-Signals von \SI{4.7(2)}{V} ist deutlich höher als die Amplitude des Driftkammer-Signals mit \SI{0.95(5)}{V}.
+    
+
+\subsection{Messung des Driftkammer-Stroms} \label{sec:Driftstrom}
+    Nun wird die funktionale Abhängigkeit des Stroms durch die Driftkammer $I$ als Funktion dessen Hochspannung $U\sub{dk}$ mit und ohne Bestrahlung durch die $^{90}$Sr-Quelle gemessen. Die Driftströme $I$ werden hierbei über den Widerstand $R = \SI{1}{\mega \ohm}$ als Spannungen gemessen und können in den Rohdaten \cite{raw_data} tabellarisch nachvollzogen werden. Die Ablese-Ungenauigkeit der Driftkammer-Hochspannung $U\sub{dk}$ beträgt hierbei \SI{1}{\percent} des Messwerts (Geräteangabe) und die Ungenauigkeiten der Driftströme folgen empirisch aus den beobachteten Fluktuationen im Messwert.\\
+    
+    Es wird erwartet, dass mit steigender Hochspannung mehr Ereignisse detektiert werden können, wobei die Ereignisrate mit zusätzlicher Bestrahlung deutlich höher sein wird. Ebenso sollte der Effekt der Gasverstärkung mit steigender Spannung deutlich prominenter werden (vgl. Abschnitt \ref{sec:funktion_driftkammer}). Abbildung \ref{fig:Driftstrom_ohne} und \ref{fig:Driftstrom_mit} zeigen die Messreihen des Driftstroms ins beiden Fällen, welche den erwarteten Trend belegen.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/Driftstrom_ohne.jpg}
+            \caption{Ohne $^{90}$Sr-Quelle}
+            \label{fig:Driftstrom_ohne}
+        \end{subfigure}
+        \hspace{0.5cm}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/Driftstrom_mit.jpg}
+            \caption{Mit $^{90}$Sr-Quelle}
+            \label{fig:Driftstrom_mit}
+        \end{subfigure}
+        \caption{Messreihen zur Abhängigkeit des Driftstroms $I$ von der Hochspannung $U\sub{dk}$ jeweils ohne (a) und mit zusätzlicher Bestrahlung (b) durch die $^{90}$Sr-Quelle. Im letzteren Fall lässt sich dieser Zusammenhang durch eine Exponentialfunktion \eqref{eq:exp_fit} annähern. }
+        \label{fig:Driftstrom}
+    \end{figure}
+    
+    Wie erwartet kann mit und ohne zusätzliche Bestrahlung grundsätzlich eine Zunahme des Driftstroms $I$ mit der Hochspannung $U\sub{dk}$ beobachtet werden. Ohne den $\beta$-Strahler (Abb. \ref{fig:Driftstrom_ohne}) ist für $U \in [\SI{2}{kV}, \SI{2.5}{kV}]$ zunächst kein klarer Trend zu sehen, der jedoch von einer deutlichen Zunahme des Driftstroms gefolgt wird. Es ist daher anzunehmen, dass die für niedrige Spannungen $U\sub{dk}$ die Amplitude des Driftstroms in der Größenordnung dessen Unsicherheit liegt und vorwiegend von Leckströmen und technischen Begrenzungen bestimmt wird. Aufgrund des niedrigen Myonen-Flusses durch den Detektor sind die Ströme hier im Bereich von wenigen \unit{nA}. \\
+    
+    Bei Hinzunahme der Strontium-90-Quelle steigt die Ereignisrate durch die zusätzlichen Detektionen von emittierten Elektronen stark an und folgt einem exponentiellen Verlauf mit den Anpassungsparameters $a$, $b$ und $c$ (vgl. Abb. \ref{fig:Driftstrom_mit}):
+    \begin{align} \label{eq:exp_fit}
+        I(U\sub{dk}) = a \cdot \exp{\left( U\sub{dk}/b \right)} + c
+        \qquad \text{.}
+    \end{align}
+    
+    Die Anpassung weist eine hohe Güte von $\chi^2 = 0.2$ auf und zeigt somit die Übereinstimmung mit der verallgemeinerten Exponentialfunktion. Die funktionale Form lässt sich auch heuristisch nachvollziehen: Je höher der Driftstrom ist, desto stärker steigt der Driftstrom an. Dies war zu erwarten, denn bei steigender Spannung, steigt die Länge der Elektronen-Lawine, welche mit ihrer Länge exponentiell mehr Sekundär-Elektronen ionisiert: solange genug ionisierbare Atome im Gas sind (einen solchen Plasma-Zustand erreicht dieses Experiment nicht), ist die Ionisierungsrate proportional zur Anzahl mobiler Elektronen, also proportional zur Anzahl bisher geschehener Ionisierungen. Dies impliziert den Zusammenhang $\partial n/\partial t \propto n$; die Lösung dieser Differentialgleichung ist eine Exponentialfunktion.
+
+
+
+\subsection{Einstellung der Szintillator-Spannung}
+    Als nächstes wird die optimale Hochspannung $U\sub{sz}$ für den Szintillations-Detektor jeweils mit und ohne zusätzliche Bestrahlung ermittelt. Hierzu wird die Detektionsrate $n$ des Szintillations-Detektors mit der Software \texttt{fpexperiment} wie in Abschnitt \ref{sec:Aufbau} beschrieben für verschiedene Spannungen $U\sub{sz} \in [\SI{-2}{kV}, \SI{-1.5}{kV}]$ aus der Messdauer $t$ und der Ereigniszahl $N$ ermittelt.\\
+    
+    Die Hochspannung $U\sub{sz} = U\sub{sz}^\mu$ ist dann optimal zur Messung von kosmischen Myonen gewählt, wenn die gemessene Detektionsrate (ohne $\beta$-Strahler) der erwarteten Detektionsrate an Myonen entspricht. Bei einem angenommenen durchschnittlichen Myonen-Fluss von \SI{100}{\per \square \meter \per \second} und einer sensitiven Detektionsfläche von $\SI{36.0(5)}{cm} \times \SI{4.8(2)}{cm}$ folgt eine erwartete Detektionsrate von $n\sub{exp} = \SI{1.73 +- 0.08}{\per \second}$, welche bei der Hochspannung $U\sub{sz}^\mu$ realisiert wird. Diese Rate wird im weiteren Verlauf als grober Leitwert verwendet.\\
+    
+    Die Hochspannung $U\sub{sz} = U\sub{sz}^e$ wird genau dann als optimal zur Messung der emittierten Elektronen des $\beta$-Strahlers $^{90}$Sr bezeichnet, wenn das Verhältnis $\frac{n\sub{mit}}{n\sub{ohne}}$ der Detektionsrate mit und ohne Quelle maximal wird. Hierbei ist $n\sub{mit} = n_e + n_\mu$ die Detektionsrate mit Strontium-90-Quelle sowie $n\sub{ohne} = n_\mu$ die Detektionsrate der kosmischen Myonen ohne den $\beta$-Strahler. Dies ist genau dann der Fall, wenn möglichst viele Elektronen und zugleich möglichst wenig Myonen gemessen werden, also bei hohem \textit{Signal to Noise Ratio} (SNR).
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c c c c c c c} \toprule
+        $U_{\mathrm{sz}}$ / V &
+        $N_{\mathrm{mit}}$ / 1 &
+        $t_{\mathrm{mit}}$ / s &
+        $N_{\mathrm{ohne}}$ / 1 &
+        $t_{\mathrm{ohne}}$ / s &
+        $n_{\mathrm{mit}}$ / 1/s &
+        $n_{\mathrm{ohne}}$ / 1/s &
+        $\frac{n_{\mathrm{mit}}}{n_{\mathrm{ohne}}}$ / 1 \\ \midrule
+        -1500(10) & 200(14) & 203,24(10) & 100(10) & 153,71(10) & 0,98(7) & 0,65(7) & 1,51(18) \\
+        -1540(10) & 200(14) & 82,71(10)  & 100(10) & 67,08(10)  & 2,418(17) & \cellcolor{green!30} 1,49(15) & 1,6(2) \\
+        -1560(10) & \text{---} & \text{---} & 200(14) & 71,60(10) & \text{---} & 2,8(2) & \text{---} \\
+        -1590(10) & 1000(30) & 106,19(10) & 300(17) & 78,28(10) & 9,42(3) & 3,8(2) & 2,46(19) \\
+        -1630(10) & 2000(50) & 91,42(10) & 400(20) & 70,15(10) & 21,9(5) & 5,7(3) & 3,8(9) \\
+        -1700(10) & 5000(70) & 79,27(10) & 1000(30) & 106,13(10) & 63,1(9) & 9,4(3) & 6,7(9) \\
+        -1750(10) & 10000(100) & 84,00(10) & 3000(50) & 201,12(10) & 119,05(12) & 14,9(3) & 7,98(16) \\
+        -1800(10) & 20000(140) & 104,46(10) & 5000(70) & 219,74(10) & 191,39(14) & 22,8(3) & \cellcolor{blue!30} 8,41(13) \\
+        -1850(10) & 40000(200) & 147,64(10) & 5000(70) & 134,27(10) & 271,00(14) & 37,2(5) & 7,3(8) \\
+        -1900(10) & 100000(300) & 287,11(10) & 10000(100) & 185,01(10) & 348,31(11) & 53,8(5) & 6,5(6) \\
+        -1920(10) & 100000(300) & 271,03(10) & 10000(100) & 165,55(10) & 369,00(12) & 60,4(6) & 6,1(6) \\
+        -2000(10) & 100000(300) & 224,97(10) & 10000(100) & 122,14(10) & 444,44(14) & 81,90(8) & 5,4(6) \\ \bottomrule
+    \end{tabular}
+    \caption{Meisreihe zur Bestimmung der optimalen Szintillator-Spannungen $U\sub{sz}^e$ zur Messung von Elektronen und $U\sub{sz}^\mu$ zur Messung von Myonen. Es zeigt sich, dass $n\sub{ohne} \approx n\sub{exp}$ in der Region von $U\sub{sz}^\mu = \SI{-1550(10)}{V}$ erreicht wird (grün). Das beste SNR von $\num{8,41}$ zur Messung von Elektronen hingegen wird bei der Hochspannung $U\sub{sz}^e = \SI{-1800(50)}{V}$ erreicht (blau). Die Unsicherheiten betragen $\Delta U\sub{sz} = \SI{10}{V}$, $\Delta N = \sqrt{N}$ und $\Delta t = \SI{0,1}{s}$.}
+    \label{tab:Szintillator_Spannungen}
+\end{table}
+ 
+    Tabelle \ref{tab:Szintillator_Spannungen} zeigt die durchgeführte Messreihe zur Bestimmung der optimalen Betriebs-Spannungen $U\sub{sz}$ durch die Annäherung an die erwartete Ereignisrate $n\sub{ohne} \approx n\sub{ohne}$ zur Messung von Myonen, beziehungsweise durch die Maximierung des SNR zur Messung von Elektronen. Durch Interpolation zwischen den Messpunkten folgen die optimalen Betriebsparameter $U\sub{sz}^\mu = \SI{-1550(10)}{V}$ sowie $U\sub{sz}^e = \SI{-1800(50)}{V}$. Zur Einstellung der Betriebsparameter der Driftkammer mit der Strontium-90-Quelle wird nun die Szintillator-Spannung $U\sub{sz}^e$ verwendet, zur anschließenden Langzeitmessung kosmischer Myonen $U\sub{sz}^\mu$.
+
+\subsection{Einstellung der Driftkammer-Parameter} \label{sec:aufbau_kalibration}
+    Die verwendete Prototyp-Driftkammer besitzt $3$ veränderliche Parameter zur feinen Justage des Detektors.\\
+
+    Beim ersten Parameter handelt es sich um die analog einstellbare Hochspannung $U\sub{dk} \in [\SI{-3}{kV}, \SI{-2}{kV}]$, welche, wie in Abschnitt \ref{sec:Driftstrom} gezeigt, zur Maximierung der Detektionsrate möglichst hoch eingestellt werden sollte. Ein limitierender Faktor für die Einstellung der Hochspannung ist jedoch die Netzstabilität, denn bei zu hoch gewählter Spannung $U\sub{dk}$ wird die eingebaute Sicherung getriggert und koppelt die Spannung von der Driftkammer ab.\\
+    
+    Die verbleibenden beiden Parameter sind die Zeitverzögerung \texttt{DDC} und die Höhe der DiskriminatorSchwelle \texttt{THR}, welche digital in der Datei \texttt{setup.xml} unter \texttt{CSR\_DDC} und \texttt{CSR\_THR} abgeändert werden können. Beide Parameter müssen in Hexadezimal eingegeben werden, wobei für Zeitverzögerung in Einheiten von \SI{2.5}{ns} interpretiert wird.\\
+    
+    Ein wichtiger Parameter zur Kategorisierung von Ereignissen ist die \textit{Driftzeit}. Sie bezeichnet die vergangene Zeit zwischen Eintreffen eines Teilchens und der Detektion an einem Draht. Diese Zeit kann bis auf eine additive Konstante für jedes Ereignis festgestellt werden und um den Wert der Zeitverzögerung so verstellt werden, dass das Driftzeit-Intervall von Interesse innerhalb des Kanal-Intervalls $t \in [\SI{0}{ns}, \SI{625}{ns}]$ des TDC liegt. Es ist sinnvoll die Zeitverschiebung zuerst einzustellen, da sie weitgehend unabhängig von den anderen Parametern ist und deren Einstellung erleichtert. \\
+    
+    Abbildung \ref{fig:vergleich_DDC} zeigt zeigt zwei Driftzeit-Spektren im Vergleich, welche sich nur durch die Wahl der Zeitverzögerung \texttt{DDC} unterscheiden. Durch die Änderung der Zeitverzögerung von \texttt{0x23} zu \texttt{0x1F} in Hexadezimal gelingt es, das Spektrum an den linken Rand der TDC-Kanäle zu verschieben, wodurch ein möglichst großer Bereich erfassbar wird.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/vergleich_DDC.jpg}
+            \caption{ Einstellung der Zeitverzögung \texttt{DDC}}
+            \label{fig:vergleich_DDC}
+        \end{subfigure}
+        \hspace{0.5cm}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/vergleich_VOLT.jpg}
+            \caption{Einstellung der Hochspannung $U\sub{dk}$}
+            \label{fig:vergleich_VOLT}
+        \end{subfigure}
+        \caption{Driftzeitspektren bei $U\sub{dk} = \SI{2800}{V}$ und \texttt{10 THR} für verschiedene Zeitverzögerungen \texttt{DDC} (a) sowie bei \texttt{0x10 THR}und \texttt{0x1F DDC} für verschiedene Spannung $U\sub{dk}$ (b). Die optimale Zeitverzögerung wird zu \texttt{0x1F DDC} und die höchstmögliche, stabile Spannung wird zu $U\sub{dk} = \SI{2850}{V}$ ermittelt. }
+    \end{figure}
+    Nun wird die optimale Hochspannung $U\sub{dk}$ für die Driftkammer ermittelt. Wie in Abbildung \ref{fig:vergleich_VOLT} beobachtet werden kann, steigt die Ereignisrate mit erhöhter Hochspannung deutlich an und soll somit so hoch wie möglich gewählt werden. Nach mehreren versuchten Messungen mit $U\sub{dk} = \SI{2900}{V}$, bei welchen jedes Mal die Sicherung triggert, wird beschlossen, dass \SI{2850}{V} die höchste stabile Spannung ist, welche für die Übernachtmessung genutzt werden kann. Eine Auffälligkeit in Abbildung \ref{fig:vergleich_VOLT} ist, dass bei höheren Spannungen deutlich mehr Ereignisse mit sehr großen Driftzeiten gemessen werden. Dies ist darauf zurückzuführen, dass hohe Betriebsspannungen bei gleichbleibender Diskriminatorschwelle zur Triggerung einer Vielzahl von Drähten führt, auch wenn diese nicht direkt benachbart zu einfallenden Teilchen sind. Damit pro Ereignis nur die direkt benachbarten Drähte ansprechen, muss mit der Hochspannung $U\sub{dk}$ auch die Diskriminatorschwelle \texttt{THR} angehoben werden. \\
+    
+    Als letztes wird nun die optimale Diskriminatorschwelle \texttt{THR} zu den ermittelten Parametern $U\sub{dk} = \SI{2850}{V}$ und \texttt{0x1F DDC} bestimmt. Das Ziel ist hierbei, möglichst viele Ereignisse in den Maxima von $t \leq \SI{300}{ns}$ zu detektieren (Anprechen benachbarter Drähte) und möglichst wenige Ereignisse darüber hinaus zu erhalten (Ansprechen entfernter Drähte). \\
+    
+    Abbildung \ref{fig:vergleich_THR1} zeigt zunächst eine grobe Messreihe verschiedener möglicher Diskriminatorschwellen. Es fällt auf, dass insbesondere bei höheren Schwellen \texttt{0x20} / \texttt{0x28} deutliche Verluste in den Ereignisraten auftreten, weshalb eine Schwelle unterhalb von \texttt{0x20} gesucht wird. Andererseits zeigt das Spektrum für \texttt{0x10 THR} eine deutliche Zunahme an Ereignissen für $t \geq \SI{400}{ns}$, weswegen eine Schwelle oberhalb von \texttt{0x10} gesucht wird. 
+    
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/vergleichTHR1.jpg}
+            \caption{Einstellung der Diskriminatorschwelle (grob) }
+            \label{fig:vergleich_THR1}
+        \end{subfigure}
+        \hspace{0.5cm}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figs/vergleichTHR2.jpg}
+            \caption{Einstellung der Diskriminatorschwelle (fein) }
+            \label{fig:vergleich_THR2}
+        \end{subfigure}
+        \caption{Driftzeit-Spektren bei $U\sub{dk} = \SI{2850}{V}$ und der Zeitverzögerung \texttt{0x1F DDC} für verschiedene Diskriminatorschwellen \texttt{THR}. Die höchsten Ereignisraten und das geringste Rauschen wird bei \texttt{0x18 THR} erreicht.
+        }
+    \end{figure}
+    
+    Abbildung \ref{fig:vergleich_THR2} zeigt eine engere Auswahl von Messungen zur Ermittlung der optimalen Diskriminatorschwelle. Aus dieser geht visuell hervor, dass \texttt{0x18 THR} die niedrigste Schwelle mit guter Unterdrückung hoher Driftzeiten darstellt. Somit sind die optimalen Parameter für die nachfolgende Langzeitmessung der Myonen $U\sub{sz}^\mu = \SI{1550}{V}$, $U\sub{dk} = \SI{2850}{V}$, \texttt{0x1F DDC} und \texttt{0x18 THR}.

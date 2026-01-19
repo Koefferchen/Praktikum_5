@@ -1,0 +1,78 @@
+\section{Einführung}
+    Der nachfolgende Versuch beschäftigt sich mit den Eigenschaften von Szintillations- und Halbleiter-Detektoren sowie deren Anwendung in der $\gamma$-Spektroskopie. Hierbei sollen Energie-Auflösung und Effizienz eines NaI(Ta)-Szintillations-Detektors und eines HPGe-Halbleiter-Detektor anhand bekannter Proben untersucht werden. Der HPGe-Detektor wird schließlich zur Spektroskopie einer Bodenprobe verwendet, aus welcher die natürlichen Zerfallsreihen nachgewiesen werden sollen. Das Ziel des Versuchs ist ein quanitativer Vergleich beider Dektortypen. 
+
+
+\subsection{Szintillations-Spektrometer}
+    Beim Szintillations-Spektrometer handelt es sich um einen Detektor, der aus einem Szintillator, einer \textit{Photomultiplier Tube} (kurz: PMT) und einer Auslese-Elektronik (Basis) besteht. Fällt ionisierende Strahlung auf den mit Thallium dotierten NaJ-Szintillationskristall, werden dort Elektronen ionisiert, welche bei stufenweiser Abregung Photonen im sichtbaren Bereich emittieren. Diese Photonen fallen auf die Photokathode der PMT und lösen dabei mit jeder Iteration einen größer-werdenden Schauer aus Sekundär-Elektronen aus, welcher schließlich in der Basis verstärkt und in einen Spannungs-Impuls umgewandelt wird. Die Amplitude, bzw. die Fläche unter dem Spannungs-Impuls ist proportional zur Energie der gemessenen Strahlung und ermöglicht so die Spektroskopie einer radioaktiven $\gamma$-Quelle. Das Schema eines solchen Detektionsvorgangs ist in Abbildung \ref{fig:Aufbau_Szintillator} illustriert. 
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{figs/Aufbau_Szintillator.jpg}
+        \caption{Schematischer Aufbaus eines Szintillations-Detektors \cite{Aufbau_Szintillator}. Eintreffende Strahlung wird in sichtbares Licht umgewandelt und durch die PMT in einen verstärkten Spannungsimpuls umgewandelt.}
+        \label{fig:Aufbau_Szintillator}
+    \end{figure}
+
+    Der Vorteil des verwendeten Szintillations-Spektrometers mit dem Szintillator NaI(Ta) ist der hohe Wechselwirkungs-Querschnitt $\sigma \sub{photo} \propto Z^5$ zur Detektion von Strahlung aufgrund der hohen Ordnungszahl $Z$ von Iod. Die zugehörige energieabhängige Effizienz $\epsilon(E_\gamma)$ wird als Verhältnis zwischen der Detektionsrate in einem Photopeak $N\sub{detect}$ und der Rate von Photonen, welche den Detektor erreichen ($N \sub{reach}$), gebildet. Für einen Detektor mit Durchmesser $d$ und Abstand $D$ zur Quelle der Aktivität $B$ ergibt sich über Betrachtung des Raumwinkels die absolute Effizienz \cite{Praktikumsanleitung}
+    \begin{align} \label{eq:abs_effizienz}
+        \epsilon (E_\gamma) = 
+        \frac{N\sub{detect}}{N\sub{reach}} \approx
+        \frac{N\sub{detect}}{B} \cdot \frac{4 \pi D^2}{\pi d^2} 
+        \qquad \text{.}
+    \end{align}
+    Hierbei wird die Fläche der Detektions als Kreisscheibe der Fläche $\pi d^2$ angenommen und die Quelle als isotroper Strahler ohne Rückstreuung in der Umgebung genähert. Besitzt eine Quelle mehrere Photopeaks, so muss die Aktivität $B$ für den jeweiligen Zerfallskanal nach unten korrigiert werden. Die Anzahl der in einem Photopeak gemessenen Ereignissen entspricht der Fläche der dazu angepassten Gaußkurve $A$.\\
+    
+    Der Szintillaitons-Detektor benötigt keinerlei Kühlung und kann problemlos bei Raumtemperatur betrieben werden. Ein großer Nachteil des Szintillations-Detektors ist jedoch seine geringe Energie-Auflösung: Sowohl bei der Anregung der Elektronen im Szintillator als auch beim Photoeffekt an der Photo-Kathode des PMTs geht ein erheblicher Teil des Signals verloren, sodass hohe statistische Schwankungen zu einer starken Verbreiterung von Photopeaks führen. 
+    
+    
+\subsection{Halbleiter-Detektoren}
+    Halbleiter-Dektoren basieren im Gegensatz zum Szintillations-Detektor auf dem Prinzip einer PIN-Photodiode (vgl. Abb. \ref{fig:Aufbau_HalbleiterDetektor}). Dazu wird ein Block aus reinem Halbleiter zwischen zwei Schichten aus stark p- bzw. n-dotiertem Material eingefügt, sodass eine Diode mit großer Raumladungszone ensteht. Durch Anlegen einer Hochspannung in Sperr-Richtung wird diese Raumladungszone weiter vergrößert und es fließt (im Idealfall) kein Strom. Passiert nun ionisierende Strahlung den Halbleiter, so löst sie je $~\SI{3}{eV}$ Energie ein Paar aus Elektron und Elektron-Loch aus dem Material heraus, welches durch die Sperr-Spannung zu den Elektroden hin beschleunigt und somit als Strom gemessen wird. Das Strom-Signal wird durch einen Messverstärker in einen Spannungsimpuls umgewandelt, dessen Amplitude weiterhin proportional zur Energie der einfallenden Strahlung ist und die Spektroskopie ermöglicht.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figs/Aufbau_HalbleiterDetektor.png}
+        \caption{Schematischer Aufbaus eines Halbleiter-Detektors auf Basis von HPGe \cite{Aufbau_HalbleiterDetektor}. Eintreffende Strahlung verursacht Elektron-Loch-Paare, welche als Strom gemessen werden.}
+        \label{fig:Aufbau_HalbleiterDetektor}
+    \end{figure}
+    
+    Der große Vorteil des Halbleiter-Detektors ist seine hohe Energie-Auflösung: Aufgrund der niedrigen Schwellen-Energie ($\SI{3}{eV}$) der Wechselwirkung sind die statistischen Schwankungen in der Detektion gering und die Messung der Energie wird äußerst präzise. Der verwedendete \textit{High-Purity Germanium Detector} (HPGe-Detektor) nutzt als Halbleiter hochreines Germanium, welches aufgrund seiner hohen Reinheit in der Dioden-Anordnung geringe Leckströme durchlässt und damit ein hohes \textit{Signal-to-Noise Ratio} (SNR) zulässt. Der Detektionsmechanismus basiert erneut auf dem Photoeffekt; die geringere Ordnungszahl $Z=32$ von Germanium (Ge) gegenüber dem Iod ($Z=53$) im NaJ-Szintillator sorgt für eine verringerte Detektions-Effizienz. Ein weiterer Nachteil des Detektors ist, dass er bei hohen Spannungen mit flüssigem Stickstoff gekühlt werden muss, damit der Halbleiter intakt bleibt und Leckströme minimiert werden.
+    
+    Die beobachtete Halbwertsbreite eines Photopeaks $\Delta E$ am Halbleiter-Detektor setzt sich aus einem energie-unabhängigen Anteil $\Delta E_e$ sowie einem energie-abhängigen Anteil $\Delta E_d \propto \sqrt{E_\gamma}$ zusammen, welcher aus statistischen Effekten in der Ladungssammlung folgt. Es gilt \cite{Praktikumsanleitung}:
+    \begin{align} \label{eq:Halbwertsbreite_HPGe}
+        \Delta E = \sqrt{ \Delta E_d^2 + \Delta E_e^2 }
+        = \sqrt{ x^2 \cdot E_\gamma^2 + \Delta E_e^2}
+        \qquad \text{,}
+    \end{align}
+    wobei $x$ ein freier Parameter ist. Diese Beziehung soll im Versuch durch Betrachtung verschiedener Photopeaks nachwiesen werden. Eine weitere Metrik, anhand welcher die Detektoren verglichen werden können, ist das Peak-to-Total-Verhältnis $P\sub{T}$. Durch Division der gemessenen Ereignisse in einem Photopeak durch die insgesamt gemessenen Ereignisse spiegelt $P\sub{T}$ die Ansprechfunktion des Detektors wieder.
+    
+
+\subsection{Radioaktive Quellen}
+    Im Versuch werden neben einer unbekannten Bodenprobe die Quellen $^{60}$Co, $^{137}$Cs und $^{152}$Eu verwendet und erfüllen dabei verschiedene Funktionen in der Kalibrierung des Energiebereichs $E \in [\SI{100}{keV}, \SI{1500}{keV}]$. Die Caesium-Quelle wird  durch einen einzigen Photopeak bei \SI{661.7}{keV} \cite{Cs_Energien} charakterisiert, sodass $^{137}$Cs sich in guter Näherung als monochromatischer Röntgenstrahler verwenden lässt. Die Cobalt-Quelle hingegen deckt mit ihren dominanten Emissionslinien bei den Energien \SI{1173.2}{keV} und \SI{1332.5}{keV} den Bereich hoher Energien ab \cite{Co_Energien}. Zuletzt steht eine Europiumquelle zur Verfügung, welche bei der feinen Kalibrierung von Detektoren im Röntgenbereich beliebt ist, da $^{152}$Eu durch seine vielfältigen Emissionlinien den gesamten Energiebereich von $\SI{100}{keV}$ bishin zu \SI{1400}{ke} abdeckt. Eine detaillierte Auflistung der dominantesten Emissionslinien des Europium-Isotops und deren prozentualer Anteil pro Zerfall von $^{152}$Eu ist in Tabelle \ref{tab:Eu_Literatur_Linien} abgebildet.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{SS} \toprule
+         	{$E_{lit}$ / keV} & {rel. Intens. $I$ / $\%$} \\ \midrule
+        	121.7817 +- 0.0003 & 28.5300 +- 0.1600 \\
+        	244.6974 +- 0.0008 & 7.5500 +- 0.0400 \\
+        	344.2785 +- 0.0012 & 26.5900 +- 0.2000 \\
+        	411.1165 +- 0.0012 & 2.2370 +- 0.0130 \\
+        	443.9606 +- 0.0016 & 2.8270 +- 0.0140 \\
+        	778.9045 +- 0.0024 & 12.9300 +- 0.0800 \\
+        	867.3800 +- 0.0030 & 4.2300 +- 0.0300 \\
+        	964.0570 +- 0.0050 & 14.5100 +- 0.0700 \\
+        	1085.8370 +- 0.0100 & 10.1100 +- 0.0500 \\
+        	1112.0760 +- 0.0030 & 13.6700 +- 0.0800 \\
+        	1408.0130 +- 0.0030 & 20.8700 +- 0.0900 \\ \bottomrule
+        \end{tabular}
+        \caption{Energien und Intensitäten der häufigsten Gamma-Linien von $^{152}$Eu. Die Angabe der Intensitäten erfolgt in \% der Zerfälle von Europium. \cite{Praktikumsanleitung}}
+        \label{tab:Eu_Literatur_Linien}
+    \end{table}
+    
+    Die drei natürlichen Zerfallsreihen, von denen zu erwarten ist, dass sie einen Anteil am Spektrum der Bodenprobe haben, sind die Uran-Radium-Reihe ($4n+2$), die Uran-Actinium-Reihe ($4n+3$) und die Thorium-Reihe ($4n$). Die Notation $4n+x$ bezieht sich auf die Massenzahlen der in jeder Reihe vorkommenden Nuklide, da sich diese durch den $\alpha$-Zerfallsprozess nur in Viererschritten ändern kann. Neben den Quellen entlang den drei natürlichen Zerfallsketten gibt es auch instabile leichte Kerne, die häufig in der Umwelt vorkommen, ob natürlich oder menschengemacht --- etwa $^{14}$C (Notiz: kein $\gamma$-Strahler), $^{22}$Na, $^{40}$K oder $^{137}$Cs. \cite{world_nuclear_association}
+    
+    
+    
+\subsection{Vorwort}
+    
+    Messungen von radioaktiven Zerfällen unterliegen der Poisson-Statistik, welche vorhersagt, dass die $N$-fache Messung eines Ereignisses eine statistische Unsicherheit von $\sqrt{N}$ nach sich zieht. Zur Erhöhung der Lesbarkeit wird diese Unsicherheit zwar mit ein-berechnet, aber als Einzige nicht in den Diagrammen visualisiert. Alle Berechnungen von Unsicherheit basieren auf der Gaußschen Fehlerfortplanzung, sofern nicht anders spezifiert.\\
+    
+    Alle in der Versuchsdurchführung erhobenen Rohdaten und das während der Versuchsdurchführung laufend verfasste Protokoll sind auf Sciebo \cite{raw_data} erhältlich. (Link gültig bis 31.03.2026)

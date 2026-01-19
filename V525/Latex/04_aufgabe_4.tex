@@ -1,0 +1,125 @@
+\section{Messung der Lebensdauer des 5/2 Zustands von 133 Cs}
+    Nach den vielen vorbereitenden Kalibrationsmessungen ist nun die Lebensdauerkurve für den $5/2^+$-Zustand von Cäsium zu vermessen. Ab diesem Punkt wird nur noch die Bariumquelle verwendet, der Aufbau ist nach Abb. \ref{fig:Schaltplan_Promptkurve+Lebenskurve} verkabelt. Dafür werden die Slow- und Fast-Kreise jeweils entsprechend neu justiert und die Koinzidenzen noch einmal am Oszilloskop geprüft.
+
+\subsection{Einstellung der Einkanal-Fenster auf die \SI{356}{keV}- und \SI{81}{keV}-Linien von Ba}
+    Als erstes wird die zeitliche Koinzidenz der Delay-Verstärker und SCA-Ausgänge (über den GDG) an beiden Seiten eingestellt und am Oszilloskop festgehalten (Abb. \ref{fig:Oszi_Triggerung_SCA+GDG_2}). Dies bestätigt noch einmal die korrekte Funktion des Slow-Kreises und erlaubt im nächsten Schritt die richtige Einstellung der zunächst offenen SCA-Fenster. Die verschiedenen Amplituden an Kanal 1 rühren von den verschiedenen sichtbaren Zerfallsmodi des verwendeten Barium-Isotops.
+    
+    In den aufgenommenen Bildern sind drei anormale Pulse zu erkennen: eine Überlappung zweier Pulse sowie ein zweites, verzögertes Signal am linken Detektor sowie eins am rechten Detektor, das sein Maximum vor den anderen erreicht. Die ersten zwei Fälle entstehen aufgrund zufälliger Koinzidenz. Ebenso wichtig ist die Art und Weise, wie der SCA triggert: das Triggersignal des SCA wird ausgesandt, sobald die fallende Flanke nach dem Signalmaximum den unteren Schwellenwert wieder unterschreitet. Da das anormale Signal am rechten Detektor eine sichtbar länger Abfallszeit als die anderen Signale besitzt, löst der SCA später aus und das Signal erscheint vorverschoben. Da diese Phänomene einzeln sehr selten sind und die Zeitauflösung des Slow-Schaltkreises in der Lebensdauermessung nicht massgeblich ist, stören diese und vergleichbare Phänomene den weiteren Verlauf nicht.
+    
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO40.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO41.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Herstellung von Koinzidenz zwischen Slow-Signal an Delay-Verstärker (\texttt{CH I}) und SCA mit GDG (\texttt{CH II}) zur Vorbereitung der Messung der SCA-Fenster-Einstellung mit dem MCA. Hierzu wurden Länge und Lage der Signale mit GDG und SCA-Delay angepasst.}
+        \label{fig:Oszi_Triggerung_SCA+GDG_2}
+    \end{figure}
+    
+    Damit beide Detektoren auf die jeweils nötige Energie von $\SI{356}{keV}$ bzw. $\SI{81}{keV}$ sensibel sind, müssen die SCA-Fenster im Slow-Kreis jeweils auf den gewünschten Energiebereich eingestellt werden. Dabei sollte der Linke Schaltkreis, welcher das Startsignal liefert, auf eine $\gamma$-Energie von $\SI{356}{keV}$ eingestellt werden. Dies entspricht nämlich gerade der bevölkernden Linie des untersuchten $\frac{5}{2}^+$-Zustands; würde die Zuordnung anders gewählt, so würde das resultierende Zeit-Spektrum in negative x-Richtung verlaufen.
+    
+    Es beginnen also beide SCAs mit gänzlich geöffneten Fenstern; der Aufbau ist analog zu Schaltplan \ref{fig:Schaltplan_SCA+GDG-Trigger}. Daraufhin wird eine Messung mit dem MCA gestartet und das SCA-Fenster so eingestellt, dass jeweils nur noch das gewünschte Maximum im Spektrum auftaucht. Die resultierenden Spektren sind in Abb. \ref{fig:Plot_81keV_356keV_Fenster} zu sehen. Es ist zu beachten, dass das links eingestellte Fenster den $\SI{356}{keV}$-Peak am rechten Rand etwas abschneidet. Diese Entscheidung ist bewusst getroffen worden: eine weitere Barium-Linie (\SI{384}{keV}), die nicht den gewünschten Zustand bevölkert, kann sich mit dem rechten Rand des $\SI{356}{keV}$-Peak überlappen. Indem die SCA-Schwelle so aggressiv gesetzt wird, werden also sonst fälschlich als Startsignal interpretierte Signale gefiltert.
+    
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/12_Ba_Links_356_Fenster.jpg}
+            \caption{Links: $\SI{356}{keV}$-Fenster}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/13_Ba_Rechts_81_Fenster.jpg}
+            \caption{Rechts: $\SI{81}{keV}$-Fenster}
+        \end{subfigure}
+        \caption{Messung des $^{133}$Ba Energie-Spektrums nach Einstellung der SCA-Fenster auf $\SI{356}{keV}$ (links) und $\SI{81}{keV}$ (rechts). Das linke Signal markiert den Start einer Zeitmessung, während das rechte Signal das Ende derselben Zeitmessung markiert.}
+        \label{fig:Plot_81keV_356keV_Fenster}
+    \end{figure}
+    
+
+
+\subsection{Kontrolle der Koinzidenzen}
+    Ohne die Einstellungen der SCAs zu ändern, werden im nächsten Schritt die nötigen zeitlichen Koinzidenzen erneut eingestellt. Zunächst wird der Slow-Kreis so eingestellt, dass die zwei SCA-Ausgänge wieder zeitlich koinzidente Signale ausgeben (vgl. Abb. \ref{fig:Oszi_Ba_Koinzidenz-Prüfung}a). Im Anschluss werden beide SCA-Ausgänge über die Koinzidenzeiheit und den GDG geführt, um das finale Koinzidenzsignal auszugeben. Dieses Signal wird mit dem Signal das TAC verglichen (vgl. Abb. \ref{fig:Schaltplan_Fast-Slow-Koinzidenz}) und die Verzögerung/Pulslänge am GDG so eingestellt, dass eine hinreichende Koinzidenz besteht (vgl. Abb \ref{fig:Oszi_Ba_Koinzidenz-Prüfung}b). Für die Aufnahme dieses Verlaufs stand die \si{ns}-Verzögerung noch auf $\SI{13,5}{ns}$ von der Promptkurvenmessung, jedoch ändert dies nur die Amplitude der TAC-Signale. Diese Verzögerung wird für die finale Messung wieder geändert, was aber die letzendlich gemessene Lebensdauer nicht verändert (vgl. Abschnitt \ref{sect:zeitkalibration_TAC}).
+
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO42.PNG}
+            \caption{}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO43.PNG}
+            \caption{}
+        \end{subfigure}
+        \caption{Oszillogramm (a) zeigt die zeitliche Koinzidenz im Slow-Kreis, wobei \texttt{CH I} dem linken und \texttt{CH II} dem rechten SCA-Signal entspricht. Oszillogramm (b) zeigt die anschließende Herstellung der Fast-Slow-Koinzidenz zwischen Koinzidenzeinheit (mit GDG) und TAC. Hierbei enspricht \texttt{CH I} dem TAC-Signal, während auf \texttt{CH II} das GDG-Signal beobachtet wurde.}
+        \label{fig:Oszi_Ba_Koinzidenz-Prüfung}
+    \end{figure}
+
+
+
+\subsection{Messung der Lebensdauerkurve}
+    Alle Bauteile der Messelektronik sind nun für die nötigen Energiebereiche und Koinzidenzen kalibriert, also kann die Lebensdauermessung starten. Es wird noch immer Aufbau \ref{fig:Schaltplan_Promptkurve+Lebenskurve} verwendet. Die Einstellungen der Verstärker, der SCAs und des GDG am Slow-Kreis sowie die CFD-Schwellen im Fast-Kreis bleiben gänzlich unverändert, entsprechend ihrer vorhergehenden Kalibration.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figs/Ba_Lebenskurve_T.jpg}
+        \caption{Finale Messung der Lebensdauer des $\frac{5}{2}^+$ Zustandes von $^{133}$Cs. Die beobachtete Kurve entspricht der Faltung von exponentiellem Zerfall mit einer Gauß-Verteilung aufgrund begrenzter Zeitauflösung.}
+        \label{fig:Plot_Lebenskurve}
+    \end{figure}
+    
+    Das MCA-Bild erinnert nun an eine exponentielle Zerfallskurve. Um diese sinnvoll im MCA-Messbereich zu positionieren, also horizontal im Spektrum, wird der \si{ns}-Delay zwischen Start- und Stoppsignal wieder auf $\SI{31.5}{ns}$ gestellt. Diese Wahl wird getroffen, da bei der vorhergehenden Prüfung der Fast-Koinzidenz mit dieser Einstellung garantiert wurde, dass das Stopp-Signal nach dem Start-Signal ankommt. Somit erhöhen wir die effektive Detektionsrate für die gewünschten Zustandsübergänge. Diese Messung wird so lange laufen gelassen, wie es der Praktikumsrahmen sinnvoll erlaubt, um statistische Unsicherheiten zu minimieren. Die finale Lebensdauerkurve ist in Abb. \ref{fig:Plot_Lebenskurve} gezeigt.
+
+
+\subsection{Auswertung der Lebensdauerkurve und Fehlerdiskussion}
+    Die analytische Form der Lebensdauerkurve würde, im Falle eines idealen Messapparats mit beliebig guter Zeitauflösung, aus einem instantanen Anstieg auf ein Maximum und einem darauffolgenden exponentiellen Abfall bestehen. Diese Form entspricht dem bekannten exponentiellen Zerfallsverhalten radioaktiver Materialien. Wie in \cite{Praktikumsanleitung} beschrieben, unterliegt jeder gemessene Zeitabstand jedoch einer gewissen Unsicherheit. Diese Unsicherheit ergibt sich aus akkumulierenden Unsicherheiten im Detektionsmechanismus und in Teilen der eingesetzten Messelektronik. Zum Beispiel kann die Verzögerung zwischen dem Zerfallsereignis im Barium und der Detektion im Szintillator für Start- und Stopp-Signal (minimal, mit der hier erreichten Zeitauflösung vermutlich vernachlässigbar) verschieden sein. Einen größeren Effekt hat die Messelektronik, hier können etwa die verwendeten Photomultiplier-Tuben eine fluktuierende Verzögerung zwischen dem Eintreffen von Photonen und der letztendlichen Signalausgabe aufweisen.
+
+    % Auswertung 
+    % \begin{itemize}
+    %     \item Bestimme durch Fit die Lebensdauer
+    %     \item Fehlerdiskussion für ganzen Versuch
+    % \end{itemize}
+    
+    Für die Auswertung bedeutet dies, dass die gemessenen Zerfallszeiten durch diese Unsicherheiten \enquote{verschmiert} werden. Das wird analytisch durch eine Faltung $M(t)$ der idealisierten, exponentiellen Zerfallskurve $W(t)$ und einer normierten Gaußkurve $P(t)$ (vgl. Gleichung \ref{equ:lebensdauer_ideal} bis \ref{equ:lebensdauer_fitfunktion}, übernommen aus \cite{Praktikumsanleitung}). Damit agiert die Gaußkurve als Wahrscheinlichkeitsverteilung, die für jede tatsächliche Zerfallszeit die statistische Distribution der \textit{gemessenen} Zerfallszeit angibt.
+    \begin{align}
+        W(t) &= \frac{I}{\tau} \cdot \text{exp} \left( -\frac{t}{\tau} \right) \label{equ:lebensdauer_ideal} \\
+        P(t) &= \frac{1}{\sqrt{2 \pi \sigma^2}} \cdot \text{exp} \left( -\frac{1}{2} \left( \frac{t-t_0}{\sigma} \right)^2 \right) \label{equ:lebensdauer_gaussian} \\
+        M(t) = (W \ast P)(t) &= \frac{I}{2\tau} \cdot \text{exp} \left( \frac{\sigma^2-2\tau(t-t_0)}{2\tau^2} \right) \cdot \left[ 1 + \text{erf} \left( \frac{1}{\sqrt{2}} \left( \frac{t-t_0}{\sigma} - \frac{\sigma}{\tau} \right) \right) \right] \label{equ:lebensdauer_fitfunktion}
+    \end{align}
+    
+    Diese Funktion enthält insgesamt vier freie Parameter, die an die gegebenen Daten angepasst werden müssen:
+    \begin{itemize}
+        \item $\tau$ ist die mittlere Lebensdauer des $\frac{5}{2}^+$-Zustands von Caesium.
+        \item $I$ beschreibt die gesamte Anzahl durchgeführter Verzögerungsmessungen und skaliert mit der Messzeit.
+        \item $t_0$ ist der Erwartungswert der gefalteten Gaußglocke und verschiebt die gesamte Kurve horizontal.
+        \item $\sigma$ ist die Standardabweichung der gefalteten Gaußglocke und quantifziert die Zeitauflösung des Versuchsaufbaus.
+    \end{itemize}
+    
+    Wird $M(t)$ an die gefundenen Daten angepasst, ergibt sich der in Abb. \ref{fig:Plot_Lebenskurve} gezeigte Verlauf. Die Fitgüte $\chi^2 = 0.4$ suggeriert eine gute Datenrepräsentation durch die gefundene Kurve. Man erinnere hier, dass der Übersichtlichkeit wegen die Unsicherheiten der einzelnen Zählraten pro Kanal ausgeblendet worden sind; da die Ereignisse an jedem Kanal einzeln poissonverteilt sind, beträgt die Unsicherheit eines Kanals mit $N$ Ereignissen gerade $\sqrt{N}$. Dies wird trotz Abwesenheit in der graphischen Auftragung bei der numerischen Kurvenanpassung berücksichtigt. Damit resultieren die Fitparameter für die Faltung $M(t)$:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|C|C|C|C|} \hline
+            \tau      & 
+            I         &
+            t_0       &
+            \sigma   \\ \hline
+            \SI{8.48 +- 0.04}{ns}  & 
+            \num{1457.28 +- 5.02}  &
+            \SI{6.54 +- 0.03}{ns}  &
+            \SI{2.43 +- 0.02}{ns} \\ \hline
+        \end{tabular}
+        \caption{Ermittelte Parameter der Anpassung der Zerfallskurve nach Gleichung \eqref{equ:lebensdauer_fitfunktion}.}
+        \label{tab:Lebensdauer_Parameter}
+    \end{table}
+
+    Von besonderem Interesse ist die mittlere Lebensdauer $\tau = \SI{8.48(04)}{ns}$, da dessen Messung das Ziel dieses Versuchs ist. Rechnet man dies durch Multiplikation mit dem Faktor $\ln{2}$ in die Halbwertszeit $t_{1/2} = \SI{5,88(02)}{ns}$ um, kann dieser Wert mit der in \cite{Praktikumsanleitung} gegebenen Halbwertszeit $t_{1/2,\text{lit}} = \SI{6.283(14)}{ns}$ verglichen werden. Es ist sofort zu erkennen, dass der Literaturwert weit außerhalb der $1\sigma$-Umgebung von $t_{1/2}$ liegt. Das weist zunächst darauf hin, dass die nun durchgeführte Auswertung möglicherweise weitere systematische Fehlerquellen miteinbeziehen müsste, um ein akkurateres Ergebnis zu erhalten.
+    
+    Eine dieser möglichen Fehlerquellen ist die zufällige Koinzidenz: Es kann trotz der niedrigen Aktivität der verwendeten Barium-Probe geschehen, dass zwei Zerfälle über den $\frac{5}{2}^+$-Zustand innerhalb so kurzer Zeit auftreten, dass beide Stopp-Signale im Reset-Fenster des TAC landen. Dafür ist nicht einmal nötig, dass die Zustandsbevölkerung über die $\SI{356}{keV}$-Linie geschieht --- es entstehen also immer mehr Stopp- als Start-Signale. Mit ungüstigem Timing können diese eine Messung verfrüht stoppen. Insofern ist zumindest qualitativ zu erwarten, dass die gefundene Halbwertszeit unter dem Literaturwert liegt, was hier auch der Fall ist.
+    
+    Eine weitere Fehlerquelle, ähnlich der ersten, ergibt sich daraus, dass nicht alle Start- und Stopp-Signale überhaupt detektiert werden. Da das Barium-Isotop seine Strahlung isotrop abgibt und die Szintillatoren für die Detektion der relevanten Übergänge jeweils nur knapp den halben Raumwinkel um den Strahler einnehmen, werden weniger als ein Viertel aller Zerfallsketten von Interesse ($\SI{356}{keV} \rightarrow \SI{81}{keV}$) überhaupt als solche detektiert. Dies erhöht wiederum die Wahrscheinlichkeit, dass ein Signal aus einem anderen Zerfallskanal eine Lebensdauermessung verkürzt, da auf weniger als die Hälfte aller Start-Signale überhaupt ein \enquote{echtes} Stopp-Signal folgt. Zuletzt ist die Effizienz des Szintillations-Spektrometers begrenzt, wodurch die Chance weiter erhöht wird, dass eines von Start- und Stopp-Signal nicht detektiert wird, beziehungsweise der TAC eine flasche Zuordnung dieser vornimmt. Durch Verringerung des Toleranz-Fensters des TACs von $\SI{100}{\micro \second}$ zu $\SI{50}{\micro \second}$ würde zwar die Rate solcher zufälliger Inzidenzen verringern, aber auch einen Teil der Zerfallskurve abschneiden. 
+ 

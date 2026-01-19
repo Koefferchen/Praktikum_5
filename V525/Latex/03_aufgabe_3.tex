@@ -1,0 +1,52 @@
+\section{Zeit-Kalibration des TAC} \label{sect:zeitkalibration_TAC}
+    Die Verwendung des TAC zur Lebensdauermessung erfordert, analog zur Kanal-Energie-Kalibration, eine Kanal-Zeit-Zuordnung. Diese wird durch die Aufnahme einer sog. Promptkurve realisiert: die Natriumquelle liefert an beiden Detektoren zeitlich koinzidente Signale, deren relative Lage mit dem \si{ns}-Delay präzise eingestellt werden kann. Diese Signale werden als Start- und Stoppsignal für den TAC verwendet, während der MCA ein Histogramm seiner Ausgangsamplituden erstellt. Damit entspricht der Schaltplan (Abb. \ref{fig:Schaltplan_Fast-Slow-Koinzidenz}) für die Promptkurve bereits dem, der für die Lebensdauermessung verwendet werden wird. Da der TAC eine Amplitude proportional zur Start-Stopp-Verzögerung ausgibt, sind bei Einstellung der Verzögerung in gleichmäßigen Abständen auch im MCA-Spektrum Maxima mit gleichmäßigen Abständen zu erwarten.\\
+
+    Die Form der sogenannten Promptkurve entsteht also bei der Messung der Zeitspanne zwischen zwei Ereignissen, die im Detektor gleichzeitig stattfinden: Die simultane Entstehung zweier $\SI{511}{keV}$-Photonen, die in entgegengesetzte Richtungen propagieren, führt zur gleichzeitigen Messung des Ereignisses an beiden Detektoren. Da der TAC jedoch keine \enquote{Null-Zeitspannen} messen kann, verzögert der $\unit{ns}$-Delay den rechten Fast-Zweig, sodass der TAC eine immer gleiche Zeitspanne misst, welche weitgehend mit der eingestellten Verzögerung übereinstimmt. Wäre die Zeitauflösung unbegrenzt, so entspräche die Promptkurve einer Deltafunktion --- doch durch statistische Unsicherheit und Mess-Ungenauigkeit entsteht stattdessen eine symmetrische Glockenkurve. Diese Symmetrie folgt aus der Gleichzeitigkeit des $\SI{511}{keV}$-Peaks, weshalb die symmetrische Promptkurve nur bei $^{22}$Na gemessen werden kann.\\
+
+    Es wird zunächst eine Verzögerung von $\SI{13.5}{ns}$ eingestellt und das entstehende Spektrum ausgemessen, bis der entstehende Peak --- aufgrund der kurzen Verzögerung ganz links im Bild --- hinreichend klar erkennbar ist. Während die Messung noch läuft, wird der \si{ns}-Delay in $\SI{16}{ns}$-Schritten erhöht. Das resultierende Promptkurven-Spektrum ist in Abb. \ref{fig:Plot_Promptkurve} gezeigt. Es fällt auf, dass erwartungsgemäß klar voneinander getrennte Maxima ähnlicher Form auftreten; in diesem Fall passen sechs Maxima in den MCA-Messbereich.
+
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Na_Promptkurven_T.jpg}
+            \caption{}
+            \label{fig:Plot_Promptkurve}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Zeit-Kalibration.jpg}
+            \caption{}
+            \label{fig:Plot_Zeitkalibration}
+        \end{subfigure}
+        \caption{(a) zeigt die Messung der Promptkurve mit $^{22}$Na am MCA. Innerhalb einer Messreihe wurde der $\unit{ns}$-Delay $5$ Male um je $\SI{16}{ns}$ erhöht. Aus den bekannten Verzögerungen sowie Positionen der Promptkurven $\mu_i$ lässt sich linear die Zeit-Kanal-Zuordnung berechnen (b). Der Zeitpunkt $t = 0$ wurde arbiträr an der Position der ersten Promptkurve gesetzt.}
+    \end{figure}
+    
+    Die quantitative Zeitkalibration verwendet an die einzelnen Maxima angepasste Gaußglocken anhand Gleichung \ref{equ:spektrum_gauss_fit_allgemein_promptkurve}:
+    \begin{align} \label{equ:spektrum_gauss_fit_allgemein_promptkurve}
+        G(K) \coloneqq N \cdot \exp{\left(- \frac{1}{2}  \frac{(K - \mu)^2}{\sigma^2}  \right)} \qquad \text{.}
+    \end{align}
+    Die erhaltenen Anpassungskurven sind in Abb. \ref{fig:Plot_Promptkurve} gezeigt; die dazugehörigen Fitparameter der einzelnen Kurven enthält Tabelle \ref{tab:Fitparameter_Promptkurve}. Dabei ist zu beachten, dass die Entscheidung, dem ersten Maximum die Zeit $t = 0$ zuzuordnen, arbiträr geschieht. Da für die Lebensdauermessung nur die Form der Distribution der Start-Stopp-Verzögerung benötigt wird, können alle gemessenen Zeiten einen konstanten Offset erhalten, ohne die ermittelte Lebensdauer zu beeinflussen.\\
+    
+    An die Mittelwerte $\mu_i$ der Fitkurven an die Promptkurve kann nun eine lineare Funktion $K(t)$ der in Gleichung \ref{equ:promptkurve_linear} gegebenen Form angepasst werden. Mit den ermittelten Fit-Paramtern $\gamma$ und $\delta$.
+    \begin{align} \label{equ:promptkurve_linear}
+        \begin{aligned}
+            K = \gamma \cdot t + \delta 
+        \end{aligned}
+        \qquad \qquad
+        \begin{aligned}
+            \gamma &= \SI{78.38 +- 0.02}{1/ns} \\
+            \delta &= \num{851.97 +- 0.91} 
+        \end{aligned}
+    \end{align}
+    
+    Das Resultat der Anpassung ist in Abb. \ref{fig:Plot_Zeitkalibration} dargestellt. Die visuell gute Datenrepräsentation durch die Anpassungskurve bestätigt die Annahme, dass die TAC-Ausgangsamplitude linear mit der Verzögerungszeit steigt. Es fällt sogar auf, dass $\delta$ sich sehr gut mit $\mu_1$ in Tabelle \ref{tab:Fitparameter_Promptkurve} deckt! Da dies gerade der soeben vorgenommenen Zuweisung des Punkts $t = 0$ entspricht, wird zusätzlich darauf hingewiesen, dass MCA und TAC korrekt arbeiten. Beide Komponenten sollen eine Proportionalität zwischen Zeit und Amplitude bzw. Amplitude und Kanalnummer implementieren; in guter Näherung ist dies also gegeben. Dennoch ist auch hier zu beachten, dass der Parameter $\delta$ durch die arbiträre Zuweisung des Zeitpunkts $t=0$ keine physikalische Aussagekraft besitzt und die gemessene Lebensdauer letztendlich nicht beeinflusst. \\
+    
+    Die Zeitauflösung der Messung kann für das Full Width at Half Maximum der Promptkurven definiert werden, denn je breiter die Promptkurve ausfällt, desto verschmierter ist die gemessene Zeitdifferenz, welche je eine Promptkurve repräsentiert. Aus den bestimmten Breiten $\sigma$ in Tabelle \ref{tab:Fitparameter_Promptkurve} lässt sich mittels Gleichung \eqref{equ:FWHM_Umrechnung} für jede Kurve ein $\sigma \sub{FWHM}$ bestimmen, deren Mittel schließlich der Zeitauflösung $\Delta t$ des Aufbaus entspricht:
+    \begin{align}
+        \Delta t \coloneqq \langle \sigma \sub{FWHM} \rangle 
+        = \langle \sigma \rangle \cdot 2 \sqrt{2 \cdot \ln{(2)}}
+        = \SI{8.26(2)}{ns} 
+        \qquad \text{.}
+    \end{align}
+    Hierbei wurde die Unsicherheit aus der empirischen Varianz zur Abschätzung der wiederholten Messung einer konstanten Größe berechnet. Die Konvertierung des Ergebnissen vom Kanal-Index $K$ in die Zeitdifferenz $\Delta t$ folgt aus der linearen Anpassung \eqref{equ:promptkurve_linear} und Gaußscher Fehlerfortpflanzung, analog wie bei der Bestimmung der Energieauflösung in Abschnitt \ref{sect:energiekalibration}. Das hier berechnete Ergebnis für die Zeitauflösung $\Delta t = \SI{8.26(2)}{ns} $ steht in Einklang mit der vorherigen Abschätzung  $\Delta t \approx \SI{10}{ns} $.
+    

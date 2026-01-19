@@ -1,0 +1,62 @@
+\section{Messung des totalen Stoßwirkungsquerschnitts}
+
+    \subsection{Durchführung}
+    
+    Um den totalen Compton-Wirkungsquerschnitt zu bestimmen werden nun Spektren der $^{137}$Cs-Quelle hinter Aluminium-Targets verschiedener Dicke aus der $\SI{0}{\degree}$-Position des Detektors gemessen. Dazu werden zunächst alle Targets nacheinander senkrecht auf dem Target-Halter platziert, sodass die effektive Dicke $d \sub{eff}$, die von der Strahlung durchdrungen werden muss, genau der Dicke $d$, beziehungsweise der Breite $b$ des Targets entspricht. Die Messzeit für diese Messung beträgt $\SI{600}{s}$ \textit{Live Time} unter Einbezug der im System bekannten Totzeit des MCAs. Die tatsächlichen Dauern der Messungen \textit{Real Time} unterscheidet sich in diesem Aufbau jedoch nur um wenige Sekunden von der Live Time. \\
+    Am Ende der Messung wird das Target der Dicke $d = \SI{5.00(2)}{mm}$ um $\SI{45}{\degree}$ auf dem Targethalter gedreht, um den Effekt der Ausrichtung zu untersuchen. Aus geometrischen Überlegungen wird erwartet, dass die effektive Dicke dieses Targets durch die Drehung auf das $\sqrt{2}$-fache ansteigt. 
+    
+    \subsection{Ergebnisse}
+    
+    \begin{figure*}[ht]
+        \centering
+        \includegraphics[width=0.8\textwidth]{figs/00_Caesium_ALLmm.jpg}
+        \caption{Frontale Spektren von $^{137}$Cs durch Aluminium-Targets verschiedener Dicken. Zur besseren Unterscheidbarkeit wurden die Spektren um je $100n$ $(n \in \mathbb{N})$ zueinander verschoben. Das Compton-Kontinuum $(K \leq 3500)$ und der $\SI{661}{keV}$-Photopeak $(K \approx 4800)$ sind klar erkennbar. Die Spektren unterscheiden sich fast ausschließlich in ihrer Intensität. Da die Compton-Kante $(K \approx 3500)$ sich nicht mit dem Photopeak $(K \geq 4500)$ überlagert, ist die Vernachlässigung des Compton-Untergrunds im Fit gerechtfertigt. }
+        \label{fig:Ceasium_ALLmm}
+    \end{figure*} 
+    
+    Abbildung \ref{fig:Ceasium_ALLmm} zeigt die gemessenen Energie-Spektren von $^{137}$Cs. Alle Spektren zeigen die erwartete Verteilung, bestehend aus dem Compton-Kontinuum, gefolgt von der Compton-Kante sowie schließlich dem Photopeak von Caesium.
+    Es gilt, dass die relative Intensität $I(d)$ eines $\SI{661}{keV}$-Peaks proportional zur Fläche $A$ unter je einem Peak an Kanal $\mu$ mit Breite $\sigma$ ist. Diese Parameter werden durch Anpassungen von Gaußfunktionen $G(K)$ mit der Güte $\chi^2$ gewonnen:
+    \begin{align} \label{eq:Gauss}
+        G(K) \coloneqq \frac{A}{\sqrt{2 \pi} \sigma} \cdot \exp{\left( \frac{-(K - \mu)^2}{\sigma^2} \right)}
+        \qquad \text{.}
+    \end{align}
+    Die Parameter der Anpassungen an die $\SI{661}{keV}$-Linien sind in Tabelle \ref{tab:TotWirk_Gauss_Params} dargestellt. Wie erwartet fällt auf, dass die Flächen der Photopeaks und entsprechend deren Intensitäten mit zunehmender Target-Dicken $d$ abnehmen. Dieser Sachverhalt lässt sich äquivalent durch Anwendung des Lambert-Beerschen Gesetzes \eqref{eq:Lambert-Beer} zur Geradengleichung \eqref{eq:Lambert-Beer_log} als Funktion der Dicke $d$ umformen:
+    \begin{align} \label{eq:Lambert-Beer_log}
+        \log{\left( \frac{I(0)}{I(d)} \right)} = \log{\left( \frac{A(0)}{A(d)} \right)} = \mu \cdot d 
+        \qquad \text{,}
+    \end{align}
+    wobei die Proportionalität von Intensität des Peaks $I$ und Fläche unter der zugehörigen Gaußkurve $A$ verwendet wurde. Das Ergebnis dieser Geraden-Anpassung ist in Abbildung \ref{fig:Fit_Lambert-Beer} mit folgenden Anpassungs-Parametern zu betrachten:
+    \begin{align}
+        &\mu = \SI{0.0200+-0.0003}{\per \milli \meter} \notag\\
+        &b = \SI{-0.003177+-0.003043}{}
+    \end{align}
+    Der totale Abschwächungskoeffizienten $\mu$ stimmt mit der Erwartung $\mu \sub{lit} =\SI{0.0192}{\per \milli \meter}$ bis auf eine Abweichung von $\leq \SI{5}{\%}$ überein. Die Abweichung lässt sich dabei auf potenzielle Unterschiede in Target-Geometrie und -Fertigung zurückführen. \\
+    
+    Daraus lässt sich bei bekannter Elektronendichte $n_e$ des Target-Materials der totalen Compton-Wirkungsquerschnitt des Photopeaks $\sigma \sub{tot}$ berechnen \eqref{eq:Lambert-Beer}. Die Elektronendichte $n_e$ folgt aus der Massendichte $\rho = \SI{2.699}{\gram \per \cubic \centi \meter}$, der atomaren Masse $m = \SI{26,9815}{u}$ und der Ordnungszahl $Z = 13$ des Aluminiumtargets \cite{Aluminium_Lit} und damit folgt der Wirkungsquerschnitt: 
+    \begin{align}
+        &n_e = \frac{Z \rho}{m}  \\
+        &\sigma \sub{tot} = \mu / n_e 
+        = \SI{255.6 +- 3.770}{\milli \barn}
+    \end{align}
+    Abbildung \ref{fig:Fit_Lambert-Beer} zeigt die lineare Anpassung der bestimmten Intensitäten als Funktion der Targetdicke $d$. In Übereinstimmung mit dem Lambert-Beerschen Gesetz \eqref{eq:Lambert-Beer_log} ist der Offset $b$ in der $1\sigma$-Umgebung von $0$, während die Steigung der $\mu$ den totalen Absorptionskoeffizienten angibt. 
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width = \linewidth]{figs/Lambert-Beer_Fit.jpg}
+        \caption{Anpassungsgeraden nach Lambert-Beerschem Gesetz \eqref{eq:Lambert-Beer_log} durch generalisierte Geradengleichung mit Offset $b$. Der Datenpunkt für $d = \SI{30}{mm}$ wurde als Ausreißer behandelt und nicht in die Anpassung mit einbezogen. Alle weiteren Datenpunkte sind verträglich mit der theoretischen Erwartung.}
+        \label{fig:Fit_Lambert-Beer}
+    \end{figure}
+    Die Anpassung der Geradengleichung erfolgt unter Ausschluss des Datenpunktes für $d \sub{eff}= \SI{30}{mm}$, da die Breite dieses Targets von $b \sub{eff} = \SI{5}{mm}$ hier mutmaßlich geringer ist als der Durchmesser des kollimierten Röntgenstrahls. Dadurch läuft ein Teil der Strahlung am Target vorbei und erhöht die gemessene Intensität drastisch. Diese Erklärung deckt sich mit den gemessenen Intensitäten, denn der herausfallende Datenpunkt weist eine höhere Intensität auf, als erwartet. Des Weiteren zeigt sich, dass die geometrische Überlegung zur Drehung des $\SI{5}{mm}$-Targets um $\SI{45}{\degree}$ zum linearen Modell passt, denn der zugehörige Datenpunkt bei $\sqrt{2}\cdot \SI{5}{mm}$ stimmt mit dem linearen Modell überein. 
+
+
+    
+    Unter Verwendung der Klein-Nishina-Formel \eqref{eq:sigma_tot_KN} lässt sich der totale Wirkungsquerschnitt pro Elektron  in barn zu $\sigma \sub{KN} = \SI{256.122}{\barn}$ berechnen, wobei \cite{NIST_constants, NUNDAT_decays}
+    \begin{align}
+        &\alpha = \num{7.2973525643(11)e-3} \notag\\
+        &m_e = \SI{510.998 950 69 }{keV} \notag \\
+        &\hbar \cdot c = \SI{197.3e-12}{keV m} \notag \\
+        &E_\gamma = \SI{661.7}{keV} \notag
+    \end{align}
+    als Konstanten in der Formel eingesetzt wurden. Der Faktor $\hbar \cdot c$ dient hierbei zur Umrechnung der Wirkungsquerschnitts von natürlichen Einheiten. \\
+    Der gemessene Wirkungsquerschnitt $\sigma \sub{tot}$ stimmt nicht nur innerhalb von $0.5 \sigma$ ($\sigma$ hier im Sinne der Unsicherheit) mit dem Klein-Nishina-Erwartungswert überein, sondern bestätigt auch die Theorie, dass im vorliegenden Experiment die Compton-Streuuung dominiert. 
+    
+    

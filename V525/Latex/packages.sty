@@ -1,0 +1,85 @@
+% -------------------------------------------------- %
+% ---------------- Import Packages ----------------- %
+% -------------------------------------------------- % 
+
+
+
+
+% ----------------- Font Settings ------------------ %
+
+    % allow special charcters (ä, ö, ü, ...)
+\RequirePackage[utf8]{inputenc}
+    % help with special charcters (ä, ö, ü, ...)
+\RequirePackage[T1]{fontenc}   
+    % Auto Translation (eg.: "figure" --> "Abbildung")
+\RequirePackage[ngerman]{babel}           
+    % Text Font Style = Times New Roman
+\RequirePackage{newtxtext}
+    % Math Font Style = Times New Roman
+\RequirePackage{newtxmath}                 
+    % Bold Symbols
+\RequirePackage{bm}
+    % makes captions bold
+\RequirePackage[labelfont=bf]{caption}
+
+
+
+% ----------------- Mathematics ------------------ %
+
+    % general mathematics
+\RequirePackage{mathtools} 
+    % physics unit notation
+\RequirePackage{siunitx}   
+\sisetup{
+    per-mode = symbol,
+    separate-uncertainty = false,
+    round-mode = uncertainty,
+    round-precision = 2,
+    locale = DE
+}     
+
+
+
+
+% ------------ Citation & Reference -------------- %
+
+    % hyper-reference within document
+\RequirePackage{hyperref}    
+    % fix hyper-reference issues
+\RequirePackage[all]{hypcap}                
+    % quotation                  
+\RequirePackage[autostyle=true]{csquotes}
+    % bibliography management
+\RequirePackage[backend=biber, style=numeric, sorting=none]{biblatex}   
+
+    
+
+
+% ------------------ Graphics -------------------- %
+
+    % include graphics
+\RequirePackage{graphicx}                   
+    % figure & table environments
+\RequirePackage{float}    
+    % subfigures & subcaptions
+\RequirePackage{subcaption}    
+    % page settings
+\RequirePackage[a4paper, left=1.5cm, right=1.5cm, top=2.5cm]{geometry}
+    % für Fließtext um Grafiken
+\RequirePackage{wrapfig}   
+    % Um Grafiken die über die Seite hinausragen richtig zu formatieren --> zB wrapfig
+\RequirePackage{needspace}
+    % Um Sachen als Highlights in Boxen zu setzen
+\RequirePackage{empheq}
+
+% ------------------- Other --------------------- %
+
+    % userdefined makros
+\RequirePackage{xparse} 
+    % no indent after figures
+\setlength{\parindent}{0pt}
+    % no numbering of headlines
+%\setcounter{secnumdepth}{0}
+
+    % Allow setting of temporary annotations to ease the collaborative writing process
+\RequirePackage{todonotes}

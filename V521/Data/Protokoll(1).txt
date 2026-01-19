@@ -1,0 +1,101 @@
+Tag 1 (05.12.2025):
+
+BLEI-ABSCHIRMUNGEN ENTFERNT
+
+PMT-HV reguliert nach Anleitung mit 137Cs-Quelle (Abstand 10cm), PMT-HV auf 690(1) V, 0.492(1) * 10^-3 A.
+Wir stellen den Trigger ziemlich hoch, um ein Photon der 662 keV-Linie zu sehen.
+Es fällt auf, dass auch bei diesen merklich größeren Signalen ein gewisser Amplitudenbereich vorliegt.
+Bild: scope_0.png, ca. 1.99V Amplitude (reicht aus)
+
+Analog mit dem HPGe-Detektor: Wir sehen einen kleineren Amplituden-Spread.
+Bild: scope_1.png, ca. 2.33V Amplitude (reicht aus)
+
+
+
+Einstellung der MCA-Verstärkung so, dass wir die 660-keV-Linie grob bei Kanal ~6700 sehen (HPGe, bei NaI eher 5700).
+Damit ist der Messbereich ungefähr 1600 keV.
+
+Fine Gain:
+	HPGe --> 5.0000
+	NaI --> 1.5000
+
+
+
+Messungen der Quellen:
+
+HPGe-Detektor:
+Caesium, Abstand 100(5) mm, 300s Live Time (beob. Count Rate: ca. 1500): HPGe_Cs_300s_100mm.txt
+	Aktivität (Angabe): 405 kBq am 01.10.2021
+	Angaben im MCA-Programm:
+		Spect. Counts: 455763
+		Total Counts: 461036
+		Real Time: 303.475 s
+		Live Time: 300.004 s
+
+Europium, Abstand 150(5) mm, 300s Live Time (beob. Count Rate: ca. 1800): HPGe_Eu_300s_150mm.txt
+	Aktivität (Angabe): 709 kBq am 01.10.2021
+	Angaben im MCA-Programm:
+		Spect. Counts: 529025
+		Total Counts: 536076
+		Real Time: 304.002 s
+		Live Time: 300.003 s		
+
+Cobalt, Abstand 20(5) mm, 300s Live Time (beob. Count Rate: ca. 1100): HPGe_Co_300s_20mm.txt
+	Aktivität (Angabe): 67 kBq am 01.10.2021
+	Angaben im MCA-Programm:
+		Spect. Counts: 578704
+		Total Counts: 588684
+		Real Time: 305.222 s
+		Live Time: 300.048 s
+
+Hintergrund: 300s live Time (beob. Count Rate: ca. 100): HPGe_Bg_300s.txt
+	Angaben im MCA-Programm:
+		Spect. Counts: 32737
+		Total Counts: 32872
+		Real Time: 301.904 s
+		Live Time: 300.666 s
+
+
+
+
+
+NaI-Detektor:
+Caesium, Abstand 100(5) mm, 300s Live Time (beob. Count Rate: ca. 2000): NaI_Cs_300s_100mm.txt
+	Aktivität (Angabe): 405 kBq am 01.10.2021
+	Angaben im MCA-Programm:
+		Spect. Counts: 
+		Total Counts: 
+		Real Time:  s
+		Live Time:  s
+
+Europium, Abstand 200(5) mm, 300s Live Time (beob. Count Rate: ca. 1900): NaI_Eu_300s_200mm.txt
+	Aktivität (Angabe): 709 kBq am 01.10.2021
+	Angaben im MCA-Programm:
+		Spect. Counts: 582720
+		Total Counts: 592776
+		Real Time: 305.225 s
+		Live Time: 300.047 s		
+
+Cobalt, Abstand 20(5) mm, 300s Live Time (beob. Count Rate: ca. 1200): NaI_Co_300s_20mm.txt
+	Aktivität (Angabe): 67 kBq am 01.10.2021
+	Angaben im MCA-Programm:
+		Spect. Counts: 356601
+		Total Counts: 361679
+		Real Time: 304.321 s
+		Live Time: 300.049 s
+
+Hintergrund: 300s live Time (beob. Count Rate: ca. 100): NaI_Bg_300s.txt
+	Angaben im MCA-Programm:
+		Spect. Counts: 53993
+		Total Counts: 54352
+		Real Time: 302.309 s
+		Live Time: 300.515 s
+
+
+
+
+Langzeitmessung mit Probe: 18 h Real Time, Probe so nah wie möglich an HPGe-Detektor (in Tüte).
+Bleiabschirmung ist aufgebaut, um den Detektor so gut wie möglich zu umgeben.
+
+
+

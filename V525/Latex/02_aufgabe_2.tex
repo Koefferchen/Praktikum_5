@@ -1,0 +1,183 @@
+\section{Einstellung des Fast-Koinzidenz-Kreises}
+
+\subsection{Kontrolle der Fast-Pulse des Photomultipliers}
+    Zunächst werden die funktionalen Unterschiede von Slow- und Fast-Ausgang der verwendeten PMTs betrachtet. Dafür werden Fast- und Slow-Ausgang direkt ans Oszilloskop angeschlossen (vgl. Abb. \ref{fig:Schaltplan_Kontrolle_Fast-Pulse}). Dies ergibt die Verläufe in Abb. \ref{fig:Oszi_Fast-Slow_Vergleich}, wobei zu beachten ist, dass der Übersichtlichkeit wegen das Null-Niveau an Kanal 2 (Fast-Abgriff) visuell nach oben verschoben worden ist.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{figs/Aufbau_8.jpg}
+        \caption{Schaltplan zur Kontrolle der Fast-Pulse.}
+        \label{fig:Schaltplan_Kontrolle_Fast-Pulse}
+    \end{figure}    
+    
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO24.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO26.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Direkter Vergleich von Slow- (\texttt{CH I}) und Fast-Pulsen (\texttt{CH II}) aus der PMT am Oszilloskop. Während die Fast-Pulse deutlich geringere Anstiegszeiten aufweisen, haben die Slow-Pulse präzisere Amplituden. Die Polarität der Fast-Pulse ist negativ.}
+        \label{fig:Oszi_Fast-Slow_Vergleich}
+    \end{figure}
+    
+    Die Verläufe weisen zwei prägnante Unterschiede auf:
+
+    \begin{itemize}
+        \item Die Polarität des Fast-Ausgangs ist negativ, während die des Slow-Ausgangs positiv ist. Dies begründet sich durch die Schaltung der PMT-Basis, gezeigt in Abb. \ref{fig:schaltplan_PMT} (Anhang): der in der PMT erzeugte Elektronenschauer wird direkt an den Fast-Ausgang geleitet und gibt daher ein negatives Signal. Dagegen wird der Slow-Ausgang zunächst durch eine Vorverstärker-Schaltung geschickt, die unter Anderem einen Polaritätswechsel mit sich bringt.
+        \item Die Pulsform beider Ausgänge unterscheidet sich stark. Der Fast-Ausgang weist eine vergleichsweise schnelle An- und Abstiegszeit auf, bedingt durch das Auftreffen des Elektronenschauers in einem sehr kleinen Zeitintervall. Dagegen steigt das Slow-Signal viel langsamer an, was an dem zwischengeschalteten Kondensator (Abb. \ref{fig:schaltplan_PMT}, oben rechts nach dem OpAmp gezeigt) liegt. Dieser führt ebenso zu einer gewissen Signalglättung; das Slow-Signal fluktuiert --- relativ zu seiner Amplitude --- wesentlich weniger als das Fast-Signal.
+    \end{itemize}
+    
+    Ein weiterer Unterschied ist zwischen den zwei Detekoren erkennbar; man achte auf die Skalierung am Oszilloskop. Der rechte Detektor gibt Pulse einer deutlich höheren Amplitude aus, als die linke. Dies deutet auf eine verbesserte Funktion des Szintillatorkristalls oder eine performantere PMT hin.\\
+    
+    Die Anstiegszeit eines Signals ist definiert als die Zeit in der ein Signal von $10 \%$ auf $90 \%$ seiner Amplitude ansteigt. Aus den Oszillogrammen in Abbildung \ref{fig:Oszi_Fast-Slow_Vergleich} lässt sich ablesen, dass die Slow-Signale Anstiegszeiten von $\Delta t \sub{L,slow} = \SI{400+-100}{ns}$ am linken und $\Delta t \sub{R,slow}= \SI{500+-150}{ns}$ am rechten Detektor aufweisen. 
+
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO28.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO29.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Nahaufnahme der Fast-Pulse am Oszillskop. Die Anstiegzeiten der Fast-Pulse variieren stark.}
+        \label{fig:Oszi_Fast-Impulse_Anstiegszeit}
+    \end{figure}
+    
+    Da die Fast-Signale jedoch deutlich höhere schneller ansteigen, wurde diese getrennt mit höherer Zeitauflösung oszilloskopiert (Abb. \ref{fig:Oszi_Fast-Impulse_Anstiegszeit}). Die Anstiegszeiten der Fast-Signale folgen somit zu $\Delta t \sub{L,fast} = \SI{20+-10}{ns}$ am linken und $\Delta t \sub{R,fast} = \SI{20+-10}{ns}$ am rechten Detektor. Hierbei wurde die Ungenauigkeit besonders groß gewählt, da neben Ablese-Ungenauigkeiten die variable Form der Fast-Signale ein genaues Definieren der Anstiegszeit unmöglich macht. In Übereinstimmung mit der Theorie weist das Slow-Signale einen deutlich glatteren Signalverlauf auf, während das Fast-Signal nur etwa $10 \%$ der Anstiegszeit des Slow-Signals besitzt.
+
+% Wieder nur format wg seitenumbrüchen
+\newpage
+\subsection{Einstellung der CFD-Diskriminatorschwelle}
+    Um eine möglichst akkurate Zeitaufnahme mit dem Fast-Schaltkries zu ermöglichen, müssen die Diskriminatorschwellen der verwendeten CFDs eingestellt werden, sodass die gewünscht Koinzidenz zwischen Fast- und Slow-Kreis besteht. Dazu verwenden wir zunächst den Aufbau in Abb. \ref{fig:Schaltplan_Diskriminatorschwelle}a, in dem insbesondere der GDG zwischen CFD und Oszilloskop geschaltet ist. Die CFD-Diskriminatorschwelle ist zunächst aufs Minimum eingestellt. Der CFD liefert idealisiert eine logische $1$, wenn das eintreffende Fast-Signal einen festen Prozentsatz seiner Amplitude erreicht.
+
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Aufbau_9a.jpg}
+            \caption{}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Aufbau_9b.jpg}
+            \caption{}
+        \end{subfigure}
+        \caption{Schaltpläne zur Einstelllung der Diskriminator-Schwellen. In Schaltplan (a) wird Koinzidenz zwischen Slow- und Fast-Zweig hergestellt, sodass nun mit Schaltplan (b) das Energie-Spektrum vermessen werden kann. Es wird der positive Ausgang des CFD verwendet.}
+        \label{fig:Schaltplan_Diskriminatorschwelle}
+    \end{figure}
+    
+    Am Oszilloskop liegen also das Slow-Signal (CH1) nach vorhergehender Verstärkung und Verzögerung sowie das Fast-Signal (CH2). Das Fast-Signal wird per GDG so eingestellt, dass es das Slow-Signal zeitlich umhüllt; dies ist in Abb. \ref{fig:Oszi_CFD=0} zu sehen.
+    
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO30.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO32.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Vergleich von Slow-Signal über einen Delay-Verstärker (\texttt{CH I}) mit dem Fast-Signal über CFD und GDG (\texttt{CH II}). Die Diskriminator-Schwellen sind am Minimum. Es können ausschließlich Signal kleiner und mittlerer Amplitude beobachtet werden.}
+        \label{fig:Oszi_CFD=0}
+    \end{figure}
+    
+    An Abb. \ref{fig:Oszi_CFD=0} ist qualitativ zu erkennen, dass die Signale an Kanal 1 kleine bis mittlere Amplituden aufweisen, wenn die CFD-Schwelle so weit wie möglich gesenkt ist. Dies steht im Kontrast zu Abb. \ref{fig:Oszi_CFD>>0}, welches das Verhalten bei besonders hoch eingestellten CFD-Diskriminatorschwelle repräsentativ zeigt: es sind nur Signale hoher Amplituden zu sehen. Man vergleiche beide Bilder mit Abb. \ref{fig:Oszi_Triggerung_SCA+GDG}, für das mit dem SCA getriggert wurde und welches Amplituden in einem größeren Bereich enthält. Tatsächlich ist zu beobachten, dass ein langsames Erhöhen der CFD-Schwelle Pulse niedriger Amplitude aus dem Oszilloskop-Bild herausschneidet und vorher nicht sichtbare Pulse besonders hoher Amplitude auftreten. Dies impliziert, dass die verwendeten CFDs ein gewisses Amplitudenfenster besitzen und somit nicht ganz amplitudenunabhängig triggern.
+    
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO31.PNG}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Woszi}
+            \includegraphics[width=\linewidth]{figs/SUSKO33.PNG}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Vergleich von Slow-Signal über einen Delay-Verstärker (\texttt{CH I}) mit dem Fast-Signal über CFD und GDG (\texttt{CH II}). Die Diskriminator-Schwellen wurden erhöht. Es können nur Signal mittlerer und hoher Amplitude beobachtet werden.}
+        \label{fig:Oszi_CFD>>0}
+    \end{figure}
+    
+    Die nun koinzidenten Fast- und Slow-Signale werden nun ohne weitere Veränderung an den Gate- bzw. Signaleingang des MCA gegeben (vgl. Abb. \ref{fig:Schaltplan_Diskriminatorschwelle}b). Das Gate-Signal des MCA gibt, wie bei vorhergehenden Spektrumsaufnahmen, vor, in welchem Zeitabschnitt das Maximum am analogen Eingang bestimmt werden soll. Da dieses aktuell das CFD-Signal ist, gibt das Gate-Signal an, wann ein (idealisiert) beliebiges eintreffendes Signal einen gewissen Prozentsatz seiner Amplitude erreicht hat. Es fällt wieder auf, dass der CFD seltener bei nieder-energetischen Impulsen triggert, je höher seine Schwelle eingestellt ist. Da der CFD wie beobachtet als ungewollter Amplitudenfilter fungiert, wird die Diskriminatorschwelle wieder aufs Minimum gestellt. 
+    
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/09_Ba_Spektrum_CFD_Links.jpg}
+            \caption{Links}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/10_Ba_Spektrum_CFD_Rechts.jpg}
+            \caption{Rechts}
+        \end{subfigure}
+        \caption{Messung des Energie-Spektrums von $^{133}$Ba am MCA. Als Gate-Signal wird das Fast-Signal über CFD und GDG verwendet, während das Slow-Signal über den Delay-Verstärker am MCA-Eingang abgegriffen wird. Trotz minimaler Diskriminator-Schwellen wurden weniger nieder-energetische Ereignisse gemessen als zuvor. }
+        \label{fig:Plot_Ba_CFD}
+    \end{figure}
+    
+    Damit ist an den aufgenommenen Spektren (Abb. \ref{fig:Plot_Ba_CFD}) zu beobachten: Im direkten Vergleich zur vorher durchgeführten Messung des $^{^133}$Ba-Spektrums (vgl. Abb. \ref{fig:Plot_Ba_Spektrum_Fit}) fällt nun auf, dass insbesondere der $\SI{31}{keV}$-Peak deutlich kleiner im Vergleich zu höher-energetischen Peaks wie dem $\SI{81}{keV}$-Peak ist. Diese Beobachtung stimmt mit der Vermutung überein, dass der CFD weniger empfindlich auf nieder-energetische Impulse reagiert, was wiederum niedrigeren Spannungsamplituden entspricht. In Übereinstimmung damit wurde beobachtet, dass bei hohen CFD-Schwellen, das Anwachsen der sehr nieder-energetischen Kanäle vollkommen unterbunden werden kann. Weiterhin fällt auf, dass im linken Spektrum der Energie-selektierende Effekt des CFDs stärker zur relativen Reduktion des $\SI{31}{keV}$-Peaks beiträgt. Eine möglich Ursache dafür wäre, dass Bauteile im linken wie im rechten Detektionskreis nicht in allen Fällen baugleich waren. Es ist anzunehmen, dass der CFD im linken Detektionskreis bei minimaler Diskriminatorschwelle geringe Amplituden stärker diskriminiert. \\ 
+    
+    Allgemein sind trotz des Einflusses des CFDs alle gesuchten Linien beobachtbar. Da die relativen Amplituden der Peaks in diesem Versuch nicht von quantitativer Bedeutung sind, ist dieses Verhalten unproblematisch. Dennoch ist es nicht sinnvoll die CFD-Schwelle über das Minimum zu erhöhen und so ins Spektrum zu schneiden, da die später benötigte $\SI{81}{keV}$-Linie dadurch verloren gehen könnte. Das erörterte Verhalten der CFDs bedeutet jedoch auch, dass die eingestellten CFD-Schwellen keine wohldefinierbare Energie-Grenze vorgeben. Es ist festzuhalten, dass die relative Höhe der $\SI{81}{keV}$-Linie und der höherenergetischen $\SI{356}{keV}$-Linie gegenüber der Initialmessung (vgl. Abb. \ref{fig:Plot_Ba_Spektrum_Fit}) gleich bleibt. Das deutet darauf hin, dass die Unterdrückung niederenergetischer Ereignisse durch den CFD irgendwo im Intervall $[\SI{30}{keV}, \SI{80}{keV}]$ beginnt. Diese Schätzung ist natürlich sehr grob, macht aber klar, dass die später relevanten $\SI{81}{keV}$-Ereignisse nicht unterdrückt werden. Somit kann die Versuchsdurchführung normal weitergeführt werden.
+    
+    
+    % bei minimaler CFD-Schwelle wird gerade bei den Amplituden getriggert, die im Messbereich des MCA liegen und für die spätere Barium-Zerfallsmessung relevant sind ($\lesssim \SI{400}{keV}$). Neben der durch den CFD bedingten oberen Energie-Schranke ist auch ersichtlich, dass der sehr nieder-energetische Bereich des Spektrums abgeschnitten wird. Diese untere Schranke liegt sogar noch klar unter der K-$\alpha$-Energie von ca. $\SI{31}{keV}$, also ist dies im weiteren Verlauf unproblematisch. Es ist nicht sinnvoll, in andere Teile des Spektrums zu \enquote{schneiden}, da sowohl die $\SI{81}{keV}$- als auch die $\SI{356}{keV}$-Linie für die Lebensdauermessung vonnöten sind.
+    
+    
+\subsection{Herstellung der Fast-Koinzidenz}
+    Nun muss die Fast-Koinzidenz geprüft werden, um sicherzustellen, dass die unterschiedlichen Signal-Laufzeiten im linken und rechten Fast-Kreis in das Endergebnis einbezogen werden können. Es wird also wieder die Natriumquelle eingesetzt, damit beide Detektoren gleichzeitig ein $\SI{511}{keV}$-Photon aus dem $\beta^+$-Zerfall registrieren. Über die CFDs werden diese Signale zunächst ins Oszilloskop geleitet (vgl. Abb. \ref{fig:Schaltplan_Fast-Koinzidenz}), wobei der rechte Fast-Kreis durch den \si{ns}-Delay geleitet wird. Auf diese Weise kommt auch bei der Messung von gleichzeitigen Ereignissen (vlg. $\SI{511}{keV}$-Peak) das Stopp-Signal nach dem Start-Signal an. Als Stopp-Signal wird der rechte Detektor verwendet, da dieser an beiden Ausgängen eine deutlich höhere Pulsamplitude ausgibt, als der linke Detektor. Da die CFDs eine unabsichtliche Amplitudenfilterung nach sich ziehen, sollte die performantere PMT das Stopp-Signal (\SI{81}{keV}) ausgeben, damit es weniger wahrscheinlich herausgefiltert wird. Da jedoch der Effekt des CFD als Amplitudenfilter erst bei deutlich kleineren Signalamplituden sichtbar wird (vgl. Abb. \ref{fig:Plot_Ba_CFD}), sollte die Lebensdauermessung auch ohne Probleme mit umgekehrter Start-Stopp-Zuweisung funktionieren. 
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.65\linewidth]{figs/Aufbau_10a.jpg}
+        \caption{Schaltplan zur Einstellung der Verzögerung von Start- und Stopp-Signalen im Fast-Kreis. Während der linke Messkreis das Start-Signal liefert, wird der rechte Messkreis mittels $\unit{ns}$-Delay für das Stopp-Signal genutzt. }
+        \label{fig:Schaltplan_Fast-Koinzidenz}
+    \end{figure}
+    
+    Es werden ab jetzt die negativen CFD-Ausgänge verwendet. Um sicherzustellen, dass das Start-Signal vor dem Stopp-Signal eintrifft, wird letzteres mit dem \si{ns}-Delay um $\SI{31,5}{ns}$ verzögert. Das resultierende Oszilloskopbild ist in Abb. \ref{fig:Oszi_Na_Fast-Koinzidenz} repräsentativ gezeigt. Es fällt auf, dass die relative Lage der Start- und Stopp-Signale nicht ganz konstant ist. Das Stopp-Signal fluktuiert zeitlich ein wenig, in der überwältigenden Mehrheit der beobachteten Signale um $\leq \pm \SI{10}{ns}$, um die gezeigte Position herum. Die Fluktuation kann als grobe Angabe der Zeitauflösung doeses Aufbaus verwendet werden; sie sorgt jedoch nie dafür, dass das Stopp-Signal vor dem Start-Signal eintrifft. Ebenso ist zu beachten, dass das Oszilloskop zwar an Kanal 1 triggert, aber nicht immer ein entsprechendes Stopp-Signal an Kanal 2 zu sehen ist. Diese Ereignisse rühren von den anderen im Natrium möglichen Zerfallsmodi, bei denen keine gleichzeitige Detektion gewährt ist.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\Woszi]{figs/SUSKO35.PNG}
+        \caption{Oszillogramm des linken Fast-Signals über den CFD (\texttt{CH I}) im Vergleich zu rechten Fast-Signal über CFD und $\unit{ns}$-Delay. Der $\unit{ns}$-Delay wurde auf $\SI{31.5}{ns}$ eingestellt, sodass das rechte (Stopp-) Signal kurz nach dem linken (Start-) Signal eintrifft. }
+        \label{fig:Oszi_Na_Fast-Koinzidenz}
+    \end{figure}
+    
+    Der Zeitabstand von Start- zu Stopp-Signal kann in diesem Oszilloskopbild als knapp über $\SI{30 +- 5}{ns}$ abgelesen werden, was sich mit der eingestellten Verzögerung deckt. Eine Bestimmung der Distribution dieses Zeitabstands übersteigt den Rahmen dieses Versuchs. Die Zeitauflösung des Aufbaus entspricht der mittleren zeitlichen Fluktuation der Zeit zwischen Stopp- und Start-Signal. Die am Oszillskop beobachte Fluktuation von $\SI{10}{ns}$ (Abb. \ref{fig:Oszi_Na_Fast-Koinzidenz}) bezüglich des zeitlichen Abstandes von Start und Stopp entspricht in guter Näherung der kleinsten auflösbaren Zeiteinheit, i.e. der Zeitauflösung $\Delta t \approx \SI{10}{ns}$. Die Signale haben beide eine Dauer von  $\SI{10 +- 1}{ns}$ und eine Höhe von  $\SI{1 +- 0.1}{V}$ - die genauen Werte sind nicht weiter wichtig, solange der TAC diese als logische $0$ und $1$ interpretieren kann.
+
+\subsection{Zeitlicher Abgleich von Fast- \& Slow-Koinzidenz}
+    Nun sind die nötigen Koinzidenzen separat am Slow- und am Fast-Kreis eingestellt worden, sodass nun der Abgleich von Fast- mit Slow-Signal erfolgen kann. Dafür werden nun die Koinzidenzeinheit mit GDG in den Slow-Kreis und der TAC in den Fast-Kreis eingebaut. Abbildung \ref{fig:Schaltplan_Fast-Slow-Koinzidenz} zeigt, wie die zwei resultierenden Signale an das Oszilloskop geleitet werden. Noch wird die Natriumquelle verwendet.
+
+   \begin{figure}[H]
+        \centering
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Aufbau_10b.jpg}
+            \caption{}
+            \label{fig:Schaltplan_Fast-Slow-Koinzidenz}
+        \end{subfigure}
+        \plotspace
+        \begin{subfigure}{\Wplot}
+            \includegraphics[width=\linewidth]{figs/Aufbau_10c.jpg}
+            \caption{}
+            \label{fig:Schaltplan_Promptkurve+Lebenskurve}
+        \end{subfigure}
+        \caption{Schaltplan (a) zum Abgleich der Fast-Slow-Koinzidenz am Oszilloskop. Schaltplan (b) zur Messung der Promtkurven von $^{22}$Na am MCA, beziehungsweise zur späteren Messung der Lebenskurve von $\frac{5}{2}^+$Cs.}
+    \end{figure}
+
+    
+    Der Slow-Kreis übernimmt nun die Rolle eines Energiefilters, der nur dann ein Signal ausgibt, wenn an beiden Detektoren ein $\SI{511}{keV}$-Photon eintrifft --- die Schwellen sind noch wie in Abb. \ref{fig:Oszi_Na_Fenster} eingestellt. An Kanal 2 ist ein analoger Puls mit ungefähr konstanter Höhe zu erwarten, da der TAC die ungefähr konstante $\SI{31,5}{ns}$-Verzögerung zwischen Start- und Stopp-Signal proportional in eine Pulsamplitude umwandelt. Tatsächlich zeigt sich am Oszilloskop genau dieses Verhalten, zu sehen in Abb. \ref{fig:Oszi_Na_Fast-Slow-Koinzidenz}. Anhand der Zeiteinstellung am Oszilloskop von $\SI{500}{ns/div}$ ist zu erkennen, dass der TAC den kurzen Zeitabstand zwischen Start- und Stopp-Signal in einen vergleichsweise lang anhaltenden Puls der Größenordnung $\SI{1}{\mu s}$ verwandelt. Die Anstiegszeit des TAC ist zwar nicht so kurz wie die der Koinzidenzeiheit im Slow-Kreis, aber das Pulsmaximum liegt dennoch bequem im mit dem GDG eingestellten Fenster. Damit eignet sich die eingestellte Koinzidenz für eine Lebensdauermessung. Auffällig ist, dass, während beide Signale logisch $1$ entsprechen sollen, das Signal des TACs das charakteristische Entlade-Verhalten eines Kondensators mit exponentiellem Abfall aufweist. Dies ist konsistent mit dem zuvor eingeführten Aufbau des TACs. 
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\Woszi]{figs/SUSKO37.PNG}
+        \caption{Oszillogramm vom TAC-Fastkreis (\texttt{CH I}) und dem Slowkreis über Koinzidenzeinheit und GDG (\texttt{CH II}). Durch Verzögerung und Puls-Verlängerung am GDG wurde Überlappung und somit Fast-Slow-Koinzidenz hergestellt.  }
+        \label{fig:Oszi_Na_Fast-Slow-Koinzidenz}
+    \end{figure}
